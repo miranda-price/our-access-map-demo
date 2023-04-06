@@ -21,6 +21,48 @@
     }).addTo(map);
     var marker = L.marker([43.1292686, -77.6313279]).addTo(map);
     var marker2 = L.marker([43.1293665, -77.6313923]).addTo(map);
+      
+     // define custom icon classes
+    var benchIcon = L.icon({
+      iconUrl: 'icons/map-icons-bench.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var rampIcon = L.icon({
+      iconUrl: 'icons/icons/map-icons_ramp.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var ElevatorNotWCIcon = L.icon({
+      iconUrl: 'icons/map-icons_elevator-wc-inaccessible.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var ElevatorWCIcon = L.icon({
+      iconUrl: 'icons/map-icons_elevator-wc-accessible.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var ElevatorNotWCBrokenIcon = L.icon({
+      iconUrl: 'icons/map-icons_elevator-wc-inaccessible-broken.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var ElevatorWCBrokenIcon = L.icon({
+      iconUrl: 'icons/map-icons_elevator-wc-accessible-broken.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var stairsIcon = L.icon({
+      iconUrl: 'icons/map-icons_stairs.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
+    var stepsIcon = L.icon({
+      iconUrl: 'icons/map-icons_steps.svg',
+      iconSize:     [24, 24],
+      iconAnchor:   [12, 12]
+    });
     </script>
   </body>
 </html>
