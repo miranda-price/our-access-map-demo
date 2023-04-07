@@ -14,13 +14,41 @@
     </div>
     <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
     <script>
-      var map = L.map('map').setView([43.1293175, -77.6314076], 18);
+    
+    var map = L.map('map').setView([43.1279308, -77.6299522], 22);
+    var userLoc = L.circleMarker([43.1279308, -77.6299522]).addTo(map);
+    // find user location
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var userLat = position.coords.latitude;
+        var userLng = position.coords.longitude;
+        map.flyTo([userLat, userLng], 18);
+        userLoc = L.circleMarker([userLat, userLng]).addTo(map)
+      })
+    } else {
+      map.flyTo([43.1279308, -77.6299522], 18);
+    }
+
+      
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
-    var marker = L.marker([43.1292686, -77.6313279]).addTo(map);
-    var marker2 = L.marker([43.1293665, -77.6313923]).addTo(map);
+
+    // update user location
+    function updateLoc() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          userLoc.setLatLng([position.coords.latitude, position.coords.longitude]);
+        })
+      }
+    }
+
+    setInterval(updateLoc, 1000)
+
+    function toFeet(meters) {
+      return meters * 3.28084
+    }    
       
      // define custom icon classes
     var benchIcon = L.icon({
