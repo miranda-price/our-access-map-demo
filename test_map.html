@@ -16,7 +16,7 @@
     </div>
     <form id="route-input" style="position:fixed; top: 90px; left: 10px; z-index: 999;">
       <label for="start-building" class="form-label">Starting</label>
-      <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting building...">
+      <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting building..." onchange="propogateFloors('start-building', 'start-floor')">
       <datalist id="datalistOptions">
         <option value="Bausch & Lomb"></option>
         <option value="Burton"></option>
@@ -29,23 +29,10 @@
       </datalist>
       <label for="start-floor" class="form-label">Floor</label>
       <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
-        <option selected></option>
-        <option value="G">G</option>
-        <option value="B">B</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <option selected>--</option>
       </select>
       <label for="end-building" class="form-label">Destination</label>
-      <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination...">
+      <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination..." onchange="propogateFloors('end-building', 'end-floor')">
       <datalist id="datalistOptions">
         <option value="Bausch & Lomb"></option>
         <option value="Burton"></option>
@@ -58,20 +45,7 @@
       </datalist>
       <label for="end-floor" class="form-label">Floor</label>
       <select class="form-select" aria-label="Select ending floor" id="end-floor" name="end-floor">
-        <option selected></option>
-        <option value="G">G</option>
-        <option value="B">B</option>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
+        <option selected>--</option>
       </select>
       <button type="submit">Find Route</button>      
     </form>
@@ -84,6 +58,57 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+     // propogate floor select options
+     function floorOptions(selectID, floors, main) {
+      var floorSelect = document.getElementById(selectID);
+      floorSelect.innerHTML = '';
+      for (let i = 0; i < floors.length; i++) {
+        var opt = document.createElement("option");
+        opt.text = floors[i];
+        opt.value = floors[i];
+        if (floors[i] == main) {
+          opt.selected = true;
+        }
+        floorSelect.appendChild(opt);
+      }
+    }
+
+    function propogateFloors(selectBuilding, selectFloor) {
+      building = document.getElementById(selectBuilding).value;
+      switch (building) {
+        case 'Burton':
+          floorOptions(selectFloor, ['0', '1', '2', '3'], '1');
+          break;
+        case 'Rettner':
+          floorOptions(selectFloor, ['1', '2', '3'], '1');
+          break;
+        case 'Lattimore':
+          floorOptions(selectFloor, ['1', '2', '3', '4', '5'], '3');
+          break;
+        case 'Morey':
+          floorOptions(selectFloor, ['1', '2', '3', '4', '5'], '3');
+          break;
+        case 'Rush Rhees':
+          floorOptions(selectFloor, ['G', '1', '2', '3', '4'], '1');
+          break;
+        case 'Hoyt':
+          floorOptions(selectFloor, ['1', '2'], '1');
+          break;
+        case 'Bausch & Lomb':
+          floorOptions(selectFloor, ['1', '2', '3', '4', '5'], '2');
+          break;
+        case 'Dewey':
+          floorOptions(selectFloor, ['B', '1', '2', '3', '4', '5'], '2');
+          break;
+        default:
+          floorOptions(selectFloor, ['B', 'G', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], '1');
+      }
+    }
+
+    // propogate floors again on refresh
+    if (document.getElementById('start-building').value != "") {propogateFloors('start-building', 'start-floor');}
+    if (document.getElementById('end-building').value != "") {propogateFloors('end-building', 'end-floor');}
+
     // find user location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -92,26 +117,29 @@
         map.flyTo([userLat, userLng], 18);
         userLoc.setLatLng([userLat, userLng]);
         // find building
+        var startBuilding = document.getElementById('start-building');
         if (userLat >= 43.1291045 && userLng >= -77.6315905 && userLat <= 43.1294653 && userLng <= -77.6310999) {
-          document.getElementById('start-building').value = "Burton";
+          startBuilding.value = "Burton";
         } else if (userLat >= 43.1283453 && userLng >= -77.6301887 && userLat <= 43.1287222 && userLng <= -77.6299084) {
-          document.getElementById('start-building').value = "Rettner";
+          startBuilding.value = "Rettner";
         } else if (userLat >= 43.1278795 && userLng >= -77.6310298 && userLat <= 43.1284557 && userLng <= -77.6303584) {
-          document.getElementById('start-building').value = "Lattimore";
+          startBuilding.value = "Lattimore";
         } else if (userLat >= 43.1282511 && userLng >= -77.6300449 && userLat <= 43.1286226 && userLng <= -77.6293624) {
-          document.getElementById('start-building').value = "Morey";
+          startBuilding.value = "Morey";
         } else if (userLat >= 43.1280746 && userLng >= -77.6289956 && userLat <= 43.1289271 && userLng <= -77.6279555) {
-          document.getElementById('start-building').value = "Rush Rhees";
+          startBuilding.value = "Rush Rhees";
         } else if (userLat >= 43.1271754 && userLng >= -77.6296437 && userLat <= 43.1275899 && userLng <= -77.6294596) {
-          document.getElementById('start-building').value = "Hoyt";
+          startBuilding.value = "Hoyt";
         }  else if (userLat >= 43.1271345 && userLng >= -77.6293156 && userLat <= 43.1279928 && userLng <= -77.6289476) {
-          document.getElementById('start-building').value = "Bausch & Lomb";
+          startBuilding.value = "Bausch & Lomb";
         } else if (userLat >= 43.1267433 && userLng >= -77.6302677 && userLat <= 43.1276542 && userLng <= -77.6297637) {
-          document.getElementById('start-building').value = "Dewey";
+          startBuilding.value = "Dewey";
         } 
         else {
-          document.getElementById('start-building').value = "";
+          startBuilding.value = "";
         }
+
+        if (startBuilding.value != "") {propogateFloors('start-building', 'start-floor')}
       })
     } else {
       map.flyTo([43.1279308, -77.6299522], 18);
@@ -129,7 +157,7 @@
 
     function toFeet(meters) {
       return meters * 3.28084
-    }    
+    }
       
      // define custom icon classes
     var benchIcon = L.icon({
