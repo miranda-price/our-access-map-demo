@@ -13,30 +13,109 @@
   </head>
   <body>
     <div id="map">
-      <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:5;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
     </div>
-    <p><a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a></p>
-    <script>
-    
+    <form id="route-input" style="position:fixed; top: 90px; left: 10px; z-index: 999;">
+      <label for="start-building" class="form-label">Starting</label>
+      <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting building...">
+      <datalist id="datalistOptions">
+        <option value="Bausch & Lomb"></option>
+        <option value="Burton"></option>
+        <option value="Dewey"></option>
+        <option value="Hoyt"></option>
+        <option value="Lattimore"></option>
+        <option value="Morey"></option>
+        <option value="Rettner"></option>
+        <option value="Rush Rhees"></option>
+      </datalist>
+      <label for="start-floor" class="form-label">Floor</label>
+      <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
+        <option selected></option>
+        <option value="G">G</option>
+        <option value="B">B</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <label for="end-building" class="form-label">Destination</label>
+      <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination...">
+      <datalist id="datalistOptions">
+        <option value="Bausch & Lomb"></option>
+        <option value="Burton"></option>
+        <option value="Dewey"></option>
+        <option value="Hoyt"></option>
+        <option value="Lattimore"></option>
+        <option value="Morey"></option>
+        <option value="Rettner"></option>
+        <option value="Rush Rhees"></option>
+      </datalist>
+      <label for="end-floor" class="form-label">Floor</label>
+      <select class="form-select" aria-label="Select ending floor" id="end-floor" name="end-floor">
+        <option selected></option>
+        <option value="G">G</option>
+        <option value="B">B</option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <button type="submit">Find Route</button>      
+    </form>
+
+    <script>  
     var map = L.map('map').setView([43.1279308, -77.6299522], 22);
     var userLoc = L.circleMarker([43.1279308, -77.6299522]).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
     // find user location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         var userLat = position.coords.latitude;
         var userLng = position.coords.longitude;
         map.flyTo([userLat, userLng], 18);
-        userLoc = L.circleMarker([userLat, userLng]).addTo(map)
+        userLoc.setLatLng([userLat, userLng]);
+        // find building
+        if (userLat >= 43.1291045 && userLng >= -77.6315905 && userLat <= 43.1294653 && userLng <= -77.6310999) {
+          document.getElementById('start-building').value = "Burton";
+        } else if (userLat >= 43.1283453 && userLng >= -77.6301887 && userLat <= 43.1287222 && userLng <= -77.6299084) {
+          document.getElementById('start-building').value = "Rettner";
+        } else if (userLat >= 43.1278795 && userLng >= -77.6310298 && userLat <= 43.1284557 && userLng <= -77.6303584) {
+          document.getElementById('start-building').value = "Lattimore";
+        } else if (userLat >= 43.1282511 && userLng >= -77.6300449 && userLat <= 43.1286226 && userLng <= -77.6293624) {
+          document.getElementById('start-building').value = "Morey";
+        } else if (userLat >= 43.1280746 && userLng >= -77.6289956 && userLat <= 43.1289271 && userLng <= -77.6279555) {
+          document.getElementById('start-building').value = "Rush Rhees";
+        } else if (userLat >= 43.1271754 && userLng >= -77.6296437 && userLat <= 43.1275899 && userLng <= -77.6294596) {
+          document.getElementById('start-building').value = "Hoyt";
+        }  else if (userLat >= 43.1271345 && userLng >= -77.6293156 && userLat <= 43.1279928 && userLng <= -77.6289476) {
+          document.getElementById('start-building').value = "Bausch & Lomb";
+        } else if (userLat >= 43.1267433 && userLng >= -77.6302677 && userLat <= 43.1276542 && userLng <= -77.6297637) {
+          document.getElementById('start-building').value = "Dewey";
+        } 
+        else {
+          document.getElementById('start-building').value = "";
+        }
       })
     } else {
       map.flyTo([43.1279308, -77.6299522], 18);
     }
-
-      
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
 
     // update user location
     function updateLoc() {
@@ -46,8 +125,7 @@
         })
       }
     }
-
-    setInterval(updateLoc, 1000)
+    setInterval(updateLoc, 100)
 
     function toFeet(meters) {
       return meters * 3.28084
@@ -179,67 +257,5 @@
     L.marker([43.1289136,	-77.6291993], {icon: benchIcon}).addTo(map);
     L.marker([43.129076,	-77.6293036], {icon: benchIcon}).addTo(map);
     </script>
-
-    <form id="route-input" style="position:fixed; top: 90px; left: 10px; z-index: 999;">
-      <label for="start-building" class="form-label">Starting</label>
-      <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting building...">
-      <datalist id="datalistOptions">
-        <option value="Bausch & Lomb"></option>
-        <option value="Burton"></option>
-        <option value="Dewey"></option>
-        <option value="Hoyt"></option>
-        <option value="Lattimore"></option>
-        <option value="Morey"></option>
-        <option value="Rettner"></option>
-        <option value="Rush Rhees"></option>
-      </datalist>
-      <label for="start-floor" class="form-label">Floor</label>
-      <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
-        <option selected></option>
-        <option value="G"></option>
-        <option value="B"></option>
-        <option value="0"></option>
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-        <option value="6"></option>
-        <option value="7"></option>
-        <option value="8"></option>
-        <option value="9"></option>
-        <option value="10"></option>
-      </select>
-      <label for="end-building" class="form-label">Destination</label>
-      <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination...">
-      <datalist id="datalistOptions">
-        <option value="Bausch & Lomb"></option>
-        <option value="Burton"></option>
-        <option value="Dewey"></option>
-        <option value="Hoyt"></option>
-        <option value="Lattimore"></option>
-        <option value="Morey"></option>
-        <option value="Rettner"></option>
-        <option value="Rush Rhees"></option>
-      </datalist>
-      <label for="end-floor" class="form-label">Floor</label>
-      <select class="form-select" aria-label="Select ending floor" id="end-floor" name="end-floor">
-        <option selected></option>
-        <option value="G"></option>
-        <option value="B"></option>
-        <option value="0"></option>
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-        <option value="6"></option>
-        <option value="7"></option>
-        <option value="8"></option>
-        <option value="9"></option>
-        <option value="10"></option>
-      </select>
-      <button type="submit">Find Route</button>      
-    </form>
   </body>
 </html>
