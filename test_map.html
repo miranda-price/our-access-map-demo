@@ -295,12 +295,12 @@
     ]);
 
     var overlayMaps = {
-      "WC Accessible Elevators": elevatorsWC.addTo(map),
-      "WC Inaccessible Elevators": elevatorsNotWC.addTo(map),
-      "Ramps": ramps.addTo(map),
-      "Stairs": stairs.addTo(map),
-      "Steps": steps.addTo(map),
-      "Benches": benches.addTo(map)
+      "<span class='layer-key'><img src='icons/map-icons_elevator-wc-accessible.svg' width=18px /><span>Elevators: WC Accessible</span></span>": elevatorsWC.addTo(map),
+      "<span class='layer-key'><img src='icons/map-icons_elevator-wc-inaccessible.svg' width=18px /><span>Elevators: WC Inaccessible</span></span>": elevatorsNotWC.addTo(map),
+      "<span class='layer-key'><img src='icons/map-icons_ramp.svg' width=18px /><span>Ramps</span></span>": ramps.addTo(map),
+      "<span class='layer-key'><img src='icons/map-icons_stairs.svg' width=18px /><span>Stairs</span></span>": stairs.addTo(map),
+      "<span class='layer-key'><img src='icons/map-icons_steps.svg' width=18px /><span>Steps</span></span>": steps.addTo(map),
+      "<span class='layer-key'><img src='icons/map-icons-bench.svg' width=18px /><span>Benches</span></span>": benches.addTo(map)
     };
 
     var layerControl = L.control.layers(null, overlayMaps, {collapsed: false}).addTo(map);
