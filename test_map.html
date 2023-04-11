@@ -44,9 +44,33 @@
       <select class="form-select" aria-label="Select ending floor" id="end-floor" name="end-floor">
         <option selected>--</option>
       </select>
-      <button type="submit">Find Route</button>      
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="allowSteps" id="allowSteps">
+        <label class="form-check-label" for="allowSteps">
+          Allow Steps
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="allowStairs" id="allowStairs">
+        <label class="form-check-label" for="allowStairs">
+          Allow Stairs
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="allowDoors" id="allowDoors">
+        <label class="form-check-label" for="allowDoors">
+          Allow Manual Doors
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="allowElevators" id="allowElevators">
+        <label class="form-check-label" for="allowElevators">
+          Allow Steps
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit">Find Route</button>      
     </form>
 
-    <script src="scripts/map-script"></script>
+    <script src="scripts/map-script.js"></script>
   </body>
 </html>
