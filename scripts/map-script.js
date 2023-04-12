@@ -179,14 +179,14 @@ if (navigator.geolocation) {
 }
 
 // update user location
-function updateLoc() {
+/*function updateLoc() {
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
         userLoc.setLatLng([position.coords.latitude, position.coords.longitude]);
     })
     }
 }
-setInterval(updateLoc, 100)
+setInterval(updateLoc, 100)*/
     
 // define custom icon classes
 var benchIcon = L.icon({

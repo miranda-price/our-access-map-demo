@@ -1,4 +1,5 @@
-function find_route() {
+function find_route(event) {
+    event.preventDefault();
     console.log("find route");
     var allow_steps = document.getElementById("allowSteps").checked;
     var allow_stairs = document.getElementById("allowStairs").checked;
@@ -12,8 +13,7 @@ function find_route() {
             this.id = id;
             this.edges = edges;
             this.type = type;
-            this.lat = lat;
-            this.long = long;
+            this.coords = coords;
             this.route = route;
         }
     }
@@ -132,7 +132,7 @@ function find_route() {
     RT01AWQPG = new Edge('path', 'RT01AWQPG', 21.5, false, false, false, false, true, 'leave Rettner hall', 'enter Rettner hall', [[43.1286775,-77.630216],[43.1285042,-77.6303344]]);
     RT01CWQPH = new Edge('path', 'RT01CWQPH', 8.0, false, false, false, false, true, 'leave Rettner hall', 'enter Rettner hall', [[43.1283643,-77.6301248],[43.1283342,-77.6302145]]);
 
-    var all_edges = [BR00BR01, BR00BR02, BR00BR03, BR01BR02, BR01BR03, RT01RT02, RT01RT03, RT01RT02, RT01RT01A, RT01RT01B, RT01RT01C, MRGMR01, MRGMR02, MRGMR03, MRGMR04, MRGMR05, MR01MR02, MR01MR03, MR01MR04, MR01MR05, MR02MR03, MR02MR04, MR02MR05, MR03MR04, MR03MR05, MR02MR02A, MR03MR03A, MR03MR03B, MR03MR03C, MRGRT01, MR01RT01, MR02RT02, MR03RT03, MR02ARRGC, RRGRR01, RRGRR02, RRGRR03, RRGRR04, RRGRRGA, RRGRRGB, RRGRRGC, RR01RR01A, RR01RR01B, EQPCMR03A, EQPBMR03B, EQPAMR03C, EQPAEQPB, EQPBEQPC, EQPDRR01B, EQPDEQPE, EQPDEQPF, EQPCEQPE, EQPBEQPG, EQPFEQPG]
+    var all_edges = [BR00BR01, BR00BR02, BR00BR03, BR01BR02, BR01BR03, RT01RT02, RT01RT03, RT01RT02, RT01RT01A, RT01RT01B, RT01RT01C, MRGMR01, MRGMR02, MRGMR03, MRGMR04, MRGMR05, MR01MR02, MR01MR03, MR01MR04, MR01MR05, MR02MR03, MR02MR04, MR02MR05, MR03MR04, MR03MR05, MR02MR02A, MR03MR03A, MR03MR03B, MR03MR03C, MRGRT01, MR01RT01, MR02RT02, MR03RT03, MR02ARRGC, RRGRR01, RRGRR02, RRGRR03, RRGRR04, RRGRRGA, RRGRRGB, RRGRRGC, RR01RR01A, RR01RR01B, EQPCMR03A, EQPBMR03B, EQPAMR03C, EQPAEQPB, EQPBEQPC, EQPDRR01B, EQPDEQPE, EQPDEQPF, EQPCEQPE, EQPBEQPG, EQPFEQPG, BR01AWQPB, BR01BWQPA, BR01BWQPB, BR01CWQPA, WQPAWQPB, WQPAWQPE, WQPBWQPD, WQPEWQPF, WQPCWQPD, WQPCWQPF, WQPCWQPG, WQPGWQPH, RT01AWQPG, RT01CWQPH]
 
     // define nodes
     // Burton
@@ -199,6 +199,11 @@ function find_route() {
     all_nodes = [BR00, BR01, BR02, BR03, BR00A, BR01A, BR01B, BR01C, RT01, RT02, RT03, RT01A, RT01B, RT01C, MRG, MR01, MR02, MR03, MR04, MR05, MR02A, MR03A, MR03B, MR03C, RRG, RR01, RR02, RR03, RR04, RRGA, RRGB, RRGC, RR01A, RR01B, EQPA, EQPB, EQPD, EQPE, EQPF, EQPG, WQPA, WQPB, WQPC, WQPD, WQPE, WQPF, WQPG, WQPH];
 
     // sort edge accessibility
+    var step_edges = [];
+    var stair_edges = [];
+    var door_edges = [];
+    var elevator_edges = [];
+    var accessible_edges = [];
     all_edges.forEach(edge => {
         if (edge.ada) {accessible_edges.push(edge);}
         else {
@@ -208,11 +213,6 @@ function find_route() {
             if (edge.non_wc_elevators) {elevator_edges.push(edge);}   
         }
     })
-    var step_edges = [];
-    var stair_edges = [];
-    var door_edges = [];
-    var elevator_edges = [];
-    var accessible_edges = [];
 
     // get accessible edges
     var allowed = [];
