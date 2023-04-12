@@ -7,13 +7,14 @@ function find_route(event) {
     var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
 
     class Node {
-        constructor(building, level, id, edges, type, coords, route) {
+        constructor(building, level, id, edges, type, coords, length, route) {
             this.building = building;
             this.level = level;
             this.id = id;
             this.edges = edges;
             this.type = type;
             this.coords = coords;
+            this.length = length;
             this.route = route;
         }
     }
@@ -136,65 +137,65 @@ function find_route(event) {
 
     // define nodes
     // Burton
-    BR00 = new Node("Burton", "0", "BR00", [], "floor", null, []);
-    BR01 = new Node("Burton", "1", "BR01", [], "floor", null, []);
-    BR02 = new Node("Burton", "1", "BR02", [], "floor", null, []);
-    BR03 = new Node("Burton", "1", "BR03", [], "floor", null, []);
-    BR00A = new Node("Burton", "0", "BR00A", [], "entrance", [43.1293665, -77.6313923], []);
-    BR01A = new Node("Burton", "1", "BR01A", [], "entrance", [43.129296, -77.6311965], []);
-    BR01B = new Node("Burton", "1", "BR01B", [], "entrance", [43.1292627, -77.6313306], []);
-    BR01C = new Node("Burton", "1", "BR01C", [], "entrance", [43.129204, -77.6314433], []);
+    BR00 = new Node("Burton", "0", "BR00", [BR00BR01,BR00BR02,BR00BR03,BR00BR00A], "floor", null, Math.min(), []);
+    BR01 = new Node("Burton", "1", "BR01", [BR00BR01,BR01BR02,BR01BR03,BR01BR01A,BR01BR01B,BR01BR01C], "floor", null, Math.min(), []);
+    BR02 = new Node("Burton", "2", "BR02", [BR00BR02,BR01BR02], "floor", null, Math.min(), []);
+    BR03 = new Node("Burton", "3", "BR03", [BR00BR03,BR01BR03], "floor", null, Math.min(), []);
+    BR00A = new Node("Burton", "0", "BR00A", [BR00BR00A], "entrance", [43.1293665, -77.6313923], Math.min(), []);
+    BR01A = new Node("Burton", "1", "BR01A", [BR01BR01A,BR01AWQPB], "entrance", [43.129296, -77.6311965], Math.min(), []);
+    BR01B = new Node("Burton", "1", "BR01B", [BR01BR01B,BR01BWQPB,BR01BWQPA], "entrance", [43.1292627, -77.6313306], Math.min(), []);
+    BR01C = new Node("Burton", "1", "BR01C", [BR01BR01C,BR01CWQPA], "entrance", [43.129204, -77.6314433], Math.min(), []);
 
     // Rettner
-    RT01 = new Node("Rettner", "1", "RT01", [], "floor", null, []);
-    RT02 = new Node("Rettner", "2", "RT02", [], "floor", null, []);
-    RT03 = new Node("Rettner", "3", "RT03", [], "floor", null, []);
-    RT01A = new Node("Rettner", "1", "RT01A", [], "entrance", [43.1286775, -77.630216], []);
-    RT01B = new Node("Rettner", "1", "RT01B", [], "entrance", [43.1284505, -77.6299049], []);
-    RT01C = new Node("Rettner", "1", "RT01C", [], "entrance", [43.1283643, -77.6301248], []);
+    RT01 = new Node("Rettner", "1", "RT01", [RT01RT02,RT01RT03,RT01RT01A,RT01RT01B,RT01RT01C,MRGRT01,MR01RT01,RT01AWQPG,RT01CWQPH], "floor", null, Math.min(), []);
+    RT02 = new Node("Rettner", "2", "RT02", [RT01RT02,RT02RT03,MR02RT02], "floor", null, Math.min(), []);
+    RT03 = new Node("Rettner", "3", "RT03", [RT01RT03,RT02RT03,MR03RT03], "floor", null, Math.min(), []);
+    RT01A = new Node("Rettner", "1", "RT01A", [RT01RT01A,RT01AWQPG], "entrance", [43.1286775, -77.630216], Math.min(), []);
+    RT01B = new Node("Rettner", "1", "RT01B", [RT01RT01B], "entrance", [43.1284505, -77.6299049], Math.min(), []);
+    RT01C = new Node("Rettner", "1", "RT01C", [RT01RT01C,RT01CWQPH], "entrance", [43.1283643, -77.6301248], Math.min(), []);
 
     // Morey
-    MRG = new Node("Morey", "G", "MRG", [], "floor", null, []);
-    MR01 = new Node("Morey", "1", "MR01", [], "floor", null, []);
-    MR02 = new Node("Morey", "2", "MR02", [], "floor", null, []);
-    MR03 = new Node("Morey", "3", "MR03", [], "floor", null, []);
-    MR04 = new Node("Morey", "4", "MR04", [], "floor", null, []);
-    MR05 = new Node("Morey", "5", "MR05", [], "floor", null, []);
-    MR02A = new Node("Morey", "2", "MR02A", [], "entrance", [43.1284964, -77.6293734], []);
-    MR03A = new Node("Morey", "3", "MR03A", [], "entrance", [43.1284459, -77.6294641], []);
-    MR03B = new Node("Morey", "3", "MR03B", [], "entrance", [43.1283587, -77.6296534], []);
-    MR03C = new Node("Morey", "3", "MR03C", [], "entrance", [43.1283023, -77.6298476], []);
+    MRG = new Node("Morey", "G", "MRG", [MRGMR01,MRGMR02,MRGMR03,MRGMR04,MRGMR05,MRGRT01], "floor", null, Math.min(), []);
+    MR01 = new Node("Morey", "1", "MR01", [MRGMR01,MR01MR02,MR01MR03,MR01MR04,MR01MR05,MR01RT01], "floor", null, Math.min(), []);
+    MR02 = new Node("Morey", "2", "MR02", [MRGMR02,MR01MR02,MR02MR03,MR02MR04,MR02MR05,MR02RT02,MR02ARRGC], "floor", null, Math.min(), []);
+    MR03 = new Node("Morey", "3", "MR03", [MRGMR03,MR01MR03,MR02MR03,MR03MR04.MR03MR05,MR03MR03A,MR03MR03A,MR03MR03B,MR03MR03C,MR03RT03,EQPCMR03A.EQPBMR03B,EQPAMR03C], "floor", null, Math.min(), []);
+    MR04 = new Node("Morey", "4", "MR04", [MRGMR04,MR01MR04,MR02MR04,MR03MR04], "floor", null, Math.min(), []);
+    MR05 = new Node("Morey", "5", "MR05", [MRGMR05,MR01MR05,MR02MR05,MR03MR05], "floor", null, Math.min(), []);
+    MR02A = new Node("Morey", "2", "MR02A", [MR02ARRGC, MR02MR02A], "entrance", [43.1284964, -77.6293734], Math.min(), []);
+    MR03A = new Node("Morey", "3", "MR03A", [MR03MR03A,EQPCMR03A], "entrance", [43.1284459, -77.6294641], Math.min(), []);
+    MR03B = new Node("Morey", "3", "MR03B", [MR03MR03B,EQPBMR03B], "entrance", [43.1283587, -77.6296534], Math.min(), []);
+    MR03C = new Node("Morey", "3", "MR03C", [MR03MR03C,EQPAMR03C], "entrance", [43.1283023, -77.6298476], Math.min(), []);
 
     // Rush Rhees
-    RRG = new Node("Rush Rhees", "G", "RRG", [], "floor", null, []);
-    RR01 = new Node("Rush Rhees", "1", "RR01", [], "floor", null, []);
-    RR02 = new Node("Rush Rhees", "2", "RR02", [], "floor", null, []);
-    RR03 = new Node("Rush Rhees", "3", "RR03", [], "floor", null, []);
-    RR04 = new Node("Rush Rhees", "4", "RR04", [], "floor", null, []);
-    RRGA = new Node("Rush Rhees", "G", "RRGA", [], "entrance", [43.1287284, -77.6279537], []);
-    RRGB = new Node("Rush Rhees", "G", "RRGB", [], "entrance", [43.1281014, -77.6287809], []);
-    RRGC = new Node("Rush Rhees", "G", "RRGC", [], "entrance", [43.1285151, -77.6290934], []);
-    RR01A = new Node("Rush Rhees", "1", "RR01A", [], "entrance", [43.128743, -77.6286939], []);
-    RR01B = new Node("Rush Rhees", "1", "RR01B", [], "entrance", [43.1283107, -77.6289446], []);
+    RRG = new Node("Rush Rhees", "G", "RRG", [RRGRR01,RRGRR02,RRGRR03,RRGRR04,RRGRRGA,RRGRRGB,RRGRRGC,MR02ARRGC], "floor", null, Math.min(), []);
+    RR01 = new Node("Rush Rhees", "1", "RR01", [RRGRR01,RR01RR02,RR01RR03,RR01RR04,RR01RR01A,RR01RR01B.EQPDRR01B], "floor", null, Math.min(), []);
+    RR02 = new Node("Rush Rhees", "2", "RR02", [RRGRR02,RR01RR02], "floor", null, Math.min(), []);
+    RR03 = new Node("Rush Rhees", "3", "RR03", [RRGRR03,RR01RR03], "floor", null, Math.min(), []);
+    RR04 = new Node("Rush Rhees", "4", "RR04", [RRGRR04,RR01RR04], "floor", null, Math.min(), []);
+    RRGA = new Node("Rush Rhees", "G", "RRGA", [RRGRRGA], "entrance", [43.1287284, -77.6279537], Math.min(), []);
+    RRGB = new Node("Rush Rhees", "G", "RRGB", [RRGRRGB], "entrance", [43.1281014, -77.6287809], Math.min(), []);
+    RRGC = new Node("Rush Rhees", "G", "RRGC", [RRGRRGC,MR02ARRGC], "entrance", [43.1285151, -77.6290934], Math.min(), []);
+    RR01A = new Node("Rush Rhees", "1", "RR01A", [RR01RR01A], "entrance", [43.128743, -77.6286939], Math.min(), []);
+    RR01B = new Node("Rush Rhees", "1", "RR01B", [RR01RR01B,EQPDRR01B], "entrance", [43.1283107, -77.6289446], Math.min(), []);
 
     // Eastman Quad
-    EQPA = new Node("Eastman Quad", null, "EQPA", [], "intersection", [43.1282524, -77.6298131], []);
-    EQPB = new Node("Eastman Quad", null, "EQPB", [], "intersection", [43.1283214, -77.6296242], []);
-    EQPC = new Node("Eastman Quad", null, "EQPC", [], "intersection", [43.1283983, -77.6294316], []);
-    EQPD = new Node("Eastman Quad", null, "EQPD", [], "intersection", [43.1282604, -77.6290755], []);
-    EQPE = new Node("Eastman Quad", null, "EQPE", [], "intersection", [43.1284752, -77.6292172], []);
-    EQPF = new Node("Eastman Quad", null, "EQPF", [], "intersection", [43.1280535, -77.6289301], []);
-    EQPG = new Node("Eastman Quad", null, "EQPG", [], "intersection", [43.1279103, -77.6293189], []);
+    EQPA = new Node("Eastman Quad", null, "EQPA", [EQPAMR03C,EQPAEQPB], "intersection", [43.1282524, -77.6298131], Math.min(), []);
+    EQPB = new Node("Eastman Quad", null, "EQPB", [EQPBMR03B,EQPAEQPB,EQPBEQPC,EQPBEQPG], "intersection", [43.1283214, -77.6296242], Math.min(), []);
+    EQPC = new Node("Eastman Quad", null, "EQPC", [EQPCMR03A,EQPBEQPC,EQPCEQPE], "intersection", [43.1283983, -77.6294316], Math.min(), []);
+    EQPD = new Node("Eastman Quad", null, "EQPD", [EQPDRR01B,EQPDEQPE,EQPDEQPF], "intersection", [43.1282604, -77.6290755], Math.min(), []);
+    EQPE = new Node("Eastman Quad", null, "EQPE", [EQPDEQPE,EQPCEQPE], "intersection", [43.1284752, -77.6292172], Math.min(), []);
+    EQPF = new Node("Eastman Quad", null, "EQPF", [EQPDEQPF,EQPFEQPG], "intersection", [43.1280535, -77.6289301], Math.min(), []);
+    EQPG = new Node("Eastman Quad", null, "EQPG", [EQPBEQPG,EQPFEQPG], "intersection", [43.1279103, -77.6293189], Math.min(), []);
 
     // Wilson Quad
-    WQPA = new Node("Wilson Quad", null, "WQPA", [], "intersection", [43.1291189, -77.6313241], []);
-    WQPB = new Node("Wilson Quad", null, "WQPB", [], "intersection", [43.1291688, -77.6311843], []);
-    WQPC = new Node("Wilson Quad", null, "WQPC", [], "intersection", [43.1289216, -77.6306342], []);
-    WQPD = new Node("Wilson Quad", null, "WQPD", [], "intersection", [43.1292818, -77.6308716], []);
-    WQPE = new Node("Wilson Quad", null, "WQPE", [], "intersection", [43.1290393, -77.6315472], []);
-    WQPF = new Node("Wilson Quad", null, "WQPF", [], "intersection", [43.1286759, -77.6312982], []);
-    WQPG = new Node("Wilson Quad", null, "WQPG", [], "intersection", [43.1285042, -77.6303344], []);
-    WQPH = new Node("Wilson Quad", null, "WQPH", [], "intersection", [43.1283342, -77.6302145], []);
+    WQPA = new Node("Wilson Quad", null, "WQPA", [BR01BWQPA,BR01CWQPA,WQPAWQPB,WQPAWQPE], "intersection", [43.1291189, -77.6313241], Math.min(), []);
+    WQPB = new Node("Wilson Quad", null, "WQPB", [BR01AWQPB,BR01BWQPB,WQPAWQPB,WQPBWQPD], "intersection", [43.1291688, -77.6311843], Math.min(), []);
+    WQPC = new Node("Wilson Quad", null, "WQPC", [WQPCWQPD,WQPCWQPF,WQPCWQPG], "intersection", [43.1289216, -77.6306342], Math.min(), []);
+    WQPD = new Node("Wilson Quad", null, "WQPD", [WQPBWQPD,WQPCWQPD], "intersection", [43.1292818, -77.6308716], Math.min(), []);
+    WQPE = new Node("Wilson Quad", null, "WQPE", [WQPAWQPE,WQPEWQPF], "intersection", [43.1290393, -77.6315472], Math.min(), []);
+    WQPF = new Node("Wilson Quad", null, "WQPF", [WQPEWQPF,WQPCWQPF], "intersection", [43.1286759, -77.6312982], Math.min(), []);
+    WQPG = new Node("Wilson Quad", null, "WQPG", [WQPCWQPG,WQPGWQPH,RT01AWQPG], "intersection", [43.1285042, -77.6303344], Math.min(), []);
+    WQPH = new Node("Wilson Quad", null, "WQPH", [WQPGWQPH,RT01CWQPH], "intersection", [43.1283342, -77.6302145], Math.min(), []);
 
     all_nodes = [BR00, BR01, BR02, BR03, BR00A, BR01A, BR01B, BR01C, RT01, RT02, RT03, RT01A, RT01B, RT01C, MRG, MR01, MR02, MR03, MR04, MR05, MR02A, MR03A, MR03B, MR03C, RRG, RR01, RR02, RR03, RR04, RRGA, RRGB, RRGC, RR01A, RR01B, EQPA, EQPB, EQPD, EQPE, EQPF, EQPG, WQPA, WQPB, WQPC, WQPD, WQPE, WQPF, WQPG, WQPH];
 
@@ -239,14 +240,8 @@ function find_route(event) {
     var startFloor = document.getElementById("start-floor").value;
     var endBuilding = document.getElementById("end-building").value;
     var endFloor = document.getElementById("end-floor").value;
-    console.log(startBuilding);
-    console.log(startFloor);
-    console.log(endBuilding);
-    console.log(endFloor);
-
     var start;
     var end;
-
     all_nodes.forEach(node => {
         if(node.type == "floor") {
             if(node.building == startBuilding && node.level == startFloor) {
@@ -259,6 +254,90 @@ function find_route(event) {
             }
         }
     });
-    console.log(start.id);
-    console.log(end.id);
+
+    // find shortest route
+    if (start == null || start == undefined) {
+        console.log('Starting building and/or floor not selected');
+        return
+    }
+    if (end == null || end == undefined) {
+        console.log('Destination building and/or floor not selected');
+        return
+    }
+    var unvisited = [];
+    var visited = [];
+
+    all_nodes.forEach(node => {unvisited.push(node)})
+
+    // find other node from edge name
+    function find_neighbor(node, edge) {
+        var neighbor = null;
+        var neighborString = edge.id.replace(node.id, "");
+        all_nodes.forEach(x => {
+            if (x.id == neighborString) {
+                neighbor = x;
+            }
+        });
+        return neighbor;
+    }
+
+    function next_node() {
+        var min_length = Math.min();
+        var min_node = unvisited[0];
+        unvisited.forEach(node => {
+            if (node.length < min_length) {
+                min_length = node.length;
+                min_node = node;
+            }
+        })
+        return min_node
+    }
+
+    function dijkstra_step(node) {
+        if (node == start) {
+            node.length = 0;
+            node.route = [start.id];
+        }
+        console.log(node)
+        var neighbor;
+        var dead_end = true;
+        node.edges.forEach(edge => {
+            if (edge == undefined) {return;}
+            if (find_neighbor(node, edge) != null && accessible_edges.includes(edge)) {
+                dead_end = false;
+                neighbor = find_neighbor(node, edge);
+                if(node.length == Math.min()) {node.length = 0;}
+                if (node.length + edge.length < neighbor.length) {
+                    neighbor.length = node.length + edge.length;
+                    neighbor.route = [];
+                    node.route.forEach(item => {neighbor.route.push(item)});
+                    neighbor.route.push(edge);
+                    neighbor.route.push(neighbor);
+                }
+            }
+        })
+
+        // set up next step
+        unvisited.splice(unvisited.indexOf(node), 1);
+        visited.push(node);
+
+        if (unvisited.length > 0) {
+            if(!dead_end){
+                dijkstra_step(next_node());
+            }
+            else {
+                console.log('dead end');
+                dijkstra_step(next_node());
+            }
+        }
+    }
+
+    dijkstra_step(start);
+    var map = document.getElementById("map");
+    console.log(map);
+    string_route = []
+    end.route.forEach(part => {string_route.push(part.id)})
+    console.log('Shortest path distance is: ' + Math.round(3.28084*end.length) + " feet");
+    console.log('Shortest path is: ' + string_route);
+    return end.route
 }
