@@ -249,12 +249,16 @@ if (document.getElementById('end-building').value != "") {propogateFloors('end-b
 
 var userLat = 43.1279308;
 var userLng = -77.6299522;
+var located = false;
 
 // user location tracking
 function showPosition(position) {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
-    map.flyTo([userLat, userLng], 18);
+    if (!located) {
+        located = true;
+        map.flyTo([userLat, userLng], 18);
+    }
     userLoc.setLatLng([userLat, userLng]);
     //find building
     var startBuilding = document.getElementById('start-building');
@@ -685,10 +689,10 @@ function ifReverse(edge, next) {
 function display() {
     directions = document.getElementById("directions"); 
     directions.innerHTML = "";
-    var mapMarkers = [];
+    var mapPoints = [];
     var mapLines = [];
     end.route.forEach(part => {
-        if (part.coords != null) {part instanceof Node ? mapMarkers.push(part) : mapLines.push(part)}
+        if (part.coords != null) {part instanceof Node ? mapPoints.push(part) : mapLines.push(part)}
         if (part instanceof Edge) {
             if (part.dir != null) {
                 var li = document.createElement('li');
@@ -697,9 +701,15 @@ function display() {
             }
         }
     })
-    L.marker(mapMarkers[0].coords).addTo(map);
-    L.marker(mapMarkers[mapMarkers.length - 1].coords).addTo(map);
+    var routeMarkers = L.layerGroup();
+    routeMarkers.clearLayers();
+    var startMarker = L.marker(mapPoints[0].coords);
+    var endMarker = L.marker(mapPoints[mapPoints.length - 1].coords);
+    routeMarkers.addLayer(startMarker);
+    routeMarkers.addLayer(endMarker);
     mapLines.forEach(path => {
-        L.polyline(path.coords).addTo(map)
+        routeMarkers.addLayer(L.polyline(path.coords));
     })
+    console.log(routeMarkers)
+    routeMarkers.addTo(map);
 }
