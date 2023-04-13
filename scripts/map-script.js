@@ -50,7 +50,7 @@ function floorOptions(selectID, floors, main) {
     floorSelect.innerHTML = '';
     for (let i = 0; i < floors.length; i++) {
         var opt = document.createElement("option");
-        opt.text = floors[i];
+        opt.text = "Floor " + floors[i];
         opt.value = floors[i];
         if (floors[i] == main) {
             opt.selected = true;
@@ -374,7 +374,7 @@ var overlayMaps = {
     "<span class='layer-key'><img src='icons/map-icons_steps.svg' width=18px /><span>Steps</span></span>": steps.addTo(map),
     "<span class='layer-key'><img src='icons/map-icons-bench.svg' width=18px /><span>Benches</span></span>": benches.addTo(map)
 };
-var layerControl = L.control.layers(null, overlayMaps, {collapsed: false}).addTo(map);
+var layerControl = L.control.layers(null, overlayMaps).addTo(map);
 
 var start = null;
 var end = null;
