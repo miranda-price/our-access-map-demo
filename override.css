@@ -10,7 +10,14 @@ html {
     z-index: 999;
 }
 
-nav {height: 10vh;}
+.navbar {
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100vw;
+}
 
 aside {
     height: 90vh;
@@ -37,7 +44,7 @@ aside {
     justify-items: center;
 }
 
-h2 {
+#sidebar h2 {
     font-weight: 700;
     margin-top: calc(110px + 10vh);
     padding-left: 20px;
@@ -142,4 +149,62 @@ footer {
     bottom: 3px;
     left: 6px;
     font-size: 14px;
+}
+
+#service-form-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 10vh auto 15vh;
+}
+
+#service-form-container > * {
+    padding: 5px 0;
+}
+
+#report-form {
+    border: 1px solid #363636;
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+#report-form > div {
+    margin-bottom: 45px;
+}
+
+#report-details-chips {
+    width: 90%;
+    padding-left: 30px;
+}
+
+#submit-report {
+    width: 10%;
+    background-color: #283FAF;
+    color: #ffffff;
+    position: relative;
+    left: 90%;
+}
+
+.btn-primary {
+    background-color: #283FAF;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #FFC70A;
+    color: #363636;
+}
+
+.btn-light {
+    background-color: #D8D8D8;
+    color: #363636;
+    margin: 5px 10px;
+}
+
+.btn-light.active {
+    background-color: #283FAF;
+    color: #ffffff;
+}
+
+.btn-light.active:focus {
+    box-shadow: none;
 }
