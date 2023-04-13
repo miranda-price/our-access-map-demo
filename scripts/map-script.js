@@ -88,10 +88,23 @@ function propogateFloors(selectBuilding, selectFloor) {
     default:
         floorOptions(selectFloor, ['B', 'G', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], '1');
     }
+
+    if (selectBuilding == 'start-building-overlay' || selectBuilding == 'end-building-overlay') {
+        if (document.getElementById('start-building-overlay').value != "" && document.getElementById('end-building-overlay') != "") {
+            document.getElementById('input-overlay').hidden = true;
+            document.getElementById('sidebar-container').hidden = false;
+            document.getElementById('start-building').value = document.getElementById('start-building-overlay').value;
+            document.getElementById('end-building').value = document.getElementById('end-building-overlay').value;
+            document.getElementById('start-floor').value = document.getElementById('start-floor-overlay').value;
+            document.getElementById('end-floor').value = document.getElementById('end-floor-overlay').value;
+        }
+    }
 }
 // propogate floors again on refresh
 if (document.getElementById('start-building').value != "") {propogateFloors('start-building', 'start-floor');}
 if (document.getElementById('end-building').value != "") {propogateFloors('end-building', 'end-floor');}
+if (document.getElementById('start-building-overlay').value != "") {propogateFloors('start-building-overlay', 'start-floor-overlay');}
+if (document.getElementById('end-building-overlay').value != "") {propogateFloors('end-building-overlay', 'end-floor-overlay');}
 
 var userLat = 43.1279308;
 var userLng = -77.6299522;
@@ -107,7 +120,7 @@ function showPosition(position) {
     }
     userLoc.setLatLng([userLat, userLng]);
     //find building
-    var startBuilding = document.getElementById('start-building');
+    var startBuilding = document.getElementById('start-building-overlay');
     if(startBuilding.value == "") {
         if (userLat >= 43.1291045 && userLng >= -77.6315905 && userLat <= 43.1294653 && userLng <= -77.6310999) {
             startBuilding.value = "Burton";
@@ -217,7 +230,7 @@ function showPosition(position) {
         else {
             startBuilding.value = "";
         }
-        if (startBuilding.value != "") {propogateFloors('start-building', 'start-floor')}
+        if (startBuilding.value != "") {propogateFloors('start-building-overlay', 'start-floor-overlay')}
     }
 }
 function getLocation() {

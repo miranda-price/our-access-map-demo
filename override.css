@@ -84,6 +84,13 @@ main {
 
 .layer-key > img {margin: 0 5px;}
 
+#start-building-overlay, #end-building-overlay {
+    width: 250px;
+}
+#start-floor-overlay, #end-floor-overlay {
+    width: 100px;
+}
+
 #start-building, #end-building {
-    width: 180px;
+    width: 60%;
 }
