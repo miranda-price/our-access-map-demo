@@ -134,3 +134,10 @@ main {
 #start-building, #end-building {
     width: 60%;
 }
+
+footer {
+    z-index: 999;
+    position: fixed;
+    bottom: 5px;
+    left: 10px;
+}
