@@ -114,7 +114,7 @@ function showPosition(position) {
         } else if (userLat >= 43.1283453 && userLng >= -77.6301887 && userLat <= 43.1287222 && userLng <= -77.6299084) {
             startBuilding.value = "Rettner";
         } else if (userLat >= 43.1278795 && userLng >= -77.6310298 && userLat <= 43.1284557 && userLng <= -77.6303584) {
-            startBuilding.value = "Lattimore";
+            //startBuilding.value = "Lattimore";
         } else if (userLat >= 43.1282511 && userLng >= -77.6300449 && userLat <= 43.1286226 && userLng <= -77.6293624) {
             startBuilding.value = "Morey";
         } else if (userLat >= 43.1280746 && userLng >= -77.6289956 && userLat <= 43.1289271 && userLng <= -77.6279555) {
