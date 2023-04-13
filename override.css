@@ -28,12 +28,8 @@ aside {
     left: 0;
     height: 150px;
     z-index: 990;
-}
-
-#route-input > * {
-    width: 80%;
-    margin: 20px auto;
-    padding: 0;
+    align-items: center;
+    justify-items: center;
 }
 
 h2 {
@@ -88,7 +84,7 @@ h3 {
 #find-route {
     width: 15vw;
     position: fixed;
-    bottom: 25px;
+    bottom: 30px;
     margin: 0 5vw;
     background-color: #FFC70A;
     color: #363636;
@@ -97,7 +93,7 @@ h3 {
 #finish-route {
     width: 7vw;
     position: fixed;
-    bottom: 25px;
+    bottom: 30px;
     left: 15vw;
     background-color: #283FAF;
     color: #ffffff;
@@ -132,12 +128,13 @@ main {
 }
 
 #start-building, #end-building {
-    width: 60%;
+    width: 70%;
 }
 
 footer {
     z-index: 999;
     position: fixed;
-    bottom: 5px;
-    left: 10px;
+    bottom: 3px;
+    left: 6px;
+    font-size: 14px;
 }

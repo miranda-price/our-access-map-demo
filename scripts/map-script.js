@@ -230,9 +230,24 @@ function showPosition(position) {
         else {
             startBuilding.value = "";
         }
-        if (startBuilding.value != "") {propogateFloors('start-building-overlay', 'start-floor-overlay')}
+        if (startBuilding.value != "") {
+            propogateFloors('start-building-overlay', 'start-floor-overlay')
+            propogateFloors('start-building', 'start-floor')
+        }
     }
 }
+
+function switchInput() {
+    console.log('switch');
+    var tempBuilding = document.getElementById('start-building').value;
+    var tempFloor = document.getElementById('start-floor').value;
+    document.getElementById('start-building').value = document.getElementById('end-building').value;
+    document.getElementById('start-floor').value = document.getElementById('end-floor').value;
+    document.getElementById('end-building').value = tempBuilding;
+    document.getElementById('end-floor').value = tempFloor;
+}
+
+
 function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition(showPosition);

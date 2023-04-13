@@ -40,31 +40,35 @@
     <div class="row" id="routing">
         <aside class="col-md-3" id="sidebar-container" hidden>
             <div id="sidebar">
-                <div id="route-input">
-                    <div class="input-group mb-3">
-                        <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting location..." onchange="propogateFloors('start-building', 'start-floor')">
-                        <datalist id="datalistOptions">
-                            <option value="Burton"></option>
-                            <option value="Morey"></option>
-                            <option value="Rettner"></option>
-                            <option value="Rush Rhees"></option>
-                        </datalist>
-                        <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
-                            <option selected>--</option>
-                        </select>
+                <div id="route-input" class="row">
+                    <div class="col-md-1"></div>
+                    <div id="input-fields" class="col-md-9">
+                        <div class="input-group mb-3">
+                            <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting location..." onchange="propogateFloors('start-building', 'start-floor')">
+                            <datalist id="datalistOptions">
+                                <option value="Burton"></option>
+                                <option value="Morey"></option>
+                                <option value="Rettner"></option>
+                                <option value="Rush Rhees"></option>
+                            </datalist>
+                            <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
+                                <option selected>--</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination..." onchange="propogateFloors('end-building', 'end-floor')">
+                            <datalist id="datalistOptions">
+                                <option value="Burton"></option>
+                                <option value="Morey"></option>
+                                <option value="Rettner"></option>
+                                <option value="Rush Rhees"></option>
+                            </datalist>
+                            <select class="form-select" aria-label="Select destination floor" id="end-floor" name="end-floor">
+                                <option selected>--</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination..." onchange="propogateFloors('end-building', 'end-floor')">
-                        <datalist id="datalistOptions">
-                            <option value="Burton"></option>
-                            <option value="Morey"></option>
-                            <option value="Rettner"></option>
-                            <option value="Rush Rhees"></option>
-                        </datalist>
-                        <select class="form-select" aria-label="Select destination floor" id="end-floor" name="end-floor">
-                            <option selected>--</option>
-                        </select>
-                    </div>
+                    <img class="col-md-2" src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
                 </div>
                 <h2>Destination</h2>
                 <div id="access-features">
