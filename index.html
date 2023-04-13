@@ -64,36 +64,45 @@
                         </select>
                     </div>
                 </div>
+                <h2>Destination</h2>
                 <div id="access-features">
-                    <h2>Accessibility</h2>
                     <h3>Allow the following:</h3>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="allowSteps" id="allowSteps">
-                        <label class="form-check-label" for="allowSteps">
-                            Allow Steps
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="allowStairs" id="allowStairs">
-                        <label class="form-check-label" for="allowStairs">
-                            Allow Stairs
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="allowDoors" id="allowDoors">
-                        <label class="form-check-label" for="allowDoors">
-                            Allow Manual Doors
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="allowElevators" id="allowElevators">
-                        <label class="form-check-label" for="allowElevators">
-                            Allow Inaccessible Elevators
-                        </label>
+                    <form id="access-checkboxes">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="allowSteps" id="allowSteps">
+                            <label class="form-check-label" for="allowSteps">
+                                Allow Steps
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="allowStairs" id="allowStairs">
+                            <label class="form-check-label" for="allowStairs">
+                                Allow Stairs
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="allowDoors" id="allowDoors">
+                            <label class="form-check-label" for="allowDoors">
+                                Allow Manual Doors
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="allowElevators" id="allowElevators">
+                            <label class="form-check-label" for="allowElevators">
+                                Allow Inaccessible Elevators
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div id="directions-container" hidden>
+                    <p id="access-summary">Allow the following:</p>
+                    <div id="display-directions">
+                        <ul id="directions"></ul>
                     </div>
                 </div>
             </div>
             <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
+            <button class="btn btn-secondary" id="finish-route" hidden>Finish</button>
         </aside>
         <main class="col" id="map">
         </main>

@@ -5,15 +5,6 @@
     z-index: 999;
 }
 
-#display-directions {
-    position:fixed; 
-    bottom: 20px; 
-    right: 10px; 
-    z-index: 999;
-    background-color: white;
-    max-width: 33vw;
-}
-
 nav {height: 10vh;}
 
 aside {
@@ -27,7 +18,6 @@ aside {
     position: fixed;
     top: 10vh;
     left: 0;
-    overflow-y: scroll;
 }
 
 #route-input {
@@ -37,6 +27,7 @@ aside {
     top: 10vh;
     left: 0;
     height: 150px;
+    z-index: 990;
 }
 
 #route-input > * {
@@ -45,13 +36,53 @@ aside {
     padding: 0;
 }
 
-#access-features h2 {font-weight: 700;}
-
-#access-features h3 {font-weight: 500;}
-
-#access-features {
+h2 {
+    font-weight: 700;
     margin-top: calc(110px + 10vh);
     padding-left: 20px;
+}
+
+h2.box {
+    background-color: #FFC70A;
+    font-weight: 700;
+    margin: 0 2vw;
+    font-weight: 500;
+    font-size: 24px;
+    width: 21vw;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
+    position: fixed;
+    top: calc(130px + 10vh);
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#access-features {
+    padding-left: 20px;
+    height: 40vh;
+    overflow-y: scroll;
+}
+
+#directions-container {
+    position: relative;
+    top: calc(140px + 10vh);
+    left: 30px;
+}
+
+#directions {
+    list-style: none;
+    padding-left: 0;
+    height: 34vh;
+    overflow-y: scroll;
+    width: 20vw;
+}
+
+#directions li {
+    padding-bottom: 5px;
 }
 
 #find-route {
@@ -61,6 +92,15 @@ aside {
     margin: 0 5vw;
     background-color: #FFC70A;
     color: #363636;
+}
+
+#finish-route {
+    width: 7vw;
+    position: fixed;
+    bottom: 25px;
+    left: 15vw;
+    background-color: #283FAF;
+    color: #ffffff;
 }
 
 main {
