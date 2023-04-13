@@ -17,8 +17,50 @@
 nav {height: 10vh;}
 
 aside {
-    background-color: #aaaaaa;
     height: 90vh;
+}
+
+#sidebar {
+    height: 90vh;
+    width: 25vw;
+    background-color: white;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    overflow-y: scroll;
+}
+
+#route-input {
+    background-color: #00205B;
+    width: 25vw;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    height: 150px;
+}
+
+#route-input > * {
+    width: 80%;
+    margin: 20px auto;
+    padding: 0;
+}
+
+#access-features h2 {font-weight: 700;}
+
+#access-features h3 {font-weight: 500;}
+
+#access-features {
+    margin-top: calc(110px + 10vh);
+    padding-left: 20px;
+}
+
+#find-route {
+    width: 15vw;
+    position: fixed;
+    bottom: 25px;
+    margin: 0 5vw;
+    background-color: #FFC70A;
+    color: #363636;
 }
 
 main {
@@ -43,9 +85,5 @@ main {
 .layer-key > img {margin: 0 5px;}
 
 #start-building, #end-building {
-    width: 200px;
-}
-
-#start-floor, #end-floor {
-    width: 115px;
+    width: 180px;
 }

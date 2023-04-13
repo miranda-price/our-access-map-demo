@@ -50,7 +50,7 @@ function floorOptions(selectID, floors, main) {
     floorSelect.innerHTML = '';
     for (let i = 0; i < floors.length; i++) {
         var opt = document.createElement("option");
-        opt.text = "Floor " + floors[i];
+        opt.text = floors[i];
         opt.value = floors[i];
         if (floors[i] == main) {
             opt.selected = true;
