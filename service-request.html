@@ -48,23 +48,29 @@
             <h2>Reporter Information</h2>
             <div class="row g-3" id="reporter-info">
                 <div class="form-floating col-md-4">
-                    <input type="text" class="form-control" id="reporter-name" placeholder="Full Name" required = "true">
+                    <input type="text" class="form-control required" id="reporter-name" placeholder="Full Name" required = "true">
                     <label for="reporter-name"><span style="color: red;">*</span> Full Name</label>
                 </div>
                 <div class="form-floating col-md-4">
-                    <input type="email" class="form-control" id="reporter-email" placeholder="University Email" required = "true">
+                    <input type="email" class="form-control required" id="reporter-email" placeholder="University Email" required = "true" onchange ="validEmail()">
                     <label for="reporter-email"><span style="color: red;">*</span> University Email</label>
+                    <div id="email-invalid-feedback" class="invalid-feedback" hidden>
+                      Please enter a university email.
+                    </div>
                 </div>
                 <div class="form-floating col-md-4">
-                    <input type="tel" class="form-control" id="reporter-phone" placeholder="Phone Number" required = "true">
+                    <input type="tel" class="form-control required" id="reporter-phone" placeholder="Phone Number" required = "true" onchange="validPhone()">
                     <label for="reporter-phone"><span style="color: red;">*</span> Phone Number</label>
+                    <div id="phone-invalid-feedback" class="invalid-feedback" hidden>
+                      Please enter a valid phone number.
+                    </div>
                 </div>
             </div>
             <h2>Repair Location</h2>
             <div class="row g-3" id="repair-loc">
                 <div class="col-md-4">
                     <label for="repair-building"><span style="color: red;">*</span> Building</label>
-                    <select class="form-select" aria-label="Select building" id="repair-building" required = "true" onchange="(propogateFloors('repair-building', 'repair-floor'))">
+                    <select class="form-select required" aria-label="Select building" id="repair-building" required = "true" onchange="(propogateFloors())">
                         <option selected>--Select--</option>
                         <option value="Anderson">Anderson</option>
                         <option value="Bausch & Lomb">Bausch & Lomb</option>
@@ -123,8 +129,7 @@
                 <div class="col-md-2">
                     <label for="repair-floor">Floor</label>
                     <select class="form-select" aria-label="Select floor number" id="repair-floor">
-                        <option selected>--</option>
-                        
+                        <option selected>--</option>   
                       </select>
                 </div>
                 <div class="col-md-2">
@@ -164,10 +169,10 @@
                 <button type="button" class="btn btn-light" data-bs-toggle="button" autocomplete="off">Hard to Reach Button</button>
                 <button type="button" class="btn btn-light" data-bs-toggle="button" autocomplete="off">Door Opens Too Fast</button>
             </div>
-            <button class="btn btn-primary" type="submit" onclick="console.log('submit form')" id="submit-report">Submit</button>
+            <button class="btn btn-primary" type="submit" onclick="submitRequest()" id="submit-report">Submit</button>
         </form>
     </div> 
-    <script src="scripts/map-script.js"></script>   
+    <script src="scripts/service-request.js"></script>   
   </body>
   <footer>&copyOur Access 2023</footer>
   </html>
