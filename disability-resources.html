@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>Our Access - Disability Resources</title>
+        <link rel="shortcut icon" type="image/jpg" href="assets/favicon.png"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="override.css">
+        <link rel="stylesheet" href="https://use.typekit.net/tjw1ebq.css">
+    </head>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/our_access_logo.png" alt="" height="32" class="d-inline-block align-text-top">
+            Our Access
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Accessibility Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="service-request.html">Service Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Disability Resources</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <body>
+    <div id="banner-slides" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#banner-slides" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Register with Disability Resources"></button>
+        <button type="button" data-bs-target="#banner-slides" data-bs-slide-to="1" aria-label="Creating a Service Request"></button>
+        <button type="button" data-bs-target="#banner-slides" data-bs-slide-to="2" aria-label="Accessibility at Rochester"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/resource1.png" class="d-block w-100" alt="Three students outside on a college campus.  Two of the students are walking and one is traveling with them by wheelchair.">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Register with Disability Resources</h2>
+            <button class="btn btn-secondary"><a href="https://www.rochester.edu/college/disability/current/register.html" target="_blank" rel="noopener noreferrer">Learn More</a></button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/resource2.png" class="d-block w-100" alt="Three people seated in a circle in a small office having a conversation.">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Creating a Service Request</h2>
+            <button class="btn btn-secondary"><a href="https://www.facilities.rochester.edu/service_requests.php" target="_blank" rel="noopener noreferrer">Learn More</a></button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/resource3.png" class="d-block w-100" alt="Three students gathered at a table in a college study space.">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Accessibility at Rochester</h2>
+            <button class="btn btn-secondary"><a href="https://www.rochester.edu/accessibility.html" target="_blank" rel="noopener noreferrer">Learn More</a></button>
+          </div>
+      </div>
+      <div id="banner-slides-controls">
+        <button class="carousel-control-prev" type="button" data-bs-target="#banner-slides" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#banner-slides" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="resources-cards">
+      <div class="card" style="width: 22vw;">
+        <img src="assets/facilities.png" class="card-img-top" alt="A closeup of someone viewing a campus building's floor plans on a tablet.">
+        <div class="card-body">
+          <a href="https://www.facilities.rochester.edu/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Facilities</a>
+          <h5 class="card-title">Providing routine service and maintenance.</h5>
+        </div>
+      </div>
+      <div class="card" style="width: 22vw;">
+        <img src="assets/DisabilityOffice.png" class="card-img-top" alt="Two people facing each other seated at an office desk.  The person closer to the camera is in a wheelchair.">
+        <div class="card-body">
+          <a href="https://www.rochester.edu/college/disability/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Disabilities Office</a>
+          <h5 class="card-title">Promoting equal access and inclusive experiences.</h5>
+        </div>
+      </div>
+      <div class="card" style="width: 22vw;">
+        <img src="assets/club.png" class="card-img-top" alt="Logo for University of Rochester Disability Awareness Group">
+        <div class="card-body">
+          <a href="https://ccc.rochester.edu/urda/home/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Disability Awareness Group</a>
+          <h5 class="card-title">Mission to bring disability awareness to Rochester, NY.</h5>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>&copy Our Access 2023</footer>
+  </html>

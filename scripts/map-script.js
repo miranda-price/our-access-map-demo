@@ -48,13 +48,18 @@ class Edge {
 function floorOptions(selectID, floors, main) {
     var floorSelect = document.getElementById(selectID);
     floorSelect.innerHTML = '';
+    if (selectID == 'repair-floor') {
+        var blank = document.createElement("option");
+        blank.text = "--";
+        blank.value = "";
+        blank.selected - true;
+        floorSelect.appendChild(blank);
+    }
     for (let i = 0; i < floors.length; i++) {
         var opt = document.createElement("option");
         opt.text = floors[i];
         opt.value = floors[i];
-        if (floors[i] == main) {
-            opt.selected = true;
-        }
+        if (floors[i] == main && selectID != 'repair-floor') {opt.selected = true;}
         floorSelect.appendChild(opt);
     }
 }
@@ -88,10 +93,23 @@ function propogateFloors(selectBuilding, selectFloor) {
     default:
         floorOptions(selectFloor, ['B', 'G', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], '1');
     }
+
+    if (selectBuilding == 'start-building-overlay' || selectBuilding == 'end-building-overlay') {
+        if (document.getElementById('start-building-overlay').value != "" && document.getElementById('end-building-overlay') != "") {
+            document.getElementById('input-overlay').hidden = true;
+            document.getElementById('sidebar-container').hidden = false;
+            document.getElementById('start-building').value = document.getElementById('start-building-overlay').value;
+            document.getElementById('end-building').value = document.getElementById('end-building-overlay').value;
+            document.getElementById('start-floor').value = document.getElementById('start-floor-overlay').value;
+            document.getElementById('end-floor').value = document.getElementById('end-floor-overlay').value;
+        }
+    }
 }
 // propogate floors again on refresh
 if (document.getElementById('start-building').value != "") {propogateFloors('start-building', 'start-floor');}
 if (document.getElementById('end-building').value != "") {propogateFloors('end-building', 'end-floor');}
+if (document.getElementById('start-building-overlay').value != "") {propogateFloors('start-building-overlay', 'start-floor-overlay');}
+if (document.getElementById('end-building-overlay').value != "") {propogateFloors('end-building-overlay', 'end-floor-overlay');}
 
 var userLat = 43.1279308;
 var userLng = -77.6299522;
@@ -107,7 +125,7 @@ function showPosition(position) {
     }
     userLoc.setLatLng([userLat, userLng]);
     //find building
-    var startBuilding = document.getElementById('start-building');
+    var startBuilding = document.getElementById('start-building-overlay');
     if(startBuilding.value == "") {
         if (userLat >= 43.1291045 && userLng >= -77.6315905 && userLat <= 43.1294653 && userLng <= -77.6310999) {
             startBuilding.value = "Burton";
@@ -217,9 +235,24 @@ function showPosition(position) {
         else {
             startBuilding.value = "";
         }
-        if (startBuilding.value != "") {propogateFloors('start-building', 'start-floor')}
+        if (startBuilding.value != "") {
+            propogateFloors('start-building-overlay', 'start-floor-overlay')
+            propogateFloors('start-building', 'start-floor')
+        }
     }
 }
+
+function switchInput() {
+    console.log('switch');
+    var tempBuilding = document.getElementById('start-building').value;
+    var tempFloor = document.getElementById('start-floor').value;
+    document.getElementById('start-building').value = document.getElementById('end-building').value;
+    document.getElementById('start-floor').value = document.getElementById('end-floor').value;
+    document.getElementById('end-building').value = tempBuilding;
+    document.getElementById('end-floor').value = tempFloor;
+}
+
+
 function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.watchPosition(showPosition);
@@ -374,7 +407,7 @@ var overlayMaps = {
     "<span class='layer-key'><img src='icons/map-icons_steps.svg' width=18px /><span>Steps</span></span>": steps.addTo(map),
     "<span class='layer-key'><img src='icons/map-icons-bench.svg' width=18px /><span>Benches</span></span>": benches.addTo(map)
 };
-var layerControl = L.control.layers(null, overlayMaps, {collapsed: false}).addTo(map);
+var layerControl = L.control.layers(null, overlayMaps).addTo(map);
 
 var start = null;
 var end = null;
