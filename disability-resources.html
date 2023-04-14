@@ -9,6 +9,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="override.css">
+        <link rel="stylesheet" href="https://use.typekit.net/tjw1ebq.css">
     </head>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,7 +27,7 @@
             <a class="nav-link" href="index.html">Accessibility Map</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="service-request.html">Service Request</a>
+            <a class="nav-link" href="service-request.html">Service Request</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Disability Resources</a>
@@ -37,7 +38,45 @@
   </nav>
 
   <body>
-    
+    <div id="banner-slides" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#banner-slides" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Register with Disability Resources"></button>
+        <button type="button" data-bs-target="#banner-slides" data-bs-slide-to="1" aria-label="Creating a Service Request"></button>
+        <button type="button" data-bs-target="#banner-slides" data-bs-slide-to="2" aria-label="Accessibility at Rochester"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="assets/resource1.png" class="d-block w-100" alt="Three students outside on a college campus.  Two of the students are walking and one is traveling with them by wheelchair.">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Register with Disability Resources</h2>
+            <button class="btn btn-secondary"><a href="https://www.rochester.edu/college/disability/current/register.html" target="_blank" rel="noopener noreferrer">Learn More</a></button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/resource2.png" class="d-block w-100" alt="Three people seated in a circle in a small office having a conversation.">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Creating a Service Request</h2>
+            <button class="btn btn-secondary"><a href="https://www.facilities.rochester.edu/service_requests.php" target="_blank" rel="noopener noreferrer">Learn More</a></button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="assets/resource3.png" class="d-block w-100" alt="Three students gathered at a table in a college study space.">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>Accessibility at Rochester</h2>
+            <button class="btn btn-secondary"><a href="https://www.rochester.edu/accessibility.html" target="_blank" rel="noopener noreferrer">Learn More</a></button>
+          </div>
+      </div>
+      <div id="banner-slides-controls">
+        <button class="carousel-control-prev" type="button" data-bs-target="#banner-slides" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#banner-slides" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
   </body>
   <footer>&copy Our Access 2023</footer>
   </html>
