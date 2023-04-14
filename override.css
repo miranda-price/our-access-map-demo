@@ -258,3 +258,10 @@ footer {
     position: relative;
     right: 100px;
 }
+
+#resources-cards {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
+}
