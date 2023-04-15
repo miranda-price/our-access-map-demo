@@ -63,15 +63,21 @@ aside {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    padding: 0 10px;
 }
 
 #route-input img {
     width: 48px;
 }
 
+#route-info {
+    position: absolute;
+    top: calc(110px + 10vh);
+    height: calc(90vh - 100px);
+}
+
 #sidebar h2 {
     font-weight: 700;
-    margin-top: calc(110px + 10vh);
     padding-left: 20px;
 }
 
@@ -120,8 +126,8 @@ h3 {
 
 #find-route {
     width: 15vw;
-    position: fixed;
-    bottom: 30px;
+    position: relative;
+    top: calc(90vh - 80px);
     margin: 0 5vw;
     background-color: #FFC70A;
     color: #363636;
@@ -129,9 +135,9 @@ h3 {
 
 #finish-route {
     width: 7vw;
-    position: fixed;
-    bottom: 30px;
-    left: 15vw;
+    position: relative;
+    top: calc(90vh - 80px);
+    left: 16vw;
     background-color: #283FAF;
     color: #f8f9fa;
 }
@@ -311,6 +317,12 @@ footer {
         top: 25vh;
         left: 0;
     }
+
+    .leaflet-control-zoom {
+        position: fixed;
+        bottom: calc(10vh + 32px);
+        right: 24px;
+    }
     
     #sidebar, #sidebar-container, #route-input {width: 100vw;}
 
@@ -330,6 +342,19 @@ footer {
     }
 
     #input-fields {width: 65%;}
+
+    #route-info {
+        top: 80vh;
+        width: 60%;
+        margin: 20px 20%;
+    }
+
+    #finish-route, #find-route {
+        left: 50%;
+        width: 10%;
+        min-width: 70px;
+        margin-top: 20px;
+    }
 
     /*service request form page*/
     #request-instructions {margin-top: 23vh;}
@@ -363,9 +388,31 @@ footer {
     #start-floor-overlay, #end-floor-overlay {
         width: 80px;
     }
+
+    /* route info bottom bar*/
+    #route-info {
+        top: 80vh;
+        width: 70%;
+        margin: 10px 15% 20px;
+    }
+
+    #finish-route, #find-route {
+        left: 70%;
+        margin-top: 10px;
+    }
 }
 
 @media screen and (max-width: 500px) {
     /*accessibility map sidebar*/
     #input-fields {width: 75%;}
+
+    #route-info {
+        top: 80vh;
+        width: 80%;
+        margin: 10px 10% 20px;
+    }
+
+    #finish-route, #find-route {
+        left: 75%;
+    }
 }
