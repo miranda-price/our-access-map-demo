@@ -293,3 +293,24 @@ footer {
         margin: 25px auto;
     }
 }
+
+@media screen and (max-width: 650px) {
+    /*route input overlay*/
+    #input-overlay {
+        width: 70%;
+        left: 15%;
+        z-index: 999;
+    }
+
+    #input-overlay .input-group {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    #start-building-overlay, #end-building-overlay {
+        width: 150px;
+    }
+    #start-floor-overlay, #end-floor-overlay {
+        width: 80px;
+    }
+}
