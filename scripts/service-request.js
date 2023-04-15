@@ -53,8 +53,8 @@ function propogateFloors() {
 
 function validEmail() {
     var emailInput = document.getElementById('reporter-email')
-    var email = emailInput.value;
-    if (email.indexOf('@u.rochester.edu') == -1 && email.indexOf('@ur.rochester.edu') == -1) {
+    var emailAddress = emailInput.value;
+    if (emailAddress.indexOf('@u.rochester.edu') == -1 && emailAddress.indexOf('@ur.rochester.edu') == -1) {
         emailInput.classList.add('is-invalid');
         document.getElementById('email-invalid-feedback').hidden = false;
         return false;
@@ -68,9 +68,9 @@ function validEmail() {
 
 function validPhone() {
     var phoneInput = document.getElementById('reporter-phone')
-    var phone = phoneInput.value;
+    var phoneNum = phoneInput.value;
     var phoneReg = /\d{9,10}/;
-    if (!phoneReg.test(phone)) {
+    if (!phoneReg.test(phoneNum)) {
         phoneInput.classList.add('is-invalid');
         document.getElementById('phone-invalid-feedback').hidden = false;
         return false;
@@ -82,7 +82,48 @@ function validPhone() {
     }
 }
 
-function submitRequest() {
+function format(date) {
+    var d = date.getDate();
+    var m = date.getMonth() + 1;
+    var y = date.getFullYear();
+    return '' + (m<=9 ? '0' + m : m) + '/' + (d <= 9 ? '0' + d : d) + '/' + y;
+}
+
+var fullName;
+var email;
+var phone;
+var dateRequested;
+var feature;
+var building;
+var floor;
+var room;
+var extraDetails = "";
+
+function displayConfirm() {
+    document.getElementById('display-email').innerHTML = email;
+    document.getElementById('display-phone').innerHTML = phone;
+    document.getElementById('display-date').innerHTML = dateRequested;
+    document.getElementById('display-feature').innerHTML = feature;
+    document.getElementById('display-building').innerHTML = building;
+}
+
+function clearForm() {
+    document.getElementById('reporter-name').value = "";
+    document.getElementById('reporter-email').value = "";
+    document.getElementById('reporter-phone').value = "";
+    document.getElementById('display-feature').value = "";
+    document.getElementById('repair-building').value = "";
+    document.getElementById('repair-floor').value = "";
+    document.getElementById('repair-room').value = "";
+    document.getElementById('push-door-button').checked = false;
+    document.getElementById('elevator').checked = false;
+    document.getElementById('ramp').checked = false;
+    var detailChips = document.getElementById('report-details-chips').children;
+    for (let i = 0; i< detailChips.length; i++) {detailChips[i].classList.remove('active')}
+}
+
+function submitRequest(event) {
+    event.preventDefault();
     var inputs = document.getElementsByClassName('required');
     var allRequired = true;
     for (let i = 0; i< inputs.length; i++) {
@@ -93,6 +134,29 @@ function submitRequest() {
         else {inputs[i].classList.remove('is-invalid');}
     }
     if (allRequired && validEmail() && validPhone()) {
-        console.log('submitted request')
+        console.log('submitted request');
+        fullName = document.getElementById('reporter-name').value;
+        email = document.getElementById('reporter-email').value;
+        phone = document.getElementById('reporter-phone').value;
+        building = document.getElementById('repair-building').value;
+        floor = document.getElementById('repair-floor').value;
+        room = document.getElementById('repair-room').value;
+        // feature radio selection
+        if (document.getElementById('push-door-button').checked) {feature = 'push door button'}
+        else if (document.getElementById('elevator').checked) {feature = 'elevator'}
+        else if (document.getElementById('ramp').checked) {feature = 'ramp'}
+        else {feature = 'push door button, elevator, etc. not specified'}
+        // request date
+        var today = new Date();
+        dateRequested = format(today);
+        //extra details
+        var detailChips = document.getElementById('report-details-chips').children;
+        for (let i = 0; i< detailChips.length; i++) {
+            if (detailChips[i].classList.contains('active')) {
+                extraDetails = extraDetails + detailChips[i].innerHTML + ", ";
+            }
+        }
     }
+    displayConfirm();
+    clearForm();
 }

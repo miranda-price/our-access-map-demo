@@ -40,8 +40,10 @@
   <body>
     <div id="service-form-container">
         <h1>Service Request</h1>
-        <p>Fill out this form to send a service request to Facilities and Services at the University of Rochester.  For fire, flood, or other emergencies, please contact the Department of Public Safety at x5-333333 or 585-275-3333.</p>
-        <p>Alternatively, you can email University Facilities & Services at <a href="mailto:faccust@facilities.rochester.edu" target="_blank">faccust@facilities.rochester.edu</a>  to place a service request.  Be sure to include your name, phone number, location, and a description of the request.  You can also call at x3-4567 or 237-4567.</p>
+        <div id="request-instructions">
+          <p>Fill out this form to send a service request to Facilities and Services at the University of Rochester.  For fire, flood, or other emergencies, please contact the Department of Public Safety at x5-333333 or 585-275-3333.</p>
+          <p>Alternatively, you can email University Facilities & Services at <a href="mailto:faccust@facilities.rochester.edu" target="_blank">faccust@facilities.rochester.edu</a>  to place a service request.  Be sure to include your name, phone number, location, and a description of the request.  You can also call at x3-4567 or 237-4567.</p>
+        </div>
 
         <p><strong>Note: </strong>Fields marked with a <span style="color: red;">*</span> are <strong>required </strong>fields.</p>
         <form action="" id="report-form">
@@ -169,9 +171,34 @@
                 <button type="button" class="btn btn-light" data-bs-toggle="button" autocomplete="off">Hard to Reach Button</button>
                 <button type="button" class="btn btn-light" data-bs-toggle="button" autocomplete="off">Door Opens Too Fast</button>
             </div>
-            <button class="btn btn-primary" type="submit" onclick="submitRequest()" id="submit-report">Submit</button>
+            <button class="btn btn-primary" type="submit" onclick="submitRequest(event)" id="submit-report" data-bs-toggle="modal" data-bs-target="#request-confirmation">Submit</button>
         </form>
     </div> 
+
+    <!-- Confirmation pop up -->
+    <div class="modal fade" id="request-confirmation" tabindex="-1" aria-labelledby="report confirmation pop-up" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmation-label">Report Confirmation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h3>Reporter Email:</h3>
+            <p id="display-email"></p>
+            <h3>Reporter Phone Number:</h3>
+            <p id="display-phone"></p>
+            <h3>Date: </h3><span><p id="display-date"></p></span>
+            <p id="display-summary">You reported a <span class="summary-input" id="display-feature"></span> in <span class="summary-input" id="display-building"></span> at <span class="summary-input" id="display-site">River Campus (site)</span></p>
+            <p>A copy of this report has been sent to the email address you provided. Keep in mind Our Access only facilitates these reports that will then be processed by University Facilities & Services. To get in touch with University Facilities & Services, please see the helpful links below.</p>
+          </div>
+          <div class="modal-footer">
+            <a type="button" class="btn btn-light" href="tel:5852753333">Call</a>
+            <a type="button" class="btn btn-light" href="mailto:faccust@facilities.rochester.edu" target="_blank">Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="scripts/service-request.js"></script>   
   </body>
   <footer>&copyOur Access 2023</footer>

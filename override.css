@@ -181,7 +181,7 @@ footer {
     z-index: 999;
 }
 
-#service-form-container > p:first-of-type {margin-top: 30vh;}
+#request-instructions, #service-form-container > h2 {margin-top: 30vh;}
 
 #report-form {
     border: 1px solid #363636;
@@ -205,6 +205,8 @@ footer {
     position: relative;
     left: 90%;
 }
+
+.summary-input {font-weight: bold;}
 
 .btn-primary {
     background-color: #283FAF;
