@@ -48,18 +48,11 @@ class Edge {
 function floorOptions(selectID, floors, main) {
     var floorSelect = document.getElementById(selectID);
     floorSelect.innerHTML = '';
-    if (selectID == 'repair-floor') {
-        var blank = document.createElement("option");
-        blank.text = "--";
-        blank.value = "";
-        blank.selected - true;
-        floorSelect.appendChild(blank);
-    }
     for (let i = 0; i < floors.length; i++) {
         var opt = document.createElement("option");
         opt.text = floors[i];
         opt.value = floors[i];
-        if (floors[i] == main && selectID != 'repair-floor') {opt.selected = true;}
+        if (floors[i] == main) {opt.selected = true;}
         floorSelect.appendChild(opt);
     }
 }
