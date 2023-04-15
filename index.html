@@ -37,13 +37,12 @@
     </div>
   </nav>
 
-  <body>
-    <div class="row" id="routing">
-        <aside class="col-md-3" id="sidebar-container" hidden>
+  <body id="accessibility-map">
+    <div id="routing">
+        <aside id="sidebar-container" hidden>
             <div id="sidebar">
-                <div id="route-input" class="row">
-                    <div class="col-md-1"></div>
-                    <div id="input-fields" class="col-md-9">
+                <div id="route-input">
+                    <div id="input-fields">
                         <div class="input-group mb-3">
                             <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting location..." onchange="propogateFloors('start-building', 'start-floor')">
                             <datalist id="datalistOptions">
@@ -69,7 +68,7 @@
                             </select>
                         </div>
                     </div>
-                    <img class="col-md-2" src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
+                    <img src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
                 </div>
                 <h2>Destination</h2>
                 <div id="access-features">
@@ -111,8 +110,7 @@
             <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
             <button class="btn btn-secondary" id="finish-route" hidden>Finish</button>
         </aside>
-        <main class="col" id="map">
-        </main>
+        <main id="map"></main>
     </div>
     <div id="input-overlay">
         <div class="input-group mb-3">
