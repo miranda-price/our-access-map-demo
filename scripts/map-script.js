@@ -58,43 +58,59 @@ function floorOptions(selectID, floors, main) {
 }
 function propogateFloors(selectBuilding, selectFloor) {
     building = document.getElementById(selectBuilding).value;
+    var floors;
+    var main;
     switch (building) {
     case 'Burton':
-        floorOptions(selectFloor, ['0', '1', '2', '3'], '1');
+        floors = ['0', '1', '2', '3'];
+        main = '1';
         break;
     case 'Rettner':
-        floorOptions(selectFloor, ['1', '2', '3'], '1');
+        floors = ['1', '2', '3'];
+        main = '1';
         break;
     case 'Lattimore':
-        floorOptions(selectFloor, ['1', '2', '3', '4', '5'], '3');
+        floors = ['1', '2', '3', '4', '5'];
+        main = '3';
         break;
     case 'Morey':
-        floorOptions(selectFloor, ['1', '2', '3', '4', '5'], '3');
+        floors = ['1', '2', '3', '4', '5'];
+        main = '3';
         break;
     case 'Rush Rhees':
-        floorOptions(selectFloor, ['G', '1', '2', '3', '4'], '1');
+        floors = ['G', '1', '2', '3', '4'];
+        main = '1';
         break;
     case 'Hoyt':
-        floorOptions(selectFloor, ['1', '2'], '1');
+        floors = ['1', '2'];
+        main = '1';
         break;
     case 'Bausch & Lomb':
-        floorOptions(selectFloor, ['1', '2', '3', '4', '5'], '2');
+        floors = ['1', '2', '3', '4', '5'];
+        main = '2';
         break;
     case 'Dewey':
-        floorOptions(selectFloor, ['B', '1', '2', '3', '4', '5'], '2');
+        floors = ['B', '1', '2', '3', '4', '5'];
+        main = '2';
         break;
     default:
-        floorOptions(selectFloor, ['B', 'G', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'], '1');
+        floors = ['B', 'G', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+        main = '1';
     }
 
+    floorOptions(selectFloor, floors, main);
+
     if (selectBuilding == 'start-building-overlay' || selectBuilding == 'end-building-overlay') {
-        if (document.getElementById('start-building-overlay').value != "" && document.getElementById('end-building-overlay') != "") {
+        if (document.getElementById('start-building-overlay').value != "" && document.getElementById('end-building-overlay').value != "") {
             document.getElementById('input-overlay').hidden = true;
             document.getElementById('sidebar-container').hidden = false;
             document.getElementById('start-building').value = document.getElementById('start-building-overlay').value;
             document.getElementById('end-building').value = document.getElementById('end-building-overlay').value;
             document.getElementById('start-floor').value = document.getElementById('start-floor-overlay').value;
             document.getElementById('end-floor').value = document.getElementById('end-floor-overlay').value;
+
+            if (selectBuilding == 'start-building-overlay') {floorOptions('start-floor', floors, main);}
+            if (selectBuilding == 'end-building-overlay') {floorOptions('end-floor', floors, main);}
         }
     }
 }
