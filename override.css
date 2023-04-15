@@ -176,8 +176,9 @@ footer {
     padding: 5px 0;
 }
 
-#service-form-container > h1 {
+#service-form-container > h1, #resources-heading {
     width: 100vw;
+    height: 70px;
     background-color: #00205B;
     color: #f8f9fa;
     padding: 15px 0;
@@ -247,7 +248,7 @@ footer {
 }
 
 #banner-slides {
-    margin-top: 10vh;
+    margin-top: calc(10vh + 70px);
 }
 
 .carousel-caption {
@@ -273,4 +274,18 @@ footer {
     margin: 30px auto;
     display: flex;
     justify-content: space-between;
+}
+
+.card {width: 22vw;}
+
+/*disability resources cards flex*/
+@media screen and (max-width: 900px) {
+    #resources-cards {
+      display: block;
+    }
+    .card {
+        width: 70%;
+        max-width: 400px;
+        margin: 25px auto;
+    }
 }
