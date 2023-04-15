@@ -208,6 +208,7 @@ footer {
 
 #submit-report {
     width: 10%;
+    min-width: 72px;
     background-color: #283FAF;
     color: #f8f9fa;
     position: relative;
@@ -278,8 +279,11 @@ footer {
 
 .card {width: 22vw;}
 
-/*disability resources cards flex*/
 @media screen and (max-width: 900px) {
+    /*service request form page*/
+    #request-instructions {margin-top: 23vh;}
+
+    /*disability resources cards flex*/
     #resources-cards {
       display: block;
     }
