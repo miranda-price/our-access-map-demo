@@ -1,14 +1,19 @@
 html {
     max-width: 100vw;
     overflow-x: hidden;
-    font-family: 'proxima-nova', Arial, Helvetica, sans-serif
+    font-family: 'proxima-nova', Arial, Helvetica, sans-serif;
+}
+
+html {
+    max-width: 90vw;
+    overflow-y: hidden;
 }
 
 #route-input {
     position:fixed; 
     top: 90px; 
     left: 10px; 
-    z-index: 999;
+    z-index: 990;
 }
 
 .navbar {
@@ -55,11 +60,33 @@ aside {
     z-index: 990;
     align-items: center;
     justify-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    padding: 0 10px;
+}
+
+#route-input img {
+    width: 48px;
+}
+
+#route-info {
+    position: absolute;
+    top: calc(110px + 10vh);
+    height: calc(90vh - 100px);
+}
+
+#info-header {
+    display: flex;
+}
+
+#info-header img {
+    visibility: hidden;
+    display: none;
 }
 
 #sidebar h2 {
     font-weight: 700;
-    margin-top: calc(110px + 10vh);
     padding-left: 20px;
 }
 
@@ -72,7 +99,7 @@ h2.box {
     width: 21vw;
     text-align: center;
     padding: 10px 0;
-    z-index: 1000;
+    z-index: 990;
     position: fixed;
     top: calc(130px + 10vh);
 }
@@ -108,8 +135,8 @@ h3 {
 
 #find-route {
     width: 15vw;
-    position: fixed;
-    bottom: 30px;
+    position: relative;
+    top: calc(92vh - 80px);
     margin: 0 5vw;
     background-color: #FFC70A;
     color: #363636;
@@ -117,16 +144,18 @@ h3 {
 
 #finish-route {
     width: 7vw;
-    position: fixed;
-    bottom: 30px;
-    left: 15vw;
+    position: relative;
+    top: calc(92vh - 80px);
+    left: 16vw;
     background-color: #283FAF;
     color: #f8f9fa;
 }
 
 main {
-    position: relative;
+    position: fixed;
+    left: 25vw;
     top: 10vh;
+    width: 75vw;
     height: 90vh;
 }
 
@@ -134,7 +163,7 @@ main {
     position: absolute;
     top: calc(10vh + 32px);
     left: 70px;
-    z-index: 999;
+    z-index: 990;
 }
 
 .leaflet-control-zoom {
@@ -176,8 +205,9 @@ footer {
     padding: 5px 0;
 }
 
-#service-form-container > h1 {
+#service-form-container > h1, #resources-heading {
     width: 100vw;
+    height: 70px;
     background-color: #00205B;
     color: #f8f9fa;
     padding: 15px 0;
@@ -207,6 +237,7 @@ footer {
 
 #submit-report {
     width: 10%;
+    min-width: 72px;
     background-color: #283FAF;
     color: #f8f9fa;
     position: relative;
@@ -247,7 +278,7 @@ footer {
 }
 
 #banner-slides {
-    margin-top: 10vh;
+    margin-top: calc(10vh + 70px);
 }
 
 .carousel-caption {
@@ -273,4 +304,128 @@ footer {
     margin: 30px auto;
     display: flex;
     justify-content: space-between;
+}
+
+.card {width: 22vw;}
+
+@media screen and (max-width: 1150px) {
+    /*accessibility map sidebar*/
+    main {
+        width: 67vw;
+        left: 33vw;
+    }
+    #sidebar, #sidebar-container, #route-input {width: 33vw;}
+}
+
+@media screen and (max-width: 900px) {
+    /*accessibility map sidebar*/
+    main, #map {
+        width: 100vw;
+        height: 65vh;
+        position: absolute;
+        top: 25vh;
+        left: 0;
+    }
+
+    .leaflet-control-zoom {
+        position: fixed;
+        bottom: calc(10vh + 32px);
+        right: 24px;
+    }
+    
+    #sidebar, #sidebar-container, #route-input {width: 100vw;}
+
+   #sidebar-container {
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        top: 10vh;
+    }
+
+    #route-input {
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        width: calc(100vw + 12px);
+        height: 15vh;
+    }
+
+    #input-fields {width: 65%;}
+
+    #route-info {
+        top: 80vh;
+        width: 60%;
+        margin: 20px 20%;
+    }
+
+    #info-header img {
+        visibility: visible;
+        display: block;
+    }
+
+    #finish-route, #find-route {
+        left: 50%;
+        width: 10%;
+        min-width: 70px;
+        margin-top: 20px;
+    }
+
+    /*service request form page*/
+    #request-instructions {margin-top: 23vh;}
+
+    /*disability resources cards flex*/
+    #resources-cards {
+      display: block;
+    }
+    .card {
+        width: 70%;
+        max-width: 400px;
+        margin: 25px auto;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    /*route input overlay*/
+    #input-overlay {
+        width: 70%;
+        left: 15%;
+    }
+
+    #input-overlay .input-group {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    #start-building-overlay, #end-building-overlay {
+        width: 150px;
+    }
+    #start-floor-overlay, #end-floor-overlay {
+        width: 80px;
+    }
+
+    /* route info bottom bar*/
+    #route-info {
+        top: 80vh;
+        width: 70%;
+        margin: 10px 15% 20px;
+    }
+
+    #finish-route, #find-route {
+        left: 70%;
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    /*accessibility map sidebar*/
+    #input-fields {width: 75%;}
+
+    #route-info {
+        width: 80%;
+        margin: 10px 10% 20px;
+    }
+
+    #finish-route, #find-route {
+        left: 75%;
+    }
 }

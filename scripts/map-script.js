@@ -252,7 +252,6 @@ function showPosition(position) {
 }
 
 function switchInput() {
-    console.log('switch');
     var tempBuilding = document.getElementById('start-building').value;
     var tempFloor = document.getElementById('start-floor').value;
     document.getElementById('start-building').value = document.getElementById('end-building').value;
@@ -763,4 +762,31 @@ function display() {
         routeMarkers.addLayer(L.polyline(path.coords));
     })}
     routeMarkers.addTo(map);
+}
+
+var expanded = false;
+
+function expandInfo() {
+    var info = document.getElementById('route-info');
+    var mapBox = document.getElementById('map');
+    var mapBoxControls = document.getElementsByClassName('leaflet-control-zoom')[0];
+    var findRouteButton = document.getElementById('find-route');
+    var finishRouteButton = document.getElementById('finish-route');
+    if (!expanded) {
+        console.log('expand')
+        info.style.top = "55vh";
+        mapBox.style.height = "40vh";
+        mapBoxControls.style.bottom = "calc(45vh + 32px)";
+        findRouteButton.style.top = "calc(67vh - 80px)";
+        finishRouteButton.style.top = "calc(67vh - 80px)";
+    }
+    else {
+        console.log('collapse');
+        info.style.top = "80vh";
+        mapBox.style.height = "65vh";
+        mapBoxControls.style.bottom = "calc(10vh + 32px)";
+        findRouteButton.style.top = "calc(92vh - 80px)";
+        finishRouteButton.style.top = "calc(92vh - 80px)";
+    }
+    expanded = !expanded;
 }

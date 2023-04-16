@@ -37,13 +37,12 @@
     </div>
   </nav>
 
-  <body>
-    <div class="row" id="routing">
-        <aside class="col-md-3" id="sidebar-container" hidden>
+  <body id="accessibility-map">
+    <div id="routing">
+        <aside id="sidebar-container" hidden>
             <div id="sidebar">
-                <div id="route-input" class="row">
-                    <div class="col-md-1"></div>
-                    <div id="input-fields" class="col-md-9">
+                <div id="route-input">
+                    <div id="input-fields">
                         <div class="input-group mb-3">
                             <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting location..." onchange="propogateFloors('start-building', 'start-floor')">
                             <datalist id="datalistOptions">
@@ -69,50 +68,51 @@
                             </select>
                         </div>
                     </div>
-                    <img class="col-md-2" src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
+                    <img src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
                 </div>
-                <h2>Destination</h2>
-                <div id="access-features">
-                    <h3>Allow the following:</h3>
-                    <form id="access-checkboxes">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="allowSteps" id="allowSteps">
-                            <label class="form-check-label" for="allowSteps">
-                                Allow Steps
-                            </label>
+                <div id="route-info">
+                    <div id="info-header"><img src="assets/expand-vertical-regular-24.png" alt="vertical expand icon" onclick="expandInfo()"><h2>Destination</h2></div>
+                    <div id="access-features">
+                        <h3>Allow the following:</h3>
+                        <form id="access-checkboxes">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="allowSteps" id="allowSteps">
+                                <label class="form-check-label" for="allowSteps">
+                                    Allow Steps
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="allowStairs" id="allowStairs">
+                                <label class="form-check-label" for="allowStairs">
+                                    Allow Stairs
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="allowDoors" id="allowDoors">
+                                <label class="form-check-label" for="allowDoors">
+                                    Allow Manual Doors
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="allowElevators" id="allowElevators">
+                                <label class="form-check-label" for="allowElevators">
+                                    Allow Inaccessible Elevators
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="directions-container" hidden>
+                        <p id="access-summary">Allow the following:</p>
+                        <div id="display-directions">
+                            <ul id="directions"></ul>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="allowStairs" id="allowStairs">
-                            <label class="form-check-label" for="allowStairs">
-                                Allow Stairs
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="allowDoors" id="allowDoors">
-                            <label class="form-check-label" for="allowDoors">
-                                Allow Manual Doors
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="allowElevators" id="allowElevators">
-                            <label class="form-check-label" for="allowElevators">
-                                Allow Inaccessible Elevators
-                            </label>
-                        </div>
-                    </form>
-                </div>
-                <div id="directions-container" hidden>
-                    <p id="access-summary">Allow the following:</p>
-                    <div id="display-directions">
-                        <ul id="directions"></ul>
                     </div>
                 </div>
-            </div>
-            <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
-            <button class="btn btn-secondary" id="finish-route" hidden>Finish</button>
+                <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
+                <button class="btn btn-secondary" id="finish-route" hidden>Finish</button>
+                </div>
         </aside>
-        <main class="col" id="map">
-        </main>
+        <main id="map"></main>
     </div>
     <div id="input-overlay">
         <div class="input-group mb-3">
