@@ -110,11 +110,12 @@
                     </div>
                 </div>
                 <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
-                <button class="btn btn-secondary" id="finish-route" hidden>Finish</button>
-                </div>
+                <button class="btn btn-secondary" id="finish-route"  data-bs-toggle="modal" data-bs-target="#end-route-confirmation" hidden>Finish</button>
+            </div>
         </aside>
         <main id="map"></main>
     </div>
+      <!--input overlay before both endpoints selected-->
     <div id="input-overlay">
         <div class="input-group mb-3">
             <input class="form-control" list="datalistOptions" id="start-building-overlay" placeholder="Starting location..." onchange="propogateFloors('start-building-overlay', 'start-floor-overlay')">
@@ -141,6 +142,25 @@
             </select>
         </div>
     </div>
+    
+    <!-- Confirmation pop up -->
+    <div class="modal fade" id="end-route-confirmation" tabindex="-1" aria-labelledby="end directions confirmation pop-up" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="end-route-label">End Journey</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <p>Did you get to your destination?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="endRoute()">Yes, end journy</button>
+              <button type="button" class="btn btn-primary-outline" data-bs-dismiss="modal">No, take me back</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <script src="scripts/map-script.js"></script>
   </body>
   <footer>&copy Our Access 2023</footer>

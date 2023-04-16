@@ -171,9 +171,9 @@ h3 {
 
 main {
     position: fixed;
-    left: 25vw;
+    left: 0;
     top: 10vh;
-    width: 75vw;
+    width: 100vw;
     height: 90vh;
 }
 

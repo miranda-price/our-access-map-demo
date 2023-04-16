@@ -115,6 +115,10 @@ function propogateFloors(selectBuilding, selectFloor) {
             document.getElementById('start-floor').value = document.getElementById('start-floor-overlay').value;
             document.getElementById('end-floor').value = document.getElementById('end-floor-overlay').value;
 
+            
+            document.getElementById('map').style.width = "75vw";
+            document.getElementById('map').style.left = "25vw";
+
             if (selectBuilding == 'start-building-overlay') {floorOptions('start-floor', floors, main);}
             if (selectBuilding == 'end-building-overlay') {floorOptions('end-floor', floors, main);}
         }
@@ -425,14 +429,14 @@ var layerControl = L.control.layers(null, overlayMaps).addTo(map);
 
 var start = null;
 var end = null;
-var allow_steps = document.getElementById("allowSteps").checked;
-var allow_stairs = document.getElementById("allowStairs").checked;
-var allow_manual_doors = document.getElementById("allowDoors").checked;
-var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
 
 function find_route(event) {
     event.preventDefault();
     console.log("find route");
+    var allow_steps = document.getElementById("allowSteps").checked;
+    var allow_stairs = document.getElementById("allowStairs").checked;
+    var allow_manual_doors = document.getElementById("allowDoors").checked;
+    var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
 
     // define edges
     // Burton
@@ -645,11 +649,11 @@ function find_route(event) {
 
     // find shortest route
     if (start == null || start == undefined) {
-        console.log('Starting building and/or floor not selected');
+        alert('Starting building and/or floor not selected');
         return
     }
     if (end == null || end == undefined) {
-        console.log('Destination building and/or floor not selected');
+        alert('Destination building and/or floor not selected');
         return
     }
     var unvisited = [];
@@ -738,6 +742,10 @@ var routeMarkers = L.layerGroup();
 
 function display() {
     // display accessibility exceptions
+    var allow_steps = document.getElementById("allowSteps").checked;
+    var allow_stairs = document.getElementById("allowStairs").checked;
+    var allow_manual_doors = document.getElementById("allowDoors").checked;
+    var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
     accessSummary = document.getElementById('access-summary');
     accessSummary.hidden = false;
     var allowed = [];
@@ -832,4 +840,31 @@ function expandInfo() {
         finishRouteButton.style.top = "calc(92vh - 80px)";
     }
     expanded = !expanded;
+}
+
+function endRoute() {
+    //reset inputs
+    document.getElementById('input-overlay').hidden = false;
+    document.getElementById('sidebar-container').hidden = true;
+    document.getElementById('sidebar').hidden = true;
+    document.getElementById('end-building').value = "";
+    document.getElementById('end-floor').value = "";
+    document.getElementById('end-building-overlay').value = "";
+    document.getElementById('end-floor-overlay').value = "";
+    getLocation();
+
+    // reset sidebar
+    document.getElementById('access-features').hidden = false;
+    document.getElementById('directions-container').hidden = true;
+    document.getElementById('find-route').hidden = false;
+    document.getElementById('finish-route').hidden = true;
+
+    // reset map
+    routeMarkers.clearLayers();
+    document.getElementById('map').style.width = "100vw";
+    document.getElementById('map').style.left = "0px";
+
+    // reset find route inputs
+    start = null;
+    end = null;
 }
