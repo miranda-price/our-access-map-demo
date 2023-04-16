@@ -5,6 +5,12 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+
+document.getElementById('access-features').hidden = false;
+document.getElementById('directions-container').hidden = true;
+document.getElementById('find-route').hidden = false;
+document.getElementById('finish-route').hidden = true;
+
 class Node {
     constructor(building, level, id, edges, type, coords, length, route) {
         this.building = building;
@@ -732,17 +738,30 @@ var routeMarkers = L.layerGroup();
 
 function display() {
     console.log(end.route);
-    directions = document.getElementById("directions"); 
+    directions = document.getElementById("directions");
+    console.log(directions)
     directions.innerHTML = "";
     var mapPoints = [];
     var mapLines = [];
     end.route.forEach(part => {
-        console.log(part)
         if (part.coords != null) {part instanceof Node ? mapPoints.push(part) : mapLines.push(part)}
         if (part instanceof Edge) {
             if (part.dir != null) {
                 var li = document.createElement('li');
-                ifReverse(part.id, end.route[end.route.indexOf(part) + 1].id) ? li.appendChild(document.createTextNode(part.revDir)) : li.appendChild(document.createTextNode(part.dir))
+                var formCheck = document.createElement('div');
+                formCheck.classList.add('form-check');
+                var checkInput = document.createElement('input');
+                checkInput.classList.add('form-check-input');
+                checkInput.type = "checkbox";
+                checkInput.value = part.id;
+                checkInput.id = part.id;
+                var checkLabel = document.createElement('label');
+                checkLabel.classList.add('form-check-label');
+                checkLabel.for = part.id;
+                ifReverse(part.id, end.route[end.route.indexOf(part) + 1].id) ? checkLabel.appendChild(document.createTextNode(part.revDir)) : checkLabel.appendChild(document.createTextNode(part.dir))
+                formCheck.appendChild(checkInput);
+                formCheck.appendChild(checkLabel);
+                li.appendChild(formCheck);
                 directions.appendChild(li);
             }
         }
@@ -762,6 +781,10 @@ function display() {
         routeMarkers.addLayer(L.polyline(path.coords));
     })}
     routeMarkers.addTo(map);
+    document.getElementById('access-features').hidden = true;
+    document.getElementById('directions-container').hidden = false;
+    document.getElementById('find-route').hidden = true;
+    document.getElementById('finish-route').hidden = false;
 }
 
 var expanded = false;
