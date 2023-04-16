@@ -425,14 +425,14 @@ var layerControl = L.control.layers(null, overlayMaps).addTo(map);
 
 var start = null;
 var end = null;
+var allow_steps = document.getElementById("allowSteps").checked;
+var allow_stairs = document.getElementById("allowStairs").checked;
+var allow_manual_doors = document.getElementById("allowDoors").checked;
+var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
 
 function find_route(event) {
     event.preventDefault();
     console.log("find route");
-    var allow_steps = document.getElementById("allowSteps").checked;
-    var allow_stairs = document.getElementById("allowStairs").checked;
-    var allow_manual_doors = document.getElementById("allowDoors").checked;
-    var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
 
     // define edges
     // Burton
@@ -737,9 +737,29 @@ function ifReverse(edge, next) {
 var routeMarkers = L.layerGroup();
 
 function display() {
-    console.log(end.route);
+    // display accessibility exceptions
+    accessSummary = document.getElementById('access-summary');
+    accessSummary.hidden = false;
+    var allowed = [];
+    var avoid = [];
+    allow_steps ? allowed.push("steps") : avoid.push("steps");
+    allow_stairs ? allowed.push("stairs") : avoid.push("stairs");
+    allow_manual_doors ? allowed.push("manual doors") : avoid.push("manual doors");
+    allow_non_wc_elevators ? allowed.push("non-wheelchair elevators") : avoid.push("non-wheelchair elevators");
+    console.log(allowed);
+    if (allowed.length == 0) {accessSummary.hidden = true;}
+    else {
+        allowed.forEach(allowance => {
+            console.log(allowance)
+            console.log(accessSummary.innerHTML)
+            if (allowance == allowed[0]) {accessSummary.innerHTML =  accessSummary.innerHTML + allowance}
+            else {accessSummary.innerHTML =  accessSummary.innerHTML + ", " + allowance}
+        })
+    }
+    // display route length
+    document.getElementById('route-length').innerHTML = Math.round(3.28084*end.length) + " feet";
+    // display route directions
     directions = document.getElementById("directions");
-    console.log(directions)
     directions.innerHTML = "";
     var mapPoints = [];
     var mapLines = [];

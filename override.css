@@ -111,20 +111,38 @@ h3 {
 
 #access-features {
     padding-left: 20px;
-    height: 40vh;
+    height: 140vh;
     overflow-y: scroll;
+}
+
+#route-length {
+    position: relative;
+    bottom: 45px;
+    left: 18vw;
+}
+
+#access-summary {
+    position: relative;
+    bottom: 45px;
+    width: 25vw;
 }
 
 #directions-container {
     position: absolute;
     top: calc(10vh);
-    left: 30px;
+    left: 15px;
+}
+
+#display-directions {
+    position: relative;
+    bottom: 50px;
+    left: 10px;
 }
 
 #directions {
     list-style: none;
     padding-left: 0;
-    height: 29vh;
+    height: 27vh;
     overflow-y: scroll;
     width: 22vw;
 }
