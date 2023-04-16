@@ -732,11 +732,13 @@ function ifReverse(edge, next) {
 var routeMarkers = L.layerGroup();
 
 function display() {
+    console.log(end.route);
     directions = document.getElementById("directions"); 
     directions.innerHTML = "";
     var mapPoints = [];
     var mapLines = [];
     end.route.forEach(part => {
+        console.log(part)
         if (part.coords != null) {part instanceof Node ? mapPoints.push(part) : mapLines.push(part)}
         if (part instanceof Edge) {
             if (part.dir != null) {
@@ -747,6 +749,7 @@ function display() {
         }
     })
     routeMarkers.clearLayers(); // reset from prev
+    if (mapPoints.length > 0){
     startCoords = mapPoints[0].coords;
     map.flyTo(startCoords, 18);
     located = true; // prevents auto center to userloc if userloc found second
@@ -754,9 +757,10 @@ function display() {
     var startMarker = L.marker(mapPoints[0].coords);
     var endMarker = L.marker(mapPoints[mapPoints.length - 1].coords);
     routeMarkers.addLayer(startMarker);
-    routeMarkers.addLayer(endMarker);
+    routeMarkers.addLayer(endMarker);}
+    if (mapLines.length > 0){
     mapLines.forEach(path => {
         routeMarkers.addLayer(L.polyline(path.coords));
-    })
+    })}
     routeMarkers.addTo(map);
 }
