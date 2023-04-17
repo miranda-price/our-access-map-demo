@@ -122,6 +122,7 @@ function propogateFloors(selectBuilding, selectFloor) {
 
             if (selectBuilding == 'start-building-overlay') {floorOptions('start-floor', floors, main);}
             if (selectBuilding == 'end-building-overlay') {floorOptions('end-floor', floors, main);}
+            document.getElementById('map').classList.remove('overlay-map');
         }
     }
 }
@@ -839,11 +840,11 @@ function expandInfo() {
     }
     else {
         console.log('collapse');
-        info.style.top = "80vh";
-        mapBox.style.height = "65vh";
-        mapBoxControls.style.bottom = "calc(10vh + 32px)";
-        findRouteButton.style.top = "calc(92vh - 80px)";
-        finishRouteButton.style.top = "calc(92vh - 80px)";
+        info.style.top = "70vh";
+        mapBox.style.height = "55vh";
+        mapBoxControls.style.bottom = "calc(20vh + 32px)";
+        findRouteButton.style.top = "calc(82vh - 80px)";
+        finishRouteButton.style.top = "calc(82vh - 80px)";
     }
     expanded = !expanded;
 }
