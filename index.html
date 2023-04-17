@@ -155,8 +155,80 @@
                <p>Did you get to your destination?</p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="endRoute()">Yes, end journy</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="endRoute()">Yes, end journey</button>
               <button type="button" class="btn btn-primary-outline" data-bs-dismiss="modal">No, take me back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report from map pop up #1 -->
+    <div class="modal fade" id="map-report" tabindex="-1" aria-labelledby="report issue from map directions pop-up" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="map-report-label">Report</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="report-single" hidden></p>
+                <div id="report-multiple" hidden></div>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control required" id="map-reporter-email" placeholder="University Email" required = "true">
+                    <label for="map-reporter-email"><span style="color: red;">*</span> University Email</label>
+                </div>
+                <div class="form-floating">
+                    <input type="tel" class="form-control required" id="map-reporter-phone" placeholder="Phone Number" required = "true">
+                    <label for="map-reporter-phone"><span style="color: red;">*</span> Phone Number</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-toggle="modal" data-bs-target="#map-report-details" onclick="mapReportDetails()">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Report from map pop-up #2 -->
+      <div class="modal fade" id="map-report-details" tabindex="-1" aria-labelledby="report more details pop-up" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="map-report-details-label">Report</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="report-selected"></p>
+
+                <div>
+                    <label for="map-reporter-details">Are there any additional details you wish to provide?</label>
+                    <input type="textarea" id="map-reporter-details">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  data-bs-toggle="modal" data-bs-target="#map-report-confirmation" onclick="confirmMapReport()">Submit Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Report from map confirmation pop-up -->
+      <div class="modal fade" id="map-report-confirmation" tabindex="-1" aria-labelledby="report issue from map confirmation pop-up" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="map-report-confirm-label">Report Confirmation</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-reporter-email"></p>
+                <p id="confirm-reporter-phone"></p>
+                <p id="confirm-report-date"></p>
+                <p id="you-reported"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
