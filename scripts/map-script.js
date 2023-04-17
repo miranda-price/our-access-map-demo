@@ -507,7 +507,7 @@ function find_route(event) {
     EQPAMR03C = new Edge('path', 'EQPAMR03C', 6.2, true, false, true, false, false, 'enter Morey hall', 'leave Morey hall', null, [[43.1282524,-77.6298131],[43.1283023,-77.6298476]]);
     EQPAEQPB = new Edge('path', 'EQPAEQPB', 17.1, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1282524,-77.6298131],[43.1283214,-77.6296242]]);
     EQPBEQPC = new Edge('path', 'EQPBEQPC', 17.8, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1283214,-77.6296242],[43.1283983, -77.6294316]]);
-    EQPDRR01B = new Edge('path', 'EQPDRR01B', 23.9, true, true, false, false, false, 'enter Rush Rhees library', 'leave Rush Rhees library', ['broken push door button to Rush Rhees from Eastman quad'], [[43.1282604, -77.6290755],[43.1284752,-77.6290755]]);
+    EQPDRR01B = new Edge('path', 'EQPDRR01B', 23.9, true, true, false, false, false, 'enter Rush Rhees library', 'leave Rush Rhees library', ['broken push door button to Rush Rhees from Eastman quad'], [[43.1282604, -77.6290755],[43.1283107, -77.6289446]]);
     EQPDEQPE = new Edge('path', 'EQPDEQPE', 26.5, false, false, false, false, true, 'head away from Rush Rhees library', 'head towards Rush Rhees library', null, [[43.1282604, -77.6290755],[43.1284752, -77.6292172]]);
     EQPDEQPF = new Edge('path', 'EQPDEQPF', 25.9, false, false, false, false, true, 'head away from Rush Rhees library', 'head towards Rush Rhees library', null, [[43.1282604, -77.6290755],[43.1280535, -77.6289301]]);
     EQPCEQPE = new Edge('path', 'EQPCEQPE', 19.4, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1283983, -77.6294316],[43.1284752, -77.6292172]]);
@@ -762,8 +762,6 @@ function display() {
     if (allowed.length == 0) {accessSummary.hidden = true;}
     else {
         allowed.forEach(allowance => {
-            console.log(allowance)
-            console.log(accessSummary.innerHTML)
             if (allowance == allowed[0]) {accessSummary.innerHTML =  accessSummary.innerHTML + allowance}
             else {accessSummary.innerHTML =  accessSummary.innerHTML + ", " + allowance}
         })
@@ -809,7 +807,7 @@ function display() {
     map.flyTo(startCoords, 18);
     located = true; // prevents auto center to userloc if userloc found second
     // add markers and route lines
-    var startMarker = L.marker(mapPoints[0].coords);
+    var startMarker = L.marker(startCoords);
     var endMarker = L.marker(mapPoints[mapPoints.length - 1].coords);
     routeMarkers.addLayer(startMarker);
     routeMarkers.addLayer(endMarker);}
@@ -834,19 +832,21 @@ function expandInfo() {
     var finishRouteButton = document.getElementById('finish-route');
     if (!expanded) {
         console.log('expand')
-        info.style.top = "55vh";
-        mapBox.style.height = "40vh";
-        mapBoxControls.style.bottom = "calc(45vh + 32px)";
-        findRouteButton.style.top = "calc(67vh - 80px)";
-        finishRouteButton.style.top = "calc(67vh - 80px)";
+        info.style.top = "15vh";
+        mapBox.style.height = "0";
+        mapBoxControls.style.hidden = true;
+        findRouteButton.style.top = "15vh";
+        finishRouteButton.style.top = "15vh";
+        document.getElementById('expand-icon').src = "assets/collapse-vertical-regular-24.png";
     }
     else {
         console.log('collapse');
         info.style.top = "70vh";
         mapBox.style.height = "55vh";
-        mapBoxControls.style.bottom = "calc(20vh + 32px)";
-        findRouteButton.style.top = "calc(82vh - 80px)";
-        finishRouteButton.style.top = "calc(82vh - 80px)";
+        mapBoxControls.style.hidden = false;
+        findRouteButton.style.top = "70vh";
+        finishRouteButton.style.top = "70vh";
+        document.getElementById('expand-icon').src = "assets/expand-vertical-regular-24.png";
     }
     expanded = !expanded;
 }
@@ -928,6 +928,8 @@ function endRoute() {
     routeMarkers.clearLayers();
     document.getElementById('map').style.width = "100vw";
     document.getElementById('map').style.left = "0px";
+    document.getElementById('map').style.top = "10vh";
+    document.getElementById('map').style.height = "90vh";
     document.getElementById('map').classList.add('overlay-map');
 
     // reset find route inputs
