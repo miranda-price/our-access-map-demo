@@ -151,6 +151,14 @@ h3 {
     color: #f8f9fa;
 }
 
+main.overlay-map {
+    position: fixed;
+    left: 0vw;
+    top: 10vh;
+    width: 100vw;
+    height: 90vh;
+}
+
 main {
     position: fixed;
     left: 25vw;
@@ -164,12 +172,6 @@ main {
     top: calc(10vh + 32px);
     left: 70px;
     z-index: 990;
-}
-
-.leaflet-control-zoom {
-    position: fixed;
-    bottom: 32px;
-    right: 24px;
 }
 
 .leaflet-control-layers-overlays > label {padding: 5px 0;}
@@ -193,6 +195,7 @@ footer {
     bottom: 3px;
     left: 6px;
     font-size: 14px;
+    background-color: #f8f9fa;
 }
 
 #service-form-container {
@@ -310,27 +313,28 @@ footer {
 
 @media screen and (max-width: 1150px) {
     /*accessibility map sidebar*/
-    main {
-        width: 67vw;
-        left: 33vw;
+    main.overlay-map {
+        width: 100vw;
+        left: 0;
+        top: 10vh;
     }
     #sidebar, #sidebar-container, #route-input {width: 33vw;}
 }
 
 @media screen and (max-width: 900px) {
     /*accessibility map sidebar*/
-    main, #map {
+    main.overlay-map {
         width: 100vw;
-        height: 65vh;
         position: absolute;
-        top: 25vh;
         left: 0;
     }
 
-    .leaflet-control-zoom {
-        position: fixed;
-        bottom: calc(10vh + 32px);
-        right: 24px;
+    main {
+        width: 100vw;
+        height: 55vh;
+        position: absolute;
+        top: 25vh;
+        left: 0;
     }
     
     #sidebar, #sidebar-container, #route-input {width: 100vw;}
@@ -353,7 +357,7 @@ footer {
     #input-fields {width: 65%;}
 
     #route-info {
-        top: 80vh;
+        top: 70vh;
         width: 60%;
         margin: 20px 20%;
     }
@@ -366,8 +370,9 @@ footer {
     #finish-route, #find-route {
         left: 50%;
         width: 10%;
-        min-width: 70px;
+        min-width: 60px;
         margin-top: 20px;
+        top: 70vh;
     }
 
     /*service request form page*/
@@ -405,7 +410,6 @@ footer {
 
     /* route info bottom bar*/
     #route-info {
-        top: 80vh;
         width: 70%;
         margin: 10px 15% 20px;
     }
