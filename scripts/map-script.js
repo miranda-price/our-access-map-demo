@@ -113,7 +113,9 @@ function propogateFloors(selectBuilding, selectFloor) {
             document.getElementById('sidebar-container').hidden = false;
             document.getElementById('start-building').value = document.getElementById('start-building-overlay').value;
             document.getElementById('end-building').value = document.getElementById('end-building-overlay').value;
+            document.getElementById('start-floor').innerHTML = document.getElementById('start-floor-overlay').innerHTML;
             document.getElementById('start-floor').value = document.getElementById('start-floor-overlay').value;
+            document.getElementById('end-floor').innerHTML = document.getElementById('end-floor-overlay').innerHTML;
             document.getElementById('end-floor').value = document.getElementById('end-floor-overlay').value;
 
             
@@ -926,6 +928,7 @@ function endRoute() {
     routeMarkers.clearLayers();
     document.getElementById('map').style.width = "100vw";
     document.getElementById('map').style.left = "0px";
+    document.getElementById('map').classList.add('map-overlay')
 
     // reset find route inputs
     start = null;
