@@ -110,8 +110,6 @@ h3 {
 
 #access-features {
     padding-left: 20px;
-    height: 140vh;
-    overflow-y: scroll;
 }
 
 #route-length {
@@ -299,6 +297,7 @@ footer {
 
 #banner-slides {
     margin-top: calc(10vh + 70px);
+    width: 100vw;
 }
 
 .carousel-caption {
@@ -347,11 +346,11 @@ footer {
     }
 
     main {
-        width: 100vw;
+        width: 100vw !important;
         height: 55vh;
         position: absolute;
         top: 25vh;
-        left: 0;
+        left: 0 !important;
     }
     
     #sidebar, #sidebar-container, #route-input {width: 100vw;}
@@ -377,6 +376,9 @@ footer {
         top: 70vh;
         width: 60%;
         margin: 20px 20%;
+        height: 25vh;
+        overflow-y: scroll;
+        padding-bottom: 20vh;
     }
 
     #info-header img {
@@ -434,6 +436,14 @@ footer {
     #finish-route, #find-route {
         left: 70%;
         margin-top: 10px;
+    }
+
+    #access-summary, #directions {width: 60vw;}
+
+    #resources-cards {
+        width: 90%;
+        margin: 30px auto;
+        display: block;
     }
 }
 
