@@ -928,7 +928,7 @@ function endRoute() {
     routeMarkers.clearLayers();
     document.getElementById('map').style.width = "100vw";
     document.getElementById('map').style.left = "0px";
-    document.getElementById('map').classList.add('map-overlay')
+    document.getElementById('map').classList.add('overlay-map');
 
     // reset find route inputs
     start = null;
