@@ -49,6 +49,20 @@ class Edge {
         if (this.non_wc_elevators && !allow_non_wc_elevators) {return false;}
         return true;
     }
+
+    findLength() {
+        if (this.coords.length < 2) {return}
+        else if (this.coords.length == 2) {
+            this.length = map.distance(this.coords[0], this.coords[1]);
+        }
+        else {
+            var sum = 0;
+            for (let i = 0; i<this.coords.length - 1; i++) {
+                sum += map.distance(this.coords[i], this.coords[i+1]);
+            }
+            this.length = sum;
+        }
+    }
 }
 
 // propogate floor select options
