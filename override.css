@@ -349,6 +349,7 @@ footer {
         width: 100vw;
         position: absolute;
         left: 0;
+        top: 10vh;
     }
 
     main {
