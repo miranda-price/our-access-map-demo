@@ -808,7 +808,7 @@ function display() {
                 li.appendChild(formCheck);
                 if (part.report != null) {  
                     var span = document.createElement('span');
-                    span.innerHTML = '<button class="btn btn-light reportbutton" id= "' + part.id +'-report-button" onclick="reportFromDir(' + part.id + ')" data-bs-toggle="modal" data-bs-target="#map-report">Report</button>';
+                    span.innerHTML = '<button class="btn btn-light reportbutton" style="margin-left:25px;" id= "' + part.id +'-report-button" onclick="reportFromDir(' + part.id + ')" data-bs-toggle="modal" data-bs-target="#map-report">Report</button>';
                     li.appendChild(span);
                 }
                 directions.appendChild(li);

@@ -32,7 +32,7 @@ html {
 }
 
 .nav-link.active {
-    color: #283FAF;
+    color: #283FAF !important;
     border-bottom: 2px solid #283FAF;
 }
 
@@ -183,6 +183,9 @@ main {
     top: 10vh;
     width: 100vw;
     height: 90vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 #input-overlay {
@@ -217,9 +220,9 @@ footer {
 }
 
 #service-form-container {
-    width: 80%;
+    width: 80vw;
     max-width: 1000px;
-    margin: 10vh auto 15vh;
+    margin: 10vh 10vw 15vh;
 }
 
 #service-form-container > * {
@@ -410,10 +413,16 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
+    /*navbar links*/
+    .nav-item {padding-bottom: 20px;}
+
+    .nav-link {padding-top: 20px;}
+
     /*route input overlay*/
     #input-overlay {
         width: 70%;
         left: 15%;
+        top: 25vh;
     }
 
     #input-overlay .input-group {
@@ -458,7 +467,7 @@ footer {
     }
 
     #finish-route, #find-route {
-        left: 75%;
+        left: 73%;
     }
 
     #submit-report {
