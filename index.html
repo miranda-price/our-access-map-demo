@@ -44,28 +44,26 @@
                 <div id="route-input">
                     <div id="input-fields">
                         <div class="input-group mb-3">
-                            <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting location..." onchange="propogateFloors('start-building', 'start-floor')">
-                            <datalist id="datalistOptions">
-                                <option value="Burton"></option>
-                                <option value="Morey"></option>
-                                <option value="Rettner"></option>
-                                <option value="Rush Rhees"></option>
-                            </datalist>
+                          <select class="form-select" aria-label="Select starting building" id="start-building" name="start-building">
+                                <option>Burton</option>
+                                <option>Morey</option>
+                                <option>Rettner</option>
+                                <option>Rush Rhees</option>
+                          </select>
                             <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
                                 <option selected>--</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination..." onchange="propogateFloors('end-building', 'end-floor')">
-                            <datalist id="datalistOptions">
-                                <option value="Burton"></option>
-                                <option value="Morey"></option>
-                                <option value="Rettner"></option>
-                                <option value="Rush Rhees"></option>
-                            </datalist>
-                            <select class="form-select" aria-label="Select destination floor" id="end-floor" name="end-floor">
-                                <option selected>--</option>
-                            </select>
+                          <select class="form-select" aria-label="Select destination building" id="end-building" name="end-building">
+                            <option>Burton</option>
+                            <option>Morey</option>
+                            <option>Rettner</option>
+                            <option>Rush Rhees</option>
+                          </select>
+                          <select class="form-select" aria-label="Select destination floor" id="end-floor" name="end-floor">
+                              <option selected>--</option>
+                          </select>
                         </div>
                     </div>
                     <img src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
