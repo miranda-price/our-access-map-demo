@@ -4,8 +4,9 @@ html {
     font-family: 'proxima-nova', Arial, Helvetica, sans-serif;
 }
 
-html {
-    max-width: 90vw;
+#map-page {
+    max-height: 100vh;
+    overflow-y: hidden;
 }
 
 #route-input {
