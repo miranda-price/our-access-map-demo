@@ -4,11 +4,6 @@ html {
     font-family: 'proxima-nova', Arial, Helvetica, sans-serif;
 }
 
-#map-page {
-    max-height: 100vh;
-    overflow-y: hidden;
-}
-
 #route-input {
     position:fixed; 
     top: 90px; 
