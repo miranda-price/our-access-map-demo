@@ -113,8 +113,6 @@ h3 {
     padding-left: 20px;
 }
 
-#access-checkboxes > div {padding: 5px 0;}
-
 #route-length {
     position: relative;
     bottom: 45px;
@@ -213,11 +211,11 @@ main {
 }
 
 footer {
-    z-index: 990;
+    z-index: 999;
     position: fixed;
-    bottom: 0px;
+    bottom: 3px;
     left: 6px;
-    font-size: 12px;
+    font-size: 14px;
     background-color: #f8f9fa;
 }
 
@@ -352,15 +350,11 @@ footer {
         position: absolute;
         left: 0;
         top: 10vh;
-        max-height: 90vh !important;
-        overflow-y: hidden !important;
     }
 
     main {
         width: 100vw !important;
         height: 55vh;
-        max-height: 55vh !important;
-        overflow-y: hidden !important;
         position: absolute;
         top: 25vh;
         left: 0 !important;
@@ -420,13 +414,6 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-    #map-page {
-        max-width: 100vw;
-        max-height: 100vh;
-        overflow-y: hidden;
-        overflow-x: hidden;
-    }
-
     /*navbar links*/
     .nav-item {padding-bottom: 20px;}
 
