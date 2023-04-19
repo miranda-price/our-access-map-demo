@@ -183,9 +183,6 @@ main {
     top: 10vh;
     width: 100vw;
     height: 90vh;
-    max-width: 100vw;
-    max-height: 90vh;
-    overflow: hidden;
 }
 
 #input-overlay {
@@ -211,11 +208,11 @@ main {
 }
 
 footer {
-    z-index: 999;
+    z-index: 990;
     position: fixed;
-    bottom: 3px;
+    bottom: 0px;
     left: 6px;
-    font-size: 14px;
+    font-size: 12px;
     background-color: #f8f9fa;
 }
 
