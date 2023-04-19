@@ -4,6 +4,11 @@ html {
     font-family: 'proxima-nova', Arial, Helvetica, sans-serif;
 }
 
+html,body{
+    -webkit-overflow-scrolling : touch !important;
+    overflow: auto !important;
+}
+
 #route-input {
     position:fixed; 
     top: 90px; 
