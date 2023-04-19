@@ -426,6 +426,25 @@ footer {
         overflow-y: hidden;
         overflow-x: hidden;
     }
+    
+    main.overlay-map {
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 10vh;
+        max-height: 90vh !important;
+        overflow-y: hidden !important;
+    }
+
+    main {
+        width: 100vw !important;
+        height: 55vh;
+        max-height: 55vh !important;
+        overflow-y: hidden !important;
+        position: absolute;
+        top: 35vh;
+        left: 0 !important;
+    }
 
     /*navbar links*/
     .nav-item {padding-bottom: 20px;}
