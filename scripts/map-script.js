@@ -674,7 +674,6 @@ function find_route(event) {
             node.length = 0;
             node.route = [start.id];
         }
-        console.log(node)
         var neighbor;
         var dead_end = true;
         node.edges.forEach(edge => {
@@ -709,7 +708,6 @@ function find_route(event) {
     }
 
     dijkstra_step(start);
-    console.log(map);
     string_route = []
     end.route.forEach(part => {string_route.push(part.id)})
     console.log('Shortest path distance is: ' + Math.round(3.28084*end.length) + " feet");
@@ -746,6 +744,7 @@ function display() {
             else {accessSummary.innerHTML =  accessSummary.innerHTML + ", " + allowance}
         })
     }
+    console.log(accessSummary.innerHTML)
     // display route length
     document.getElementById('route-length').innerHTML = Math.round(3.28084*end.length) + " feet";
     // display route directions
@@ -753,8 +752,21 @@ function display() {
     directions.innerHTML = "";
     var mapPoints = [];
     var mapLines = [];
+    var allCoords = [];
     end.route.forEach(part => {
-        if (part.coords != null) {part instanceof Node ? mapPoints.push(part) : mapLines.push(part)}
+        if (part.coords != null) {
+            if (part.coords[0] != undefined) {
+                if (part instanceof Node) { 
+                    mapPoints.push(part)
+                    allCoords.push(part.coords)
+                }
+                else {
+                    part.coords.forEach(coord => {allCoords.push(coord)})
+                    mapLines.push(part)
+                }
+            }
+        }
+        /*if (part.coords != null && part.coords.length > 0) {part instanceof Node ? mapPoints.push(part) : mapLines.push(part)}
         if (part instanceof Edge) {
             if (part.dir != null) {
                 var li = document.createElement('li');
@@ -779,22 +791,20 @@ function display() {
                 }
                 directions.appendChild(li);
             }
-        }
+        }*/
     })
     routeMarkers.clearLayers(); // reset from prev
-    if (mapPoints.length > 0){
-    startCoords = mapPoints[0].coords;
+    if (allCoords.length > 1){
+    startCoords = allCoords[0];
+    console.log(startCoords)
     map.flyTo(startCoords, 18);
     located = true; // prevents auto center to userloc if userloc found second
     // add markers and route lines
     var startMarker = L.marker(startCoords);
-    var endMarker = L.marker(mapPoints[mapPoints.length - 1].coords);
+    var endMarker = L.marker(allCoords[allCoords.length - 1]);
     routeMarkers.addLayer(startMarker);
     routeMarkers.addLayer(endMarker);}
-    if (mapLines.length > 0){
-    mapLines.forEach(path => {
-        routeMarkers.addLayer(L.polyline(path.coords));
-    })}
+    routeMarkers.addLayer(L.polyline(allCoords));
     routeMarkers.addTo(map);
     document.getElementById('access-features').hidden = true;
     document.getElementById('directions-container').hidden = false;
