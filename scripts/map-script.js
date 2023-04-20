@@ -712,7 +712,7 @@ function find_route(event) {
     end.route.forEach(part => {string_route.push(part.id)})
     console.log('Shortest path distance is: ' + Math.round(3.28084*end.length) + " feet");
     console.log('Shortest path is: ' + string_route);
-    if(string_route[string_route.length - 1] == end.id){display()}
+    if(string_route[string_route.length - 1] == end.id && find_neighbor(end.route[2], end.route[1]) == start){display()}
     else {alert("Accessible route not found.  Please try adjusting your starting, destination, or accessibility requirements to find a route.")}
 }
 
