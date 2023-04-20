@@ -457,159 +457,143 @@ function find_route(event) {
     var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
 
     // define edges
-    // Burton
-    BR00BR01 = new Edge('floor', 'BR00BR01', 5, true, true, false, false, false, 'ground floor to first floor', 'first floor to ground floor', null);
-    BR00BR02 = new Edge('floor', 'BR00BR02', 10, true, true, false, false, false, 'ground floor to second floor', 'second floor to ground floor', null);
-    BR00BR03 = new Edge('floor', 'BR00BR03', 15, true, true, false, false, false, 'ground floor to third floor', 'third floor to ground floor', null);
-    BR01BR02 = new Edge('floor', 'BR01BR02', 5, true, true, false, false, false, 'first floor to second floor', 'second floor to first floor', null);
-    BR01BR03 = new Edge('floor', 'BR01BR03', 10, true, true, false, false, false, 'first floor to third floor', 'third floor to first floor', null);
-    BR00BR00A = new Edge('level', 'BR00BR00A', 0, false, false, false, false, true, null, null, null);
-    BR01BR01A = new Edge('level', 'BR01BR01A', 0, false, false, false, false, true, null, null, null);
-    BR01BR01B = new Edge('level', 'BR01BR01B', 0, false, false, false, false, true, null, null, null);
-    BR01BR01C = new Edge('level', 'BR01BR01C', 0, false, false, false, false, true, null, null, null);
+    BR00_BR01 = new Edge('floor', 'BR00_BR01', 1, true, true, false, false, false, 'ground floor to first floor', 'first floor to ground floor', null, null);
+    BR00_BR02 = new Edge('floor', 'BR00_BR02', 2, true, true, false, false, false, 'ground floor to second floor', 'second floor to ground floor', null, null);
+    BR00_BR03 = new Edge('floor', 'BR00_BR03', 3, true, true, false, false, false, 'ground floor to third floor', 'third floor to ground floot', null, null);
+    BR01_BR02 = new Edge('floor', 'BR01_BR02', 1, true, true, false, false, false, 'first floor to second floor', 'second floor to first floor', null, null);
+    BR01_BR03 = new Edge('floor', 'BR01_BR03', 2, true, true, false, false, false, 'first floor to third floor', 'third floor to first floor', null, null);
+    BR00_BR00A = new Edge('level', 'BR00_BR00A', 0, false, false, false, false, true, null, null, null, null);
+    BR01_BR01A = new Edge('level', 'BR01_BR01A', 0, false, false, false, false, true, null, null, null, null);
+    BR01_BR01B = new Edge('level', 'BR01_BR01B', 0, false, false, false, false, true, null, null, null, null);
+    BR01_BR01C = new Edge('level', 'BR01_BR01C', 0, false, false, false, false, true, null, null, null, null);
+    RT01_RT02 = new Edge('floor', 'RT01_RT02', 1, false, false, false, false, true, 'first floor to second floor', 'second floor to first floor', ['broken elevator in Morey/Rettner Hall'], null);
+    RT01_RT03 = new Edge('floor', 'RT01_RT03', 2, false, false, false, false, true, 'first floor to third floor', 'third floor to first floor', ['broken elevator in Morey/Rettner Hall'], null);
+    RT02_RT03 = new Edge('floor', 'RT02_RT03', 1, false, false, false, false, true, 'second floor to third floor', 'third floor to second floor', ['broken elevator in Morey/Rettner Hall'], null);
+    RT01_RT01A = new Edge('level', 'RT01_RT01A', 0, false, false, false, false, true, null, null, null, null);
+    RT01_RT01B = new Edge('level', 'RT01_RT01B', 0, false, false, false, false, true, null, null, null, null);
+    RT01_RT01C = new Edge('level', 'RT01_RT01C', 0, false, false, false, false, true, null, null, null, null);
+    MRG_MR01 = new Edge('floor', 'MRG_MR01', 1, false, false, false, false, true, 'ground floor to first floor', 'first floor to ground floor', ['broken elevator in Morey Hall'], null);
+    MRG_MR02 = new Edge('floor', 'MRG_MR02', 2, false, false, false, false, true, 'ground floor to second floor', 'second floor to ground floor', ['broken elevator in Morey Hall'], null);
+    MRG_MR03 = new Edge('floor', 'MRG_MR03', 3, false, false, false, false, true, 'ground floor to third floor', 'third floor to ground floot', ['broken elevator in Morey Hall'], null);
+    MRG_MR04 = new Edge('floor', 'MRG_MR04', 4, false, false, false, false, true, 'ground floor to fourth floor', 'fourth floor to ground floor', ['broken elevator in Morey Hall'], null);
+    MRG_MR05 = new Edge('floor', 'MRG_MR05', 5, false, false, false, false, true, 'ground floor to fifth floor', 'fifth floor to ground floor', ['broken elevator in Morey Hall'], null);
+    MR01_MR02 = new Edge('floor', 'MR01_MR02', 1, false, false, false, false, true, 'first floor to second floor', 'second floor to first floor', ['broken elevator in Morey Hall'], null);
+    MR01_MR03 = new Edge('floor', 'MR01_MR03', 2, false, false, false, false, true, 'first floor to third floor', 'third floor to first floor', ['broken elevator in Morey Hall'], null);
+    MR01_MR04 = new Edge('floor', 'MR01_MR04', 3, false, false, false, false, true, 'first floor to fourth floor', 'fourth floor to first floor', ['broken elevator in Morey Hall'], null);
+    MR01_MR05 = new Edge('floor', 'MR01_MR05', 4, false, false, false, false, true, 'first floor to fifth floor', 'fifth floor to first floor', ['broken elevator in Morey Hall'], null);
+    MR02_MR03 = new Edge('floor', 'MR02_MR03', 1, false, false, false, false, true, 'second floor to third floor', 'third floor to second floor', ['broken elevator in Morey Hall'], null);
+    MR02_MR04 = new Edge('floor', 'MR02_MR04', 2, false, false, false, false, true, 'second floor to fourth floor', 'fourth floor to second floor', ['broken elevator in Morey Hall'], null);
+    MR02_MR05 = new Edge('floor', 'MR02_MR05', 3, false, false, false, false, true, 'second floor to fifth floor', 'fifth floor to second floor', ['broken elevator in Morey Hall'], null);
+    MR03_MR04 = new Edge('floor', 'MR03_MR04', 1, false, false, false, false, true, 'third floor to fourth floor', 'fourth floor to third floor', ['broken elevator in Morey Hall'], null);
+    MR03_MR05 = new Edge('floor', 'MR03_MR05', 2, false, false, false, false, true, 'third floor to fifth floor', 'fifth floor to third floor', ['broken elevator in Morey Hall'], null);
+    MR02_MR02A = new Edge('level', 'MR02_MR02A', 0, false, false, false, false, true, null, null, null, null);
+    MR03_MR03A = new Edge('level', 'MR03_MR03A', 0, false, false, false, false, true, null, null, null, null);
+    MR03_MR03B = new Edge('level', 'MR03_MR03B', 0, false, false, false, false, true, null, null, null, null);
+    MR03_MR03C = new Edge('level', 'MR03_MR03C', 0, false, false, false, false, true, null, null, null, null);
+    MRG_RT01 = new Edge('connection', 'MRG_RT01', 0, false, false, false, false, true, 'exit the elevator area and enter floor 1 of Rettner', 'enter the elevator area near Morey', ['broken push door button from Rettner 1 to Morey elevator'], null);
+    MR01_RT01 = new Edge('connection', 'MR01_RT01', 0, true, true, false, false, false, 'go down the steps to enter floor 1 of Rettner', 'go up the steps to enter floor 1 of Morey', null, null);
+    MR02_RT02 = new Edge('connection', 'MR02_RT02', 0, false, false, false, false, true, 'take a right before the elevator to enter floor 2 of Rettner', 'go past the seating area to enter floor 2 of Morey', null, null);
+    MR03_RT03 = new Edge('connection', 'MR03_RT03', 0, false, false, false, false, true, 'take a right before the elevator to enter floor 3 of Rettner', 'go past the seating area to enter floor 3 of Morey', null, null);
+    RRG_RR01 = new Edge('floor', 'RRG_RR01', 1, false, false, false, false, true, 'ground floor to first floor', 'first floor to ground floor', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RRG_RR02 = new Edge('floor', 'RRG_RR02', 2, false, false, false, false, true, 'ground floor to second floor', 'second floor to ground floor', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RRG_RR03 = new Edge('floor', 'RRG_RR03', 3, false, false, false, false, true, 'ground floor to third floor', 'third floor to ground floot', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RRG_RR04 = new Edge('floor', 'RRG_RR04', 4, false, false, false, false, true, 'ground floor to fourth floor', 'fourth floor to ground floor', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RR01_RR02 = new Edge('floor', 'RR01_RR02', 1, false, false, false, false, true, 'first floor to second floor', 'second floor to first floor', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RR01_RR03 = new Edge('floor', 'RR01_RR03', 2, false, false, false, false, true, 'first floor to third floor', 'third floor to first floor', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RR01_RR04 = new Edge('floor', 'RR01_RR04', 3, false, false, false, false, true, 'first floor to fourth floor', 'fourth floor to first floor', ['broken silver elevator in Rush Rhees', 'broken green elevator in Rush Rhees', ' broken blue elevator in Rush Rhees', ' broken yellow elevator in Rush Rhees'], null);
+    RRG_RRGA = new Edge('level', 'RRG_RRGA', 0, false, false, false, false, true, null, null, null, null);
+    RRG_RRGB = new Edge('level', 'RRG_RRGB', 0, false, false, false, false, true, null, null, null, null);
+    RRG_RRGC = new Edge('level', 'RRG_RRGC', 0, false, false, false, false, true, null, null, null, null);
+    RR01_RR01A = new Edge('level', 'RR01_RR01A', 0, false, false, false, false, true, null, null, null, null);
+    RR01_RR01B = new Edge('level', 'RR01_RR01B', 0, false, false, false, false, true, null, null, null, null);
+    MR02A_RRGC = new Edge('tunnel', 'MR02A_RRGC', null, false, false, false, false, true, 'go through the double doors; take a right at the end of the hall; and enter the ground floor of Rush Rhees', 'turn right by the vending machines and staircase; follow the tunnel; and go through the double doors on the right at the end of the tunnel to enter floor 2 of Morey', ['broken push door button entering Morey/Rush Rhees tunnel'], [[43.1284964, -77.6293734],[43.128453, -77.6293403],[43.1285122, -77.6291817],[43.128488, -77.6291669],[43.1285151, -77.6290934]]);
+    EQPC_MR03A = new Edge('path', 'EQPC_MR03A', null, false, false, false, false, true, 'enter Morey hall', 'leave Morey hall', ['broken push door button entering Morey from Eastman Quad'], [[43.1283983, -77.6294316],[43.1284459, -77.6294641]]);
+    EQPB_MR03B = new Edge('path', 'EQPB_MR03B', null, true, false, true, false, false, 'enter Morey hall', 'leave Morey hall', null, [[43.1283214, -77.6296242],[43.1283587, -77.6296534]]);
+    EQPA_MR03C = new Edge('path', 'EQPA_MR03C', null, true, false, true, false, false, 'enter Morey hall', 'leave Morey hall', null, [[43.1282524, -77.6298131],[43.1283023, -77.6298476]]);
+    EQPA_EQPB = new Edge('path', 'EQPA_EQPB', null, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1282524, -77.6298131],[43.1283214, -77.6296242]]);
+    EQPB_EQPC = new Edge('path', 'EQPB_EQPC', null, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1283214, -77.6296242],[43.1283983,  -77.6294316]]);
+    EQPD_RR01B = new Edge('path', 'EQPD_RR01B', null, true, true, false, false, false, 'enter Rush Rhees library', 'leave Rush Rhees library', ['broken push door button entering Rush Rhees from Eastman Quad'], [[43.1282604,  -77.6290755],[43.1284752, -77.6290755]]);  
+    EQPD_EQPE = new Edge('path', 'EQPD_EQPE', null, false, false, false, false, true, 'head away from Rush Rhees library', 'head towards Rush Rhees library', null, [[43.1282604,  -77.6290755],[43.1284752,  -77.6292172]]);
+    EQPD_EQPF = new Edge('path', 'EQPD_EQPF', null, false, false, false, false, true, 'head away from Rush Rhees library', 'head towards Rush Rhees library', null, [[43.1282604,  -77.6290755],[43.1280535,  -77.6289301]]);
+    EQPC_EQPE = new Edge('path', 'EQPC_EQPE', null, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1283983,  -77.6294316],[43.1284752,  -77.6292172]]);
+    EQPB_EQPG = new Edge('path', 'EQPB_EQPG', null, false, false, false, false, true, 'head towards Bausch and Lomb', 'head away from Bausch and Lomb', null, [[43.1283214, -77.6296242],[43.1279103,  -77.6293189]]);
+    EQPF_EQPG = new Edge('path', 'EQPF_EQPG', null, false, false, false, false, true, 'head towards Bausch and Lomb', 'head away from Bausch and Lomb', null, [[43.1280535,  -77.6289301],[43.1279103,  -77.6293189]]);
+    BR01A_WQPB = new Edge('path', 'BR01A_WQPB', null, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.129296, -77.6311965],[43.129277, -77.6312532],[43.1291688, -77.6311843]]);
+    BR01B_WQPB = new Edge('path', 'BR01B_WQPB', null, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.1292627, -77.6311965],[43.129277, -77.6312532],[43.1291688, -77.6311843]]);
+    BR01B_WQPA = new Edge('path', 'BR01B_WQPA', null, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.1292627, -77.6311965],[43.1292248, -77.6313938],[43.1291189, -77.6313241]]);
+    BR01C_WQPA = new Edge('path', 'BR01C_WQPA', null, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.129204, -77.6314433],[43.1292248, -77.6313938],[43.1291189, -77.6313241]]);
+    WQPA_WQPB = new Edge('path', 'WQPA_WQPB', null, false, false, false, false, true, 'walk towards Crosby hall', 'walk towards Burton hall', null, [[43.1291189, -77.6313241],[43.1291688, -77.6313241]]);
+    WQPA_WQPE = new Edge('path', 'WQPA_WQPE', null, false, false, false, false, true, 'walk towards the fraternity quad', 'walk towards Burton hall', null, [[43.1291189, -77.6313241],[43.1290393, -77.6315472]]);
+    WQPB_WQPD = new Edge('path', 'WQPB_WQPD', null, false, false, false, false, true, 'walk towards Crosby hall', 'walk towards Burton hall', null, [[43.1291688, -77.6313241],[43.1292818, -77.6308716]]);
+    WQPE_WQPF = new Edge('path', 'WQPE_WQPF', null, false, false, false, false, true, 'walk towards LeChase hall', 'walk towards Burton hall', null, [[43.1290393, -77.6315472],[43.1286759, -77.6312982]]);
+    WQPC_WQPD = new Edge('path', 'WQPC_WQPD', null, false, false, false, false, true, 'walk towards the residence halls', 'walk towards LeChase and Rettner hall', null, [[43.1289216, -77.6306342],[43.1292818, -77.6308716]]);
+    WQPC_WQPF = new Edge('path', 'WQPC_WQPF', null, false, false, false, false, true, 'walk towards the fraternity quad', 'walk towards Wilson Commons', null, [[43.1289216, -77.6306342],[43.1286759, -77.6312982]]);
+    WQPC_WQPG = new Edge('path', 'WQPC_WQPG', null, false, false, false, false, true, 'walk towards Rettner hall', 'walk towards Wilson quad', null, [[43.1289216, -77.6306342],[43.1285042, -77.6303344]]);
+    WQPG_WQPH = new Edge('path', 'WQPG_WQPH', null, false, false, false, false, true, 'walk towards Rettner and Morey hall', 'walk towards LeChase hall', null, [[43.1285042, -77.6303344],[43.1283342, -77.6302145]]);
+    RT01A_WQPG = new Edge('path', 'RT01A_WQPG', null, false, false, false, false, true, 'leave Rettner hall', 'enter Rettner hall', ['broken push door button to Rettner entrance facing Wilson Quad'], [[43.1286775, -77.630216],[43.1285042, -77.6303344]]);
+    RT01C_WQPH = new Edge('path', 'RT01C_WQPH', null, false, false, false, false, true, 'leave Rettner hall', 'enter Rettner hall', ['broken push door button to Rettner entrance facing Lattimore'], [[43.1283643, -77.6301248],[43.1283342, -77.6302145]]);
 
-    // Rettner
-    RT01RT02 = new Edge('floor', 'RT01RT02', 5, false, false, false, false, true, 'first floor to second floor', 'second floor to first floor', ['Morey/Rettner hall elevator'], null);
-    RT01RT03 = new Edge('floor', 'RT01RT03', 10, false, false, false, false, true, 'first floor to third floor', 'third floor to first floor', ['Morey/Rettner hall elevator'], null);
-    RT02RT03 = new Edge('floor', 'RT02RT03', 5, false, false, false, false, true, 'second floor to third floor', 'third floor to second floor', ['Morey/Rettner hall elevator'], null);
-    RT01RT01A = new Edge('level', 'RT01RT01A', 0, false, false, false, false, true, null, null, null, null);
-    RT01RT01B = new Edge('level', 'RT01RT01B', 0, false, false, false, false, true, null, null, null, null);
-    RT01RT01C = new Edge('level', 'RT01RT01C', 0, false, false, false, false, true, null, null, null, null);
+    var all_edges = [BR00_BR01, BR00_BR02, BR00_BR03, BR01_BR02, BR01_BR03, BR00_BR00A, BR01_BR01A, BR01_BR01B, BR01_BR01C, RT01_RT02, RT01_RT03, RT02_RT03, RT01_RT01A, RT01_RT01B, RT01_RT01C, MRG_MR01, MRG_MR02, MRG_MR03, MRG_MR04, MRG_MR05, MR01_MR02, MR01_MR03, MR01_MR04, MR01_MR05, MR02_MR03, MR02_MR04, MR02_MR05, MR03_MR04, MR03_MR05, MR02_MR02A, MR03_MR03A, MR03_MR03B, MR03_MR03C, MRG_RT01, MR01_RT01, MR02_RT02, MR03_RT03, RRG_RR01, RRG_RR02, RRG_RR03, RRG_RR04, RR01_RR02, RR01_RR03, RR01_RR04, RRG_RRGA, RRG_RRGB, RRG_RRGC, RR01_RR01A, RR01_RR01B, MR02A_RRGC, EQPC_MR03A, EQPB_MR03B, EQPA_MR03C, EQPA_EQPB, EQPB_EQPC, EQPD_RR01B, EQPD_EQPE, EQPD_EQPF, EQPC_EQPE, EQPB_EQPG, EQPF_EQPG, BR01A_WQPB, BR01B_WQPB, BR01B_WQPA, BR01C_WQPA, WQPA_WQPB, WQPA_WQPE, WQPB_WQPD, WQPE_WQPF, WQPC_WQPD, WQPC_WQPF, WQPC_WQPG, WQPG_WQPH, RT01A_WQPG, RT01C_WQPH]
+    var edges_find_lengths = [MR02A_RRGC, EQPC_MR03A, EQPB_MR03B, EQPA_MR03C, EQPA_EQPB, EQPB_EQPC, EQPD_RR01B, EQPD_EQPE, EQPD_EQPF, EQPC_EQPE, EQPB_EQPG, EQPF_EQPG, BR01A_WQPB, BR01B_WQPB, BR01B_WQPA, BR01C_WQPA, WQPA_WQPB, WQPA_WQPE, WQPB_WQPD, WQPE_WQPF, WQPC_WQPD, WQPC_WQPF, WQPC_WQPG, WQPG_WQPH, RT01A_WQPG, RT01C_WQPH]
 
-    // Morey
-    MRGMR01 = new Edge('floor', 'MRGMR01', 5, false, false, false, false, true, 'ground floor to first floor', 'second floor to first floor', ['Morey hall elevator'], null);
-    MRGMR02 = new Edge('floor', 'MRGMR02', 10, false, false, false, false, true, 'ground floor to second floor', 'first floor to second floor', ['Morey hall elevator'], null);
-    MRGMR03 = new Edge('floor', 'MRGMR03', 15, false, false, false, false, true, 'ground floor to third floor', 'third floor to ground floor', ['Morey hall elevator'], null);
-    MRGMR04 = new Edge('floor', 'MRGMR04', 20, false, false, false, false, true, 'ground floor to fourth floor', 'fourth floor to ground floor', ['Morey hall elevator'], null);
-    MRGMR05 = new Edge('floor', 'MRGMR05', 25, false, false, false, false, true, 'ground floor to fifth floor', 'fifth floor to ground floor', ['Morey hall elevator'], null);
-    MR01MR02 = new Edge('floor', 'MR01MR02', 5, false, false, false, false, true, 'first floor to second floor', 'second floor to first floor', ['Morey hall elevator'], null);
-    MR01MR03 = new Edge('floor', 'MR01MR03', 10, false, false, false, false, true, 'first floor to third floor', 'third floor to first floor', ['Morey hall elevator'], null);
-    MR01MR04 = new Edge('floor', 'MR01MR04', 15, false, false, false, false, true, 'first floor to fourth floor', 'fourth floor to first floor', ['Morey hall elevator'], null);
-    MR01MR05 = new Edge('floor', 'MR01MR05', 20, false, false, false, false, true, 'first floor to fifth floor', 'fifth floor to first floor', ['Morey hall elevator'], null);
-    MR02MR03 = new Edge('floor', 'MR02MR03', 5, false, false, false, false, true, 'second floor to third floor', 'third floor to second floor', ['Morey hall elevator'], null);
-    MR02MR04 = new Edge('floor', 'MR02MR04', 10, false, false, false, false, true, 'second floor to fourth floor', 'fourth floor to second floor', ['Morey hall elevator'], null);
-    MR02MR05 = new Edge('floor', 'MR02MR05', 15, false, false, false, false, true, 'second floor to fifth floor', 'fifth floor to second floor', ['Morey hall elevator'], null);
-    MR03MR04 = new Edge('floor', 'MR03MR04', 5, false, false, false, false, true, 'third floor to fourth floor', 'fourth floor to third floor', ['Morey hall elevator'], null);
-    MR03MR05 = new Edge('floor', 'MR03MR05', 10, false, false, false, false, true, 'third floor to fifth floor', 'fifth floor to third floor', ['Morey hall elevator'], null);
-    MR02MR02A = new Edge('level', 'MR02MR02A', 0, false, false, false, false, true, null, null, null);
-    MR03MR03A = new Edge('level', 'MR03MR03A', 0, false, false, false, false, true, null, null, null);
-    MR03MR03B = new Edge('level', 'MR03MR03B', 0, false, false, false, false, true, null, null, null);
-    MR03MR03C = new Edge('level', 'MR03MR03C', 0, false, false, false, false, true, null, null, null);
-    MRGRT01 = new Edge('connection', 'MRGRT01', 0, false, false, false, false, true, 'exit the elevator area and enter floor 1 of Rettner', 'enter the elevator area near Morey', ['broken push door button from Rettner 1 to Morey elevator'], null);
-    MR01RT01 = new Edge('connection', 'MR01RT01', 0, true, true, false, false, true, 'go down the steps to enter floor 1 of Rettner', 'go up the steps to enter floor 1 of Morey', null, null);
-    MR02RT02 = new Edge('connection', 'MR02RT02', 0, false, false, false, false, true, 'take a right before the elevator to enter floor 2 of Rettner', 'go past the seating area to enter floor 2 of Morey', null, null);
-    MR03RT03 = new Edge('connection', 'MR03RT03', 0, false, false, false, false, true, 'take a right before the elevator to enter floor 3 of Rettner', 'go past the seating area to enter floor 3 of Morey', null, null);
-    MR02ARRGC = new Edge('tunnel', 'MR02ARRGC', 29.6, false, false, false, false, true, 'go through the double doors, take a right at the end of the hall, and enter the ground floor of Rush Rhees', 'turn right by the vending machines and staircase, follow the tunnel, and go through the double doors on the right at the end of the tunnel to enter floor 2 of Morey', ['broken push door button leading to Morey tunnel'], [[43.1284964,-77.6293734],[43.128453,-77.6293403],[43.1285122,-77.6291817],[43.128488,-77.6291669],[43.1285151,-77.6290934]]);
+    var edges_find_lengths = [MR02A_RRGC, EQPC_MR03A, EQPB_MR03B, EQPA_MR03C, EQPA_EQPB, EQPB_EQPC, EQPD_RR01B, EQPD_EQPE, EQPD_EQPF, EQPC_EQPE, EQPB_EQPG, EQPF_EQPG, BR01A_WQPB, BR01B_WQPB, BR01B_WQPA, BR01C_WQPA, WQPA_WQPB, WQPA_WQPE, WQPB_WQPD, WQPE_WQPF, WQPC_WQPD, WQPC_WQPF, WQPC_WQPG, WQPG_WQPH, RT01A_WQPG, RT01C_WQPH]
 
-    // Rush Rhees
-    RRGRR01 = new Edge('floor', 'RRGRR01', 5, false, false, false, false, true, 'ground floor to first floor', 'first floor to ground floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RRGRR02 = new Edge('floor', 'RRGRR02', 10, false, false, false, false, true, 'ground floor to second floor', 'second floor to ground floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RRGRR03 = new Edge('floor', 'RRGRR03', 15, false, false, false, false, true, 'ground floor to third floor', 'third floor to ground floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RRGRR04 = new Edge('floor', 'RRGRR04', 20, false, false, false, false, true, 'ground floor to fourth floor', 'fourth floor to ground floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RR01RR02 = new Edge('floor', 'RR01RR02', 5, false, false, false, false, true, 'first floor to second floor', 'second floor to first floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RR01RR03 = new Edge('floor', 'RR01RR03', 10, false, false, false, false, true, 'first floor to third floor', 'third floor to first floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RR01RR04 = new Edge('floor', 'RR01RR04', 15, false, false, false, false, true, 'first floor to fourth floor', 'fourth floor to first floor', ['silver elevator broken', 'green elevator broken', 'yellow elevator broken', 'blue elevator broken'], null);
-    RRGRRGA = new Edge('level', 'RRGRRGA', 0, false, false, false, false, true, null, null, null);
-    RRGRRGB = new Edge('level', 'RRGRRGB', 0, false, false, false, false, true, null, null, null);
-    RRGRRGC = new Edge('level', 'RRGRRGC', 0, false, false, false, false, true, null, null, null);
-    RR01RR01A = new Edge('level', 'RR01RR01A', 0, false, false, false, false, true, null, null, null);
-    RR01RR01B = new Edge('level', 'RR01RR01B', 0, false, false, false, false, true, null, null, null);
+    edges_find_lengths.forEach(edge => {edge.findLength()});
 
-    // Eastman Quad
-    EQPCMR03A = new Edge('path', 'EQPCMR03A', 5.9, false, false, false, false, true, 'enter Morey hall', 'leave Morey hall', ['broken push door button to Morey from Eastman quad'], [[43.1283983,-77.6294316],[43.1284459,-77.6294641]]);
-    EQPBMR03B = new Edge('path', 'EQPBMR03B', 4.8, true, false, true, false, false, 'enter Morey hall', 'leave Morey hall', null, [[43.1283214,-77.6296242],[43.1283587,-77.6296534]]);
-    EQPAMR03C = new Edge('path', 'EQPAMR03C', 6.2, true, false, true, false, false, 'enter Morey hall', 'leave Morey hall', null, [[43.1282524,-77.6298131],[43.1283023,-77.6298476]]);
-    EQPAEQPB = new Edge('path', 'EQPAEQPB', 17.1, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1282524,-77.6298131],[43.1283214,-77.6296242]]);
-    EQPBEQPC = new Edge('path', 'EQPBEQPC', 17.8, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1283214,-77.6296242],[43.1283983, -77.6294316]]);
-    EQPDRR01B = new Edge('path', 'EQPDRR01B', 23.9, true, true, false, false, false, 'enter Rush Rhees library', 'leave Rush Rhees library', ['broken push door button to Rush Rhees from Eastman quad'], [[43.1282604, -77.6290755],[43.1283107, -77.6289446]]);
-    EQPDEQPE = new Edge('path', 'EQPDEQPE', 26.5, false, false, false, false, true, 'head away from Rush Rhees library', 'head towards Rush Rhees library', null, [[43.1282604, -77.6290755],[43.1284752, -77.6292172]]);
-    EQPDEQPF = new Edge('path', 'EQPDEQPF', 25.9, false, false, false, false, true, 'head away from Rush Rhees library', 'head towards Rush Rhees library', null, [[43.1282604, -77.6290755],[43.1280535, -77.6289301]]);
-    EQPCEQPE = new Edge('path', 'EQPCEQPE', 19.4, false, false, false, false, true, 'head towards Rush Rhees library', 'head away from Rush Rhees library', null, [[43.1283983, -77.6294316],[43.1284752, -77.6292172]]);
-    EQPBEQPG = new Edge('path', 'EQPBEQPG', 52.0, false, false, false, false, true, 'head towards Bausch and Lomb', 'head away from Bausch and Lomb', null, [[43.1283214,-77.6296242],[43.1279103, -77.6293189]]);
-    EQPFEQPG = new Edge('path', 'EQPFEQPG', 35.3, false, false, false, false, true, 'head towards Bausch and Lomb', 'head away from Bausch and Lomb', null, [[43.1280535, -77.6289301],[43.1279103, -77.6293189]]);
-
-    // Wilson Quad
-    BR01AWQPB = new Edge('path', 'BR01AWQPB', 18.3, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.129296,-77.6311965], [43.129277,-77.6312532],[43.1291688,-77.6311843]]);
-    BR01BWQPB = new Edge('path', 'BR01BWQPB', 18.1, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.1292627,-77.6311965],[43.129277,-77.6312532],[43.1291688,-77.6311843]]);
-    BR01BWQPA = new Edge('path', 'BR01BWQPA', 29.6, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.1292627,-77.6311965],[43.1292248,-77.6313938],[43.1291189,-77.6313241]]);
-    BR01CWQPA = new Edge('path', 'BR01CWQPA', 17.7, true, false, true, false, false, 'leave Burton hall', 'enter Burton hall', null, [[43.129204,-77.6314433],[43.1292248,-77.6313938],[43.1291189,-77.6313241]]);
-    WQPAWQPB = new Edge('path', 'WQPAWQPB', 5.5, false, false, false, false, true, 'walk towards Crosby hall', 'walk towards Burton hall', null, [[43.1291189,-77.6313241],[43.1291688,-77.6313241]]);
-    WQPAWQPE = new Edge('path', 'WQPAWQPE', 20.2, false, false, false, false, true, 'walk towards the fraternity quad', 'walk towards Burton hall', null, [[43.1291189,-77.6313241],[43.1290393,-77.6315472]]);
-    WQPBWQPD = new Edge('path', 'WQPBWQPD', 38.8, false, false, false, false, true, 'walk towards Crosby hall', 'walk towards Burton hall', null, [[43.1291688, -77.6311843],[43.1292818,-77.6308716]]);
-    WQPEWQPF = new Edge('path', 'WQPEWQPF', 45.2, false, false, false, false, true, 'walk towards LeChase hall', 'walk towards Burton hall', null, [[43.1290393,-77.6315472],[43.1286759,-77.6312982]]);
-    WQPCWQPD = new Edge('path', 'WQPCWQPD', 44.2, false, false, false, false, true, 'walk towards the residence halls', 'walk towards LeChase and Rettner hall', null, [[43.1289216,-77.6306342],[43.1292818,-77.6308716]]);
-    WQPCWQPF = new Edge('path', 'WQPCWQPF', 60.4, false, false, false, false, true, 'walk towards the fraternity quad', 'walk towards Wilson Commons', null, [[43.1289216,-77.6306342],[43.1286759,-77.6312982]]);
-    WQPCWQPG = new Edge('path', 'WQPCWQPG', 52.4, false, false, false, false, true, 'walk towards Rettner hall', 'walk towards Wilson quad', null, [[43.1289216,-77.6306342],[43.1285042,-77.6303344]]);
-    WQPGWQPH = new Edge('path', 'WQPGWQPH', 21.3, false, false, false, false, true, 'walk towards Rettner and Morey hall', 'walk towards LeChase hall', null, [[43.1285042,-77.6303344],[43.1283342,-77.6302145]]);
-    RT01AWQPG = new Edge('path', 'RT01AWQPG', 21.5, false, false, false, false, true, 'leave Rettner hall', 'enter Rettner hall', ['broken push door button to Rettner entrance facing Wilson Quad'], [[43.1286775,-77.630216],[43.1285042,-77.6303344]]);
-    RT01CWQPH = new Edge('path', 'RT01CWQPH', 8.0, false, false, false, false, true, 'leave Rettner hall', 'enter Rettner hall', ['broken push door button to Rettner entrance facing Lattimore'], [[43.1283643,-77.6301248],[43.1283342,-77.6302145]]);
-
-    var all_edges = [BR00BR01, BR00BR02, BR00BR03, BR01BR02, BR01BR03, RT01RT02, RT01RT03, RT01RT02, RT01RT01A, RT01RT01B, RT01RT01C, MRGMR01, MRGMR02, MRGMR03, MRGMR04, MRGMR05, MR01MR02, MR01MR03, MR01MR04, MR01MR05, MR02MR03, MR02MR04, MR02MR05, MR03MR04, MR03MR05, MR02MR02A, MR03MR03A, MR03MR03B, MR03MR03C, MRGRT01, MR01RT01, MR02RT02, MR03RT03, MR02ARRGC, RRGRR01, RRGRR02, RRGRR03, RRGRR04, RRGRRGA, RRGRRGB, RRGRRGC, RR01RR01A, RR01RR01B, EQPCMR03A, EQPBMR03B, EQPAMR03C, EQPAEQPB, EQPBEQPC, EQPDRR01B, EQPDEQPE, EQPDEQPF, EQPCEQPE, EQPBEQPG, EQPFEQPG, BR01AWQPB, BR01BWQPA, BR01BWQPB, BR01CWQPA, WQPAWQPB, WQPAWQPE, WQPBWQPD, WQPEWQPF, WQPCWQPD, WQPCWQPF, WQPCWQPG, WQPGWQPH, RT01AWQPG, RT01CWQPH]
+    var all_edges = [BR00_BR01, BR00_BR02, BR00_BR03, BR01_BR02, BR01_BR03, BR00_BR00A, BR01_BR01A, BR01_BR01B, BR01_BR01C, RT01_RT02, RT01_RT03, RT02_RT03, RT01_RT01A, RT01_RT01B, RT01_RT01C, MRG_MR01, MRG_MR02, MRG_MR03, MRG_MR04, MRG_MR05, MR01_MR02, MR01_MR03, MR01_MR04, MR01_MR05, MR02_MR03, MR02_MR04, MR02_MR05, MR03_MR04, MR03_MR05, MR02_MR02A, MR03_MR03A, MR03_MR03B, MR03_MR03C, MRG_RT01, MR01_RT01, MR02_RT02, MR03_RT03, RRG_RR01, RRG_RR02, RRG_RR03, RRG_RR04, RR01_RR02, RR01_RR03, RR01_RR04, RRG_RRGA, RRG_RRGB, RRG_RRGC, RR01_RR01A, RR01_RR01B, MR02A_RRGC, EQPC_MR03A, EQPB_MR03B, EQPA_MR03C, EQPA_EQPB, EQPB_EQPC, EQPD_RR01B, EQPD_EQPE, EQPD_EQPF, EQPC_EQPE, EQPB_EQPG, EQPF_EQPG, BR01A_WQPB, BR01B_WQPB, BR01B_WQPA, BR01C_WQPA, WQPA_WQPB, WQPA_WQPE, WQPB_WQPD, WQPE_WQPF, WQPC_WQPD, WQPC_WQPF, WQPC_WQPG, WQPG_WQPH, RT01A_WQPG, RT01C_WQPH]
 
     // define nodes
-    // Burton
-    BR00 = new Node("Burton", "0", "BR00", [BR00BR01,BR00BR02,BR00BR03,BR00BR00A], "floor", null, Math.min(), []);
-    BR01 = new Node("Burton", "1", "BR01", [BR00BR01,BR01BR02,BR01BR03,BR01BR01A,BR01BR01B,BR01BR01C], "floor", null, Math.min(), []);
-    BR02 = new Node("Burton", "2", "BR02", [BR00BR02,BR01BR02], "floor", null, Math.min(), []);
-    BR03 = new Node("Burton", "3", "BR03", [BR00BR03,BR01BR03], "floor", null, Math.min(), []);
-    BR00A = new Node("Burton", "0", "BR00A", [BR00BR00A], "entrance", [43.1293665, -77.6313923], Math.min(), []);
-    BR01A = new Node("Burton", "1", "BR01A", [BR01BR01A,BR01AWQPB], "entrance", [43.129296, -77.6311965], Math.min(), []);
-    BR01B = new Node("Burton", "1", "BR01B", [BR01BR01B,BR01BWQPB,BR01BWQPA], "entrance", [43.1292627, -77.6313306], Math.min(), []);
-    BR01C = new Node("Burton", "1", "BR01C", [BR01BR01C,BR01CWQPA], "entrance", [43.129204, -77.6314433], Math.min(), []);
+    BR00A = new Node('Burton', '0', 'BR00A', [BR00_BR00A], 'entrance', [43.1293665, -77.6313923], Math.min(), []);
+    BR01A = new Node('Burton', '1', 'BR01A', [BR01_BR01A, BR01A_WQPB], 'entrance', [43.129296, -77.6311965], Math.min(), []);
+    BR01B = new Node('Burton', '1', 'BR01B', [BR01_BR01B, BR01B_WQPB, BR01B_WQPA], 'entrance', [43.1292627, -77.6313306], Math.min(), []);
+    BR01C = new Node('Burton', '1', 'BR01C', [BR01_BR01C, BR01C_WQPA], 'entrance', [43.129204, -77.6314433], Math.min(), []);
+    BR00 = new Node('Burton', '0', 'BR00', [BR00_BR01, BR00_BR02, BR00_BR03, BR00_BR00A], 'floor', [, ], Math.min(), []);
+    BR01 = new Node('Burton', '1', 'BR01', [BR00_BR01, BR01_BR02, BR01_BR03, BR01_BR01A, BR01_BR01B, BR01_BR01C], 'floor', [, ], Math.min(), []);
+    BR02 = new Node('Burton', '2', 'BR02', [BR00_BR02, BR01_BR02], 'floor', [, ], Math.min(), []);
+    BR03 = new Node('Burton', '3', 'BR03', [BR00_BR03, BR01_BR03], 'floor', [, ], Math.min(), []);
+    RT01A = new Node('Rettner', '1', 'RT01A', [RT01_RT01A, RT01A_WQPG], 'entrance', [43.1286775, -77.630216], Math.min(), []);
+    RT01B = new Node('Rettner', '1', 'RT01B', [RT01_RT01B], 'entrance', [43.1284505, -77.6299049], Math.min(), []);
+    RT01C = new Node('Rettner', '1', 'RT01C', [RT01_RT01C, RT01C_WQPH], 'entrance', [43.1283643, -77.6301248], Math.min(), []);
+    RT01 = new Node('Rettner', '1', 'RT01', [RT01_RT02, RT01_RT03, RT01_RT01A, RT01_RT01B, RT01_RT01C, MRG_RT01, MR01_RT01], 'floor', [, ], Math.min(), []);
+    RT02 = new Node('Rettner', '2', 'RT02', [RT01_RT02, RT02_RT03, MR02_RT02], 'floor', [, ], Math.min(), []);
+    RT03 = new Node('Rettner', '3', 'RT03', [RT01_RT03, RT02_RT03, MR03_RT03], 'floor', [, ], Math.min(), []);
+    MR02A = new Node('Morey', '2', 'MR02A', [MR02_MR02A, MR02A_RRGC], 'entrance', [43.1284964, -77.6293734], Math.min(), []);
+    MR03A = new Node('Morey', '3', 'MR03A', [MR03_MR03A, EQPC_MR03A], 'entrance', [43.1284459, -77.6294641], Math.min(), []);
+    MR03B = new Node('Morey', '3', 'MR03B', [MR03_MR03B, EQPB_MR03B], 'entrance', [43.1283587, -77.6296534], Math.min(), []);
+    MR03C = new Node('Morey', '3', 'MR03C', [MR03_MR03C, EQPA_MR03C], 'entrance', [43.1283023, -77.6298476], Math.min(), []);
+    MRG = new Node('Morey', 'G', 'MRG', [MRG_MR01, MRG_MR02, MRG_MR03, MRG_MR04, MRG_MR05, MRG_RT01], 'floor', [, ], Math.min(), []);   
+    MR01 = new Node('Morey', '1', 'MR01', [MRG_MR01, MR01_MR02, MR01_MR03, MR01_MR04, MR01_MR05, MR01_RT01], 'floor', [, ], Math.min(), []);
+    MR02 = new Node('Morey', '2', 'MR02', [MRG_MR02, MR01_MR02, MR02_MR03, MR02_MR04, MR02_MR05, MR02_MR02A, MR02_RT02], 'floor', [, ], Math.min(), []);
+    MR03 = new Node('Morey', '3', 'MR03', [MRG_MR03, MR01_MR03, MR02_MR03, MR03_MR04, MR03_MR05, MR03_MR03A, MR03_MR03B, MR03_MR03C, MR03_RT03], 'floor', [, ], Math.min(), []);
+    MR04 = new Node('Morey', '4', 'MR04', [MRG_MR04, MR01_MR04, MR02_MR04, MR03_MR04], 'floor', [, ], Math.min(), []);
+    MR05 = new Node('Morey', '5', 'MR05', [MRG_MR05, MR01_MR05, MR02_MR05, MR03_MR05], 'floor', [, ], Math.min(), []);
+    RRGA = new Node('Rush Rhees', 'G', 'RRGA', [RRG_RRGA], 'entrance', [43.1287284, -77.6279537], Math.min(), []);
+    RRGB = new Node('Rush Rhees', 'G', 'RRGB', [RRG_RRGB], 'entrance', [43.1281014, -77.6287809], Math.min(), []);
+    RRGC = new Node('Rush Rhees', 'G', 'RRGC', [RRG_RRGC, MR02A_RRGC], 'entrance', [43.1285151, -77.6290934], Math.min(), []);
+    RR01A = new Node('Rush Rhees', '1', 'RR01A', [RR01_RR01A], 'entrance', [43.128743, -77.6286939], Math.min(), []);
+    RR01B = new Node('Rush Rhees', '1', 'RR01B', [RR01_RR01B, EQPD_RR01B], 'entrance', [43.1283107, -77.6289446], Math.min(), []);      
+    RRG = new Node('Rush Rhees', 'G', 'RRG', [RRG_RR01, RRG_RR02, RRG_RR03, RRG_RR04, RRG_RRGA, RRG_RRGB, RRG_RRGC], 'floor', [, ], Math.min(), []);
+    RR01 = new Node('Rush Rhees', '1', 'RR01', [RRG_RR01, RR01_RR02, RR01_RR03, RR01_RR04, RR01_RR01A, RR01_RR01B], 'floor', [, ], Math.min(), []);
+    RR02 = new Node('Rush Rhees', '2', 'RR02', [RRG_RR02, RR01_RR02], 'floor', [, ], Math.min(), []);
+    RR03 = new Node('Rush Rhees', '3', 'RR03', [RRG_RR03, RR01_RR03], 'floor', [, ], Math.min(), []);
+    RR04 = new Node('Rush Rhees', '4', 'RR04', [RRG_RR04, RR01_RR04], 'floor', [, ], Math.min(), []);
+    EQPA = new Node('Eastman Quad', null, 'EQPA', [EQPA_MR03C, EQPA_EQPB], 'intersection', [43.1282524, -77.6298131], Math.min(), []);  
+    EQPB = new Node('Eastman Quad', null, 'EQPB', [EQPB_MR03B, EQPA_EQPB, EQPB_EQPC, EQPB_EQPG], 'intersection', [43.1283214, -77.6296242], Math.min(), []);
+    EQPC = new Node('Eastman Quad', null, 'EQPC', [EQPC_MR03A, EQPB_EQPC, EQPC_EQPE], 'intersection', [43.1283983, -77.6294316], Math.min(), []);
+    EQPD = new Node('Eastman Quad', null, 'EQPD', [EQPD_RR01B, EQPD_EQPE, EQPD_EQPF], 'intersection', [43.1282604, -77.6290755], Math.min(), []);
+    EQPE = new Node('Eastman Quad', null, 'EQPE', [EQPD_EQPE, EQPC_EQPE], 'intersection', [43.1284752, -77.6292172], Math.min(), []);   
+    EQPF = new Node('Eastman Quad', null, 'EQPF', [EQPD_EQPF, EQPF_EQPG], 'intersection', [43.1280535, -77.6289301], Math.min(), []);   
+    EQPG = new Node('Eastman Quad', null, 'EQPG', [EQPB_EQPG, EQPF_EQPG], 'intersection', [43.1279103, -77.6293189], Math.min(), []);   
+    WQPA = new Node('Wilson Quad', null, 'WQPA', [BR01B_WQPA, BR01C_WQPA, WQPA_WQPB, WQPA_WQPE], 'intersection', [43.1291189, -77.6313241], Math.min(), []);
+    WQPB = new Node('Wilson Quad', null, 'WQPB', [BR01A_WQPB, BR01B_WQPB, WQPA_WQPB, WQPB_WQPD], 'intersection', [43.1291688, -77.6311843], Math.min(), []);
+    WQPC = new Node('Wilson Quad', null, 'WQPC', [WQPC_WQPD, WQPC_WQPF, WQPC_WQPG], 'intersection', [43.1289216, -77.6306342], Math.min(), []);
+    WQPD = new Node('Wilson Quad', null, 'WQPD', [WQPB_WQPD, WQPC_WQPD], 'intersection', [43.1292818, -77.6308716], Math.min(), []);    
+    WQPE = new Node('Wilson Quad', null, 'WQPE', [WQPA_WQPE, WQPE_WQPF], 'intersection', [43.1290393, -77.6315472], Math.min(), []);    
+    WQPF = new Node('Wilson Quad', null, 'WQPF', [WQPE_WQPF, WQPC_WQPF], 'intersection', [43.1286759, -77.6312982], Math.min(), []);    
+    WQPG = new Node('Wilson Quad', null, 'WQPG', [WQPC_WQPG, WQPG_WQPH, RT01A_WQPG], 'intersection', [43.1285042, -77.6303344], Math.min(), []);
+    WQPH = new Node('Wilson Quad', null, 'WQPH', [WQPG_WQPH, RT01C_WQPH], 'intersection', [43.1283342, -77.6302145], Math.min(), []);
 
-    // Rettner
-    RT01 = new Node("Rettner", "1", "RT01", [RT01RT02,RT01RT03,RT01RT01A,RT01RT01B,RT01RT01C,MRGRT01,MR01RT01,RT01AWQPG,RT01CWQPH], "floor", null, Math.min(), []);
-    RT02 = new Node("Rettner", "2", "RT02", [RT01RT02,RT02RT03,MR02RT02], "floor", null, Math.min(), []);
-    RT03 = new Node("Rettner", "3", "RT03", [RT01RT03,RT02RT03,MR03RT03], "floor", null, Math.min(), []);
-    RT01A = new Node("Rettner", "1", "RT01A", [RT01RT01A,RT01AWQPG], "entrance", [43.1286775, -77.630216], Math.min(), []);
-    RT01B = new Node("Rettner", "1", "RT01B", [RT01RT01B], "entrance", [43.1284505, -77.6299049], Math.min(), []);
-    RT01C = new Node("Rettner", "1", "RT01C", [RT01RT01C,RT01CWQPH], "entrance", [43.1283643, -77.6301248], Math.min(), []);
-
-    // Morey
-    MRG = new Node("Morey", "G", "MRG", [MRGMR01,MRGMR02,MRGMR03,MRGMR04,MRGMR05,MRGRT01], "floor", null, Math.min(), []);
-    MR01 = new Node("Morey", "1", "MR01", [MRGMR01,MR01MR02,MR01MR03,MR01MR04,MR01MR05,MR01RT01], "floor", null, Math.min(), []);
-    MR02 = new Node("Morey", "2", "MR02", [MRGMR02,MR01MR02,MR02MR03,MR02MR04,MR02MR05,MR02RT02,MR02ARRGC], "floor", null, Math.min(), []);
-    MR03 = new Node("Morey", "3", "MR03", [MRGMR03,MR01MR03,MR02MR03,MR03MR04.MR03MR05,MR03MR03A,MR03MR03A,MR03MR03B,MR03MR03C,MR03RT03,EQPCMR03A.EQPBMR03B,EQPAMR03C], "floor", null, Math.min(), []);
-    MR04 = new Node("Morey", "4", "MR04", [MRGMR04,MR01MR04,MR02MR04,MR03MR04], "floor", null, Math.min(), []);
-    MR05 = new Node("Morey", "5", "MR05", [MRGMR05,MR01MR05,MR02MR05,MR03MR05], "floor", null, Math.min(), []);
-    MR02A = new Node("Morey", "2", "MR02A", [MR02ARRGC, MR02MR02A], "entrance", [43.1284964, -77.6293734], Math.min(), []);
-    MR03A = new Node("Morey", "3", "MR03A", [MR03MR03A,EQPCMR03A], "entrance", [43.1284459, -77.6294641], Math.min(), []);
-    MR03B = new Node("Morey", "3", "MR03B", [MR03MR03B,EQPBMR03B], "entrance", [43.1283587, -77.6296534], Math.min(), []);
-    MR03C = new Node("Morey", "3", "MR03C", [MR03MR03C,EQPAMR03C], "entrance", [43.1283023, -77.6298476], Math.min(), []);
-
-    // Rush Rhees
-    RRG = new Node("Rush Rhees", "G", "RRG", [RRGRR01,RRGRR02,RRGRR03,RRGRR04,RRGRRGA,RRGRRGB,RRGRRGC,MR02ARRGC], "floor", null, Math.min(), []);
-    RR01 = new Node("Rush Rhees", "1", "RR01", [RRGRR01,RR01RR02,RR01RR03,RR01RR04,RR01RR01A,RR01RR01B.EQPDRR01B], "floor", null, Math.min(), []);
-    RR02 = new Node("Rush Rhees", "2", "RR02", [RRGRR02,RR01RR02], "floor", null, Math.min(), []);
-    RR03 = new Node("Rush Rhees", "3", "RR03", [RRGRR03,RR01RR03], "floor", null, Math.min(), []);
-    RR04 = new Node("Rush Rhees", "4", "RR04", [RRGRR04,RR01RR04], "floor", null, Math.min(), []);
-    RRGA = new Node("Rush Rhees", "G", "RRGA", [RRGRRGA], "entrance", [43.1287284, -77.6279537], Math.min(), []);
-    RRGB = new Node("Rush Rhees", "G", "RRGB", [RRGRRGB], "entrance", [43.1281014, -77.6287809], Math.min(), []);
-    RRGC = new Node("Rush Rhees", "G", "RRGC", [RRGRRGC,MR02ARRGC], "entrance", [43.1285151, -77.6290934], Math.min(), []);
-    RR01A = new Node("Rush Rhees", "1", "RR01A", [RR01RR01A], "entrance", [43.128743, -77.6286939], Math.min(), []);
-    RR01B = new Node("Rush Rhees", "1", "RR01B", [RR01RR01B,EQPDRR01B], "entrance", [43.1283107, -77.6289446], Math.min(), []);
-
-    // Eastman Quad
-    EQPA = new Node("Eastman Quad", null, "EQPA", [EQPAMR03C,EQPAEQPB], "intersection", [43.1282524, -77.6298131], Math.min(), []);
-    EQPB = new Node("Eastman Quad", null, "EQPB", [EQPBMR03B,EQPAEQPB,EQPBEQPC,EQPBEQPG], "intersection", [43.1283214, -77.6296242], Math.min(), []);
-    EQPC = new Node("Eastman Quad", null, "EQPC", [EQPCMR03A,EQPBEQPC,EQPCEQPE], "intersection", [43.1283983, -77.6294316], Math.min(), []);
-    EQPD = new Node("Eastman Quad", null, "EQPD", [EQPDRR01B,EQPDEQPE,EQPDEQPF], "intersection", [43.1282604, -77.6290755], Math.min(), []);
-    EQPE = new Node("Eastman Quad", null, "EQPE", [EQPDEQPE,EQPCEQPE], "intersection", [43.1284752, -77.6292172], Math.min(), []);
-    EQPF = new Node("Eastman Quad", null, "EQPF", [EQPDEQPF,EQPFEQPG], "intersection", [43.1280535, -77.6289301], Math.min(), []);
-    EQPG = new Node("Eastman Quad", null, "EQPG", [EQPBEQPG,EQPFEQPG], "intersection", [43.1279103, -77.6293189], Math.min(), []);
-
-    // Wilson Quad
-    WQPA = new Node("Wilson Quad", null, "WQPA", [BR01BWQPA,BR01CWQPA,WQPAWQPB,WQPAWQPE], "intersection", [43.1291189, -77.6313241], Math.min(), []);
-    WQPB = new Node("Wilson Quad", null, "WQPB", [BR01AWQPB,BR01BWQPB,WQPAWQPB,WQPBWQPD], "intersection", [43.1291688, -77.6311843], Math.min(), []);
-    WQPC = new Node("Wilson Quad", null, "WQPC", [WQPCWQPD,WQPCWQPF,WQPCWQPG], "intersection", [43.1289216, -77.6306342], Math.min(), []);
-    WQPD = new Node("Wilson Quad", null, "WQPD", [WQPBWQPD,WQPCWQPD], "intersection", [43.1292818, -77.6308716], Math.min(), []);
-    WQPE = new Node("Wilson Quad", null, "WQPE", [WQPAWQPE,WQPEWQPF], "intersection", [43.1290393, -77.6315472], Math.min(), []);
-    WQPF = new Node("Wilson Quad", null, "WQPF", [WQPEWQPF,WQPCWQPF], "intersection", [43.1286759, -77.6312982], Math.min(), []);
-    WQPG = new Node("Wilson Quad", null, "WQPG", [WQPCWQPG,WQPGWQPH,RT01AWQPG], "intersection", [43.1285042, -77.6303344], Math.min(), []);
-    WQPH = new Node("Wilson Quad", null, "WQPH", [WQPGWQPH,RT01CWQPH], "intersection", [43.1283342, -77.6302145], Math.min(), []);
-
-    all_nodes = [BR00, BR01, BR02, BR03, BR00A, BR01A, BR01B, BR01C, RT01, RT02, RT03, RT01A, RT01B, RT01C, MRG, MR01, MR02, MR03, MR04, MR05, MR02A, MR03A, MR03B, MR03C, RRG, RR01, RR02, RR03, RR04, RRGA, RRGB, RRGC, RR01A, RR01B, EQPA, EQPB, EQPD, EQPE, EQPF, EQPG, WQPA, WQPB, WQPC, WQPD, WQPE, WQPF, WQPG, WQPH];
-
+    var all_nodes = [BR00A, BR01A, BR01B, BR01C, BR00, BR01, BR02, BR03, RT01A, RT01B, RT01C, RT01, RT02, RT03, MR02A, MR03A, MR03B, MR03C, MRG, MR01, MR02, MR03, MR04, MR05, RRGA, RRGB, RRGC, RR01A, RR01B, RRG, RR01, RR02, RR03, RR04, EQPA, EQPB, EQPC, EQPD, EQPE, EQPF, EQPG, WQPA, WQPB, WQPC, WQPD, WQPE, WQPF, WQPG, WQPH]
 
     // sort edge accessibility
     var step_edges = [];
