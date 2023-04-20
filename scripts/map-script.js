@@ -596,39 +596,19 @@ function find_route(event) {
     var all_nodes = [BR00A, BR01A, BR01B, BR01C, BR00, BR01, BR02, BR03, RT01A, RT01B, RT01C, RT01, RT02, RT03, MR02A, MR03A, MR03B, MR03C, MRG, MR01, MR02, MR03, MR04, MR05, RRGA, RRGB, RRGC, RR01A, RR01B, RRG, RR01, RR02, RR03, RR04, EQPA, EQPB, EQPC, EQPD, EQPE, EQPF, EQPG, WQPA, WQPB, WQPC, WQPD, WQPE, WQPF, WQPG, WQPH]
 
     // sort edge accessibility
-    var step_edges = [];
-    var stair_edges = [];
-    var door_edges = [];
-    var elevator_edges = [];
     var accessible_edges = [];
     all_edges.forEach(edge => {
         if (edge.ada) {accessible_edges.push(edge);}
         else {
-            if (edge.steps) {step_edges.push(edge);} 
-            if (edge.stairs) {step_edges.push(edge);}  
-            if (edge.manual_doors) {door_edges.push(edge);}  
-            if (edge.non_wc_elevators) {elevator_edges.push(edge);}   
+            var add = true;
+            if (edge.steps && !allow_steps) {add = false;}
+            else if (edge.stairs && !allow_stairs) {add = false;}
+            else if (edge.manual_doors && !allow_manual_doors) {add = false;}
+            else if (edge.non_wc_elevators && !allow_non_wc_elevators) {add = false;}
+            if (add) {accessible_edges.push(edge);}
         }
-    })
 
-    // get accessible edges
-    var allowed = [];
-    var avoid = [];
-    allow_steps ? allowed.push(step_edges) : avoid.push(step_edges);
-    allow_stairs ? allowed.push(stair_edges) : avoid.push(stair_edges);
-    allow_manual_doors ? allowed.push(door_edges) : avoid.push(door_edges);
-    allow_non_wc_elevators ? allowed.push(elevator_edges) : avoid.push(elevator_edges);
-    if (allowed.length > 0) {
-        allowed.forEach(allowedList => {
-            allowedList.forEach(allowedEdge => {
-                var add = true;
-                if (!accessible_edges.includes(allowedEdge)) {
-                    avoid.forEach(avoidList => {if (avoidList.includes(allowedEdge)) {add = false;}});
-                    if (add) {accessible_edges.push(allowedEdge);}
-                }
-            })
-        })
-    }
+    });
     console.log(accessible_edges);
 
     // get route start and end
