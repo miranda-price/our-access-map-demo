@@ -195,6 +195,8 @@ main {
 
 .leaflet-control-layers-overlays > label {padding: 5px 0;}
 
+.leaflet-retina .leaflet-control-layers-toggle {background-image: url("assets/geo-fill.svg");}
+
 .layer-key > img {margin: 0 5px;}
 
 #start-building-overlay, #end-building-overlay {
