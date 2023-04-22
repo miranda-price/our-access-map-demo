@@ -44,25 +44,25 @@
                 <div id="route-input">
                     <div id="input-fields">
                         <div class="input-group mb-3">
-                            <input class="form-control" list="datalistOptions" id="start-building" placeholder="Starting location..." onchange="propogateFloors('start-building', 'start-floor')">
-                            <datalist id="datalistOptions">
-                                <option value="Burton"></option>
-                                <option value="Morey"></option>
-                                <option value="Rettner"></option>
-                                <option value="Rush Rhees"></option>
-                            </datalist>
+                          <select class="form-select" aria-label="Select starting building" id="start-building" name="start-building" onchange="propogateFloors('start-building', 'start-floor')">
+                            <option selected></option>
+                            <option>Burton</option>
+                            <option>Morey</option>
+                            <option>Rettner</option>
+                            <option>Rush Rhees</option>
+                          </select>
                             <select class="form-select" aria-label="Select starting floor" id="start-floor" name="start-floor">
                                 <option selected>--</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">
-                            <input class="form-control" list="datalistOptions" id="end-building" placeholder="Destination..." onchange="propogateFloors('end-building', 'end-floor')">
-                            <datalist id="datalistOptions">
-                                <option value="Burton"></option>
-                                <option value="Morey"></option>
-                                <option value="Rettner"></option>
-                                <option value="Rush Rhees"></option>
-                            </datalist>
+                          <select class="form-select" aria-label="Select destination building" id="end-building" name="end-building" onchange="propogateFloors('end-building', 'end-floor')">
+                            <option selected></option>
+                            <option>Burton</option>
+                            <option>Morey</option>
+                            <option>Rettner</option>
+                            <option>Rush Rhees</option>
+                          </select>
                             <select class="form-select" aria-label="Select destination floor" id="end-floor" name="end-floor">
                                 <option selected>--</option>
                             </select>
@@ -118,25 +118,25 @@
       <!--input overlay before both endpoints selected-->
     <div id="input-overlay">
         <div class="input-group mb-3">
-            <input class="form-control" list="datalistOptions" id="start-building-overlay" placeholder="Starting location..." onchange="propogateFloors('start-building-overlay', 'start-floor-overlay')">
-            <datalist id="datalistOptions">
-                <option value="Burton"></option>
-                <option value="Morey"></option>
-                <option value="Rettner"></option>
-                <option value="Rush Rhees"></option>
-            </datalist>
+          <select class="form-select" aria-label="Select starting building" id="start-building-overlay" name="start-building-overlay" onchange="propogateFloors('start-building-overlay', 'start-floor-overlay')">
+            <option selected></option>
+            <option>Burton</option>
+            <option>Morey</option>
+            <option>Rettner</option>
+            <option>Rush Rhees</option>
+          </select>
             <select class="form-select" aria-label="Select starting floor" id="start-floor-overlay" name="start-floor-overlay">
                 <option selected>Floor</option>
             </select>
         </div>
         <div class="input-group mb-3">
-            <input class="form-control" list="datalistOptions" id="end-building-overlay" placeholder="Destination..." onchange="propogateFloors('end-building-overlay', 'end-floor-overlay')">
-            <datalist id="datalistOptions">
-                <option value="Burton"></option>
-                <option value="Morey"></option>
-                <option value="Rettner"></option>
-                <option value="Rush Rhees"></option>
-            </datalist>
+          <select class="form-select" aria-label="Select destination building" id="end-building-overlay" name="end-building-overlay" onchange="propogateFloors('end-building-overlay', 'end-floor-overlay')">
+            <option selected></option>
+            <option>Burton</option>
+            <option>Morey</option>
+            <option>Rettner</option>
+            <option>Rush Rhees</option>
+          </select>
             <select class="form-select" aria-label="Select destination floor" id="end-floor-overlay" name="end-floor-overlay">
                 <option selected>Floor</option>
             </select>
