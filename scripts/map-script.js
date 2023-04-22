@@ -303,59 +303,75 @@ getLocation();
 var benchIcon = L.icon({
     iconUrl: 'icons/map-icons-bench.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating a bench',
+    interactive: false,
 });
 var rampIcon = L.icon({
     iconUrl: 'icons/map-icons_ramp.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating a ramp',
+    interactive: false,
 });
 var ElevatorNotWCIcon = L.icon({
     iconUrl: 'icons/map-icons_elevator-wc-inaccessible.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating a wheelchair inaccessible elevator',
 });
 var ElevatorWCIcon = L.icon({
     iconUrl: 'icons/map-icons_elevator-wc-accessible.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating a wheelchair accessible elevator',
 });
 var ElevatorNotWCBrokenIcon = L.icon({
     iconUrl: 'icons/map-icons_elevator-wc-inaccessible-broken.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating broken wheelchair inaccessible elevator',
 });
 var ElevatorWCBrokenIcon = L.icon({
     iconUrl: 'icons/map-icons_elevator-wc-accessible-broken.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating a broken wheelchair accessible elevator',
 });
 var stairsIcon = L.icon({
     iconUrl: 'icons/map-icons_stairs.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating stairs',
+    interactive: false,
 });
 var stepsIcon = L.icon({
     iconUrl: 'icons/map-icons_steps.svg',
     iconSize:     [24, 24],
-    iconAnchor:   [12, 12]
+    iconAnchor:   [12, 12],
+    alt: 'icon indicating steps',
+    interactive: false,
 });
+
+function reportIcon(description) {
+    console.log(description)
+}
 
 // accessibility feature/obstacle icon layers
 var elevatorsWC = L.layerGroup([
-    L.marker([43.1276125, -77.6291051], {icon:ElevatorWCIcon}),
-    L.marker([43.1274355, -77.6299342], {icon:ElevatorWCIcon}),
-    L.marker([43.1283968, -77.629964], {icon:ElevatorWCIcon}),
-    L.marker([43.1287886, -77.6283118], {icon:ElevatorWCIcon}),
-    L.marker([43.1285332, -77.6287911], {icon:ElevatorWCIcon}),
-])
+    L.marker([43.1276125, -77.6291051], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Bausch and Lomb elevator')}),
+    L.marker([43.1274355, -77.6299342], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('main elevator on north side of Dewey')}),
+    L.marker([43.1283968, -77.629964], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Morey elevator')}),
+    L.marker([43.1287886, -77.6283118], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees green elevators')}),
+    L.marker([43.1285332, -77.6287911], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees silver elevators')}),
+    ])
     
 var elevatorsNotWC = L.layerGroup([
-    L.marker([43.1280796, -77.6307938], {icon:ElevatorNotWCIcon}),
-    L.marker([43.1268674, -77.6298621], {icon:ElevatorNotWCIcon}),
-    L.marker([43.1285562, -77.6284588], {icon:ElevatorNotWCIcon}),
-    L.marker([43.128426, -77.6282768], {icon:ElevatorNotWCIcon}),
-])
+    L.marker([43.1280796, -77.6307938], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Lattimore elevator')}),    
+    L.marker([43.1268674, -77.6298621], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('lower level elevator on south side of Dewey')}),
+    L.marker([43.1285562, -77.6284588], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees blue elevators')}),
+    L.marker([43.128426, -77.6282768], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees yellow elevators')}),
+    ])
     
 var stairs = L.layerGroup([
     L.marker([43.1275485, -77.6297659], {icon:stairsIcon}),
