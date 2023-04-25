@@ -496,11 +496,11 @@ footer {
 
     #link-buttons {
         width: 100vw;
-        height: 35vh;
+        height: 27vh;
         display: flex;
         flex-direction: column;
         position: fixed;
-        bottom: 2vh;
+        bottom: 10vh;
         left: 0;
         justify-content: space-around;
         align-items: center;
@@ -508,6 +508,7 @@ footer {
 
     #link-buttons a {
         width: 80vw;
+        padding: 10px;
     }
 
     /*route input overlay*/
