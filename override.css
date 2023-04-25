@@ -127,11 +127,6 @@ aside {
     margin-bottom: 10px;
 }
 
-#info-header img {
-    visibility: hidden;
-    display: none;
-}
-
 #sidebar h2 {
     font-weight: 700;
     padding-left: 20px;
@@ -204,14 +199,14 @@ h3 {
     margin: 0 5vw;
     background-color: #FFC70A;
     color: #363636;
-    z-index: 995;
+    z-index: 999;
 }
 
 #finish-route {
     width: 7vw;
-    position: relative;
-    top: calc(92vh - 80px);
-    left: 16vw;
+    position: fixed;
+    bottom: 5vh;
+    left: 23vw;
     background-color: #283FAF;
     color: #f8f9fa;
     z-index: 995;
@@ -360,21 +355,7 @@ footer {
 
 .card {width: 22vw;}
 
-@media screen and (max-width: 1150px) {
-    /*accessibility map sidebar*/
-    #sidebar, #sidebar-container, #route-input {width: 33vw;}
-}
-
 @media screen and (max-width: 900px) {
-    /*accessibility map sidebar*/
-    main {
-        width: 100vw !important;
-        height: 55vh;
-        position: absolute;
-        top: 25vh;
-        left: 0 !important;
-    }
-
     #link-buttons {
         width: 100vw;
         display: flex;
@@ -386,6 +367,30 @@ footer {
     }
 
     #link-buttons a {padding: 18px;}
+
+    /*service request form page*/
+    #request-instructions {margin-top: 23vh;}
+
+    /*disability resources cards flex*/
+    #resources-cards {
+      display: block;
+    }
+    .card {
+        width: 70%;
+        max-width: 400px;
+        margin: 25px auto;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    /*accessibility map sidebar*/
+    main {
+        width: 100vw !important;
+        height: 68vh;
+        position: absolute;
+        top: 32vh;
+        left: 0 !important;
+    }
     
     #sidebar, #sidebar-container, #route-input {width: 100vw;}
 
@@ -401,42 +406,39 @@ footer {
         top: 10vh;
         left: 0;
         width: calc(100vw + 12px);
-        height: 15vh;
+        height: 22vh;
     }
 
-    #input-fields {width: 65%;}
+    #route-input img {padding-bottom: 6vh;}
+
+    #input-fields {
+        width: 65%;
+        padding-bottom: 5vh;
+    }
 
     #route-info {
-        top: 70vh;
-        width: 70%;
-        margin: 20px 20%;
+        top: 15vh;
+        width: 100vw;
+        margin: 0;
         padding-bottom: 20vh;
+        visibility: hidden;
     }
 
-    #info-header img {
-        visibility: visible;
-        display: block;
+    #info-header, #access-features {
+        text-align: left;
+        width: 80%;
+        margin: 40px auto 0;
+        visibility: hidden;
     }
 
     #finish-route, #find-route {
-        left: 50%;
-        width: 10%;
+        height: 50px;
+        width: 33%;
+        position: fixed;
+        left: 33%;
+        top: 25vh;
         min-width: 60px;
-        margin-top: 20px;
-        top: 70vh;
-    }
-
-    /*service request form page*/
-    #request-instructions {margin-top: 23vh;}
-
-    /*disability resources cards flex*/
-    #resources-cards {
-      display: block;
-    }
-    .card {
-        width: 70%;
-        max-width: 400px;
-        margin: 25px auto;
+        visibility: visible;
     }
 }
 
@@ -483,15 +485,14 @@ footer {
         padding: 10px;
     }
 
-    /* route info bottom bar*/
-    #route-info {
-        width: 80%;
-        margin: 10px 15% 20px;
+    #info-header, #access-features {
+        text-align: left;
+        width: 90%;
+        margin: 40px auto 0;
     }
 
     #finish-route, #find-route {
-        left: 70%;
-        margin-top: 10px;
+        bottom: 10vh;
     }
 
     #access-summary, #directions {width: 60vw;}
@@ -512,12 +513,7 @@ footer {
     #input-fields {width: 75%;}
 
     #route-info {
-        width: 85%;
-        margin: 10px 10% 20px;
-    }
-
-    #finish-route, #find-route {
-        left: 73%;
+        width: 90%;
     }
 
     #submit-report {
