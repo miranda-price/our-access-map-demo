@@ -122,6 +122,12 @@ aside {
     height: calc(90vh - 100px);
 }
 
+#close-info {
+    visibility: hidden;
+}
+
+#filter-access {visibility: hidden;}
+
 #info-header {
     display: flex;
     margin-bottom: 10px;
@@ -218,6 +224,7 @@ main {
     top: 10vh;
     width: 67vw;
     height: 90vh;
+    visibility: visible !important;
 }
 
 .leaflet-control-layers-overlays > label {padding: 5px 0;}
@@ -416,19 +423,26 @@ footer {
         padding-bottom: 5vh;
     }
 
+    #filter-access {visibility: visible;}
+
+    #close-info {
+        position: fixed;
+        top: 34vh;
+        right: 7vw;
+        visibility: visible;
+    }
+
     #route-info {
-        top: 15vh;
+        top: 20vh;
         width: 100vw;
         margin: 0;
         padding-bottom: 20vh;
-        visibility: hidden;
     }
 
     #info-header, #access-features {
         text-align: left;
         width: 80%;
         margin: 40px auto 0;
-        visibility: hidden;
     }
 
     #finish-route, #find-route {
