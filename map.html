@@ -42,7 +42,7 @@
 
   <body id="accessibility-map">
     <div id="routing">
-        <aside id="sidebar-container" hidden>
+        <aside id="sidebar-container">
             <div id="sidebar">
                 <div id="route-input">
                     <div id="input-fields">
@@ -117,33 +117,6 @@
             </div>
         </aside>
         <main id="map" class="overlay-map"></main>
-    </div>
-      <!--input overlay before both endpoints selected-->
-    <div id="input-overlay">
-        <div class="input-group mb-3">
-          <select class="form-select" aria-label="Select starting building" id="start-building-overlay" name="start-building-overlay" onchange="propogateFloors('start-building-overlay', 'start-floor-overlay')">
-            <option selected></option>
-            <option>Burton</option>
-            <option>Morey</option>
-            <option>Rettner</option>
-            <option>Rush Rhees</option>
-          </select>
-            <select class="form-select" aria-label="Select starting floor" id="start-floor-overlay" name="start-floor-overlay">
-                <option selected>Floor</option>
-            </select>
-        </div>
-        <div class="input-group mb-3">
-          <select class="form-select" aria-label="Select destination building" id="end-building-overlay" name="end-building-overlay" onchange="propogateFloors('end-building-overlay', 'end-floor-overlay')">
-            <option selected></option>
-            <option>Burton</option>
-            <option>Morey</option>
-            <option>Rettner</option>
-            <option>Rush Rhees</option>
-          </select>
-            <select class="form-select" aria-label="Select destination floor" id="end-floor-overlay" name="end-floor-overlay">
-                <option selected>Floor</option>
-            </select>
-        </div>
     </div>
     
     <!-- Confirmation pop up -->

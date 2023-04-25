@@ -85,7 +85,7 @@ aside {
 
 #sidebar {
     height: 90vh;
-    width: 25vw;
+    width: 33vw;
     background-color: #f8f9fa;
     position: fixed;
     top: 10vh;
@@ -94,7 +94,7 @@ aside {
 
 #route-input {
     background-color: #00205B;
-    width: calc(25vw + 10px);
+    width: calc(33vw + 10px);
     position: fixed;
     top: 10vh;
     left: 0;
@@ -106,6 +106,10 @@ aside {
     justify-content: center;
     flex-direction: row;
     padding: 0 10px;
+}
+
+#input-fields {
+    width: 25vw;
 }
 
 #route-input img {
@@ -194,8 +198,9 @@ h3 {
 
 #find-route {
     width: 15vw;
-    position: relative;
-    top: calc(92vh - 80px);
+    position: fixed;
+    bottom: 5vh;
+    left: 4vw;
     margin: 0 5vw;
     background-color: #FFC70A;
     color: #363636;
@@ -212,27 +217,12 @@ h3 {
     z-index: 995;
 }
 
-main.overlay-map {
-    position: fixed;
-    left: 0vw;
-    top: 10vh;
-    width: 100vw;
-    height: 90vh;
-}
-
 main {
     position: fixed;
-    left: 0;
+    left: 33vw;
     top: 10vh;
-    width: 100vw;
+    width: 67vw;
     height: 90vh;
-}
-
-#input-overlay {
-    position: absolute;
-    top: calc(10vh + 32px);
-    left: 70px;
-    z-index: 990;
 }
 
 .leaflet-control-layers-overlays > label {padding: 5px 0;}
@@ -240,13 +230,6 @@ main {
 .leaflet-retina .leaflet-control-layers-toggle {background-image: url("assets/geo-fill.svg");}
 
 .layer-key > img {margin: 0 5px;}
-
-#start-building-overlay, #end-building-overlay {
-    width: 250px;
-}
-#start-floor-overlay, #end-floor-overlay {
-    width: 100px;
-}
 
 #start-building, #end-building {
     width: 70%;
@@ -379,22 +362,11 @@ footer {
 
 @media screen and (max-width: 1150px) {
     /*accessibility map sidebar*/
-    main.overlay-map {
-        width: 100vw;
-        left: 0;
-        top: 10vh;
-    }
     #sidebar, #sidebar-container, #route-input {width: 33vw;}
 }
 
 @media screen and (max-width: 900px) {
     /*accessibility map sidebar*/
-    main.overlay-map {
-        width: 100vw;
-        position: absolute;
-        left: 0;
-    }
-
     main {
         width: 100vw !important;
         height: 55vh;
@@ -509,25 +481,6 @@ footer {
     #link-buttons a {
         width: 80vw;
         padding: 10px;
-    }
-
-    /*route input overlay*/
-    #input-overlay {
-        width: 70%;
-        left: 15%;
-        top: 25vh;
-    }
-
-    #input-overlay .input-group {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    #start-building-overlay, #end-building-overlay {
-        width: 150px;
-    }
-    #start-floor-overlay, #end-floor-overlay {
-        width: 80px;
     }
 
     /* route info bottom bar*/

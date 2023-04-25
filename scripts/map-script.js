@@ -120,33 +120,10 @@ function propogateFloors(selectBuilding, selectFloor) {
     }
 
     floorOptions(selectFloor, floors, main);
-
-    if (selectBuilding == 'start-building-overlay' || selectBuilding == 'end-building-overlay') {
-        if (document.getElementById('start-building-overlay').value != "" && document.getElementById('end-building-overlay').value != "") {
-            document.getElementById('input-overlay').hidden = true;
-            document.getElementById('sidebar-container').hidden = false;
-            document.getElementById('start-building').value = document.getElementById('start-building-overlay').value;
-            document.getElementById('end-building').value = document.getElementById('end-building-overlay').value;
-            document.getElementById('start-floor').innerHTML = document.getElementById('start-floor-overlay').innerHTML;
-            document.getElementById('start-floor').value = document.getElementById('start-floor-overlay').value;
-            document.getElementById('end-floor').innerHTML = document.getElementById('end-floor-overlay').innerHTML;
-            document.getElementById('end-floor').value = document.getElementById('end-floor-overlay').value;
-
-            
-            document.getElementById('map').style.width = "75vw";
-            document.getElementById('map').style.left = "25vw";
-
-            if (selectBuilding == 'start-building-overlay') {floorOptions('start-floor', floors, main);}
-            if (selectBuilding == 'end-building-overlay') {floorOptions('end-floor', floors, main);}
-            document.getElementById('map').classList.remove('overlay-map');
-        }
-    }
 }
 // propogate floors again on refresh
 if (document.getElementById('start-building').value != "") {propogateFloors('start-building', 'start-floor');}
 if (document.getElementById('end-building').value != "") {propogateFloors('end-building', 'end-floor');}
-if (document.getElementById('start-building-overlay').value != "") {propogateFloors('start-building-overlay', 'start-floor-overlay');}
-if (document.getElementById('end-building-overlay').value != "") {propogateFloors('end-building-overlay', 'end-floor-overlay');}
 
 var userLat = 43.1279308;
 var userLng = -77.6299522;
@@ -162,7 +139,7 @@ function showPosition(position) {
     }
     userLoc.setLatLng([userLat, userLng]);
     //find building
-    var startBuilding = document.getElementById('start-building-overlay');
+    var startBuilding = document.getElementById('start-building');
     if(startBuilding.value == "") {
         if (userLat >= 43.1291045 && userLng >= -77.6315905 && userLat <= 43.1294653 && userLng <= -77.6310999) {
             startBuilding.value = "Burton";
@@ -273,7 +250,6 @@ function showPosition(position) {
             startBuilding.value = "";
         }
         if (startBuilding.value != "") {
-            propogateFloors('start-building-overlay', 'start-floor-overlay')
             propogateFloors('start-building', 'start-floor')
         }
     }
@@ -915,13 +891,10 @@ function confirmMapReport() {
 
 function endRoute() {
     //reset inputs
-    document.getElementById('input-overlay').hidden = false;
-    document.getElementById('sidebar-container').hidden = true;
-    document.getElementById('sidebar').hidden = true;
+    document.getElementById('start-building').value = "";
+    document.getElementById('start-floor').value = "";
     document.getElementById('end-building').value = "";
     document.getElementById('end-floor').value = "";
-    document.getElementById('end-building-overlay').value = "";
-    document.getElementById('end-floor-overlay').value = "";
     getLocation();
 
     // reset sidebar
@@ -932,11 +905,6 @@ function endRoute() {
 
     // reset map
     routeMarkers.clearLayers();
-    document.getElementById('map').style.width = "100vw";
-    document.getElementById('map').style.left = "0px";
-    document.getElementById('map').style.top = "10vh";
-    document.getElementById('map').style.height = "90vh";
-    document.getElementById('map').classList.add('overlay-map');
 
     // reset find route inputs
     start = null;
