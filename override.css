@@ -469,7 +469,7 @@ footer {
         overflow-y: hidden;
         min-width: 100vw;
         width: auto;
-        margin-top: 18vh;
+        margin-top: 17vh;
         float: inline-end;
     }
 
@@ -484,11 +484,11 @@ footer {
 
     #link-buttons {
         width: 100vw;
-        height: 27vh;
+        height: 25vh;
         display: flex;
         flex-direction: column;
         position: fixed;
-        bottom: 10vh;
+        bottom: 5vh;
         left: 0;
         justify-content: space-around;
         align-items: center;
