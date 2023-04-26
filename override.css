@@ -200,12 +200,14 @@ h3 {
 #current-dir-check {
     width: calc(33vw - 20px);
     display: flex;
-    align-items: center;
 }
 
-#current-dir-check input {width: 35px;}
+.dir-step input {
+    width: 35px;
+    margin-top: 10px;
+}
 
-#current-dir-check label {margin-left: 10px;}
+.dir-step label {margin-left: 10px;}
 
 .dir-step-overview {
     display: flex;
@@ -230,28 +232,33 @@ h3 {
 }
 
 #directions-container {
-    position: absolute;
-    top: 10vh;
-    left: 15px;
+    position: fixed;
+    top: calc(10vh + 160px);
+    left: 0;
+    width: 33vw;
+    padding: 5px 20px;
+    height: calc(75vh - 150px);
+    overflow-y: scroll;
 }
 
 #display-directions {
-    position: relative;
-    bottom: 50px;
-    left: 10px;
+    width: 100%;
 }
 
 #directions {
     list-style: none;
-    padding: 0 10px 75px 0;
+    padding: 0 10px;
     height: 50vh;
-    overflow-y: scroll;
-    width: 22vw;
+    width: 100%;
 }
 
 #directions li {
     padding-bottom: 5px;
 }
+
+#directions .dir-step-report {fill: #363636;}
+
+.dir-step-check {width: 100%;}
 
 #find-route {
     width: 15vw;
