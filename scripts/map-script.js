@@ -712,6 +712,38 @@ function ifReverse(edge, next) {
     return edge.substring(0, next.length) == next;
 }
 
+// determine what direction step is shown in topbar
+function currentStep() {
+    document.getElementById('current-dir-check').children[0].checked = false;
+    var steps = document.getElementById('directions').children;
+    var current = null;
+    for (let i = 0; i<steps.length; i++) {
+        if (!steps[i].children[1].children[0].checked && current == null) {current = steps[i]} 
+    }
+    if (current != null) {
+        document.getElementById('current-dir-building').innerHTML = current.children[0].children[0].innerHTML;
+        document.getElementById('current-dir-type').innerHTML = current.children[0].children[1].innerHTML;
+        document.getElementById('current-dir-step').innerHTML = current.children[1].children[1].children[0].innerHTML;
+        document.getElementById('current-dir-check').children[0].value = current.children[1].children[0].value;
+        document.getElementById('current-dir-check').children[1].htmlFor = current.children[1].children[0].id;
+    }
+    else {document.getElementById('current-dir-check').children[0].checked = true;}
+}
+
+function checkFromCurrent(event) {
+    if (event.target.checked) {
+        var dirId = event.target.value;
+        var steps = document.getElementById('directions').children;
+        for (let i = 0; i<steps.length; i++) {
+            if (steps[i].children[1].children[0].value == dirId) {
+                steps[i].children[1].children[0].checked = true;
+            }
+        }
+    }
+    event.target.checked = false;
+    currentStep()
+}
+
 var routeMarkers = L.layerGroup();
 
 function display() {
@@ -745,7 +777,12 @@ function display() {
             var dirLocation = document.createElement('p');
             dirLocation.innerHTML = part.location;
             var dirType = document.createElement('p');
-            dirType.innerHTML = part.type;
+            if (part.type == "floor") {dirType.innerHTML = "Change floors";}
+            else if (part.type == "connection") {dirType.innerHTML = "Connected buildings";}
+            else if (part.type == "path") {dirType.innerHTML = "Outdoor path";}
+            else if (part.type == "level") {dirType.innerHTML = "Cross building level";}
+            else if (part.type == "tunnel") {dirType.innerHTML = "Tunnel";}
+            else {dirType.innerHTML = part.type;}
             var dirReportIcon = document.createElement('img');
             // add report icon
             dirReportIcon.src = "assets/exclamation-octagon-fill-dark.svg";
@@ -755,6 +792,7 @@ function display() {
             dirReportIcon.addEventListener('click', console.log('report function'))
             overview.appendChild(dirLocation);
             overview.appendChild(dirType);
+            overview.appendChild(dirReportIcon)
 
             // step checkbox/description
             var formCheck = document.createElement('div');
@@ -762,12 +800,13 @@ function display() {
             formCheck.classList.add('dir-step-check');
             var stepInput = document.createElement('input');
             stepInput.classList.add('form-check-input');
-            stepInput.type = 'checkbox'
+            stepInput.type = 'checkbox';
             stepInput.value = part.id;
             stepInput.id = part.id;
+            stepInput.addEventListener('change', currentStep)
             var stepLabel = document.createElement('label');
             stepLabel.classList.add('form-check-label');
-            stepLabel.for = 'part.id';
+            stepLabel.htmlFor = 'part.id';
             var stepText = document.createElement('p');
             stepText.classList.add('dir-step-text');
             ifReverse(part.id, end.route[end.route.indexOf(part) + 1].id) ? stepText.innerHTML = part.revDir : stepText.innerHTML = part.dir;
@@ -780,34 +819,8 @@ function display() {
             li.appendChild(formCheck);
             directions.appendChild(li);
         }
-
-        /*if (part.coords != null && part.coords.length > 0) {part instanceof Node ? mapPoints.push(part) : mapLines.push(part)}
-        if (part instanceof Edge) {
-            if (part.dir != null) {
-                var li = document.createElement('li');
-                var formCheck = document.createElement('div');
-                formCheck.classList.add('form-check');
-                var checkInput = document.createElement('input');
-                checkInput.classList.add('form-check-input');
-                checkInput.type = "checkbox";
-                checkInput.value = part.id;
-                checkInput.id = part.id;
-                var checkLabel = document.createElement('label');
-                checkLabel.classList.add('form-check-label');
-                checkLabel.for = part.id;
-                ifReverse(part.id, end.route[end.route.indexOf(part) + 1].id) ? checkLabel.appendChild(document.createTextNode(part.revDir)) : checkLabel.appendChild(document.createTextNode(part.dir));
-                formCheck.appendChild(checkInput);
-                formCheck.appendChild(checkLabel);
-                li.appendChild(formCheck);
-                if (part.report != null) {  
-                    var span = document.createElement('span');
-                    span.innerHTML = '<button class="btn btn-light reportbutton" style="margin-left:25px;" id= "' + part.id +'-report-button" onclick="reportFromDir(' + part.id + ')" data-bs-toggle="modal" data-bs-target="#map-report">Report</button>';
-                    li.appendChild(span);
-                }
-                directions.appendChild(li);
-            }
-        }*/
     })
+    currentStep();
     routeMarkers.clearLayers(); // reset from prev
     if (allCoords.length > 1){
     startCoords = allCoords[0];
