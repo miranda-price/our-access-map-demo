@@ -54,6 +54,8 @@ html,body{
     float: inline-end;
 }
 
+#banner h1 {height: 12vh;}
+
 #banner h2 {
     width: 100vw;
     height: 15vh;
@@ -126,7 +128,10 @@ aside {
     visibility: hidden;
 }
 
-#filter-access {visibility: hidden;}
+#filter-access {
+    visibility: hidden;
+    display: none;
+}
 
 #info-header {
     display: flex;
@@ -161,16 +166,67 @@ h3 {
     padding-left: 20px;
 }
 
-#route-length {
-    position: relative;
-    bottom: 45px;
-    left: 18vw;
+#input-bar {
+    background-color: #FFC70A;
+    height: 30px;
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    width: 33vw;
+    padding: 1px 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-#access-summary {
-    position: relative;
-    bottom: 45px;
-    width: 25vw;
+#display-input {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+#input-bar img {padding: 3px 0;}
+
+#current-dir-box {
+    background-color: #00205B;
+    color: #f8f9fa;
+    height: 120px;
+    position: fixed;
+    top: calc(10vh + 30px);
+    left: 0;
+    width: 33vw;
+    padding: 5px 10px;
+}
+
+#current-dir-check {
+    width: calc(33vw - 20px);
+    display: flex;
+    align-items: center;
+}
+
+#current-dir-check input {width: 35px;}
+
+#current-dir-check label {margin-left: 10px;}
+
+.dir-step-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dir-step-overview > p {margin-bottom: 0;}
+
+.dir-step-report {
+    height: 28px;
+    padding: 2px 0;
+}
+
+#toggle-dir {
+    height: 32px;
+    padding: 2px 0;
+}
+
+.dir-step-p {
+    width: calc(33vw - 140px);
 }
 
 #directions-container {
@@ -423,7 +479,10 @@ footer {
         padding-bottom: 5vh;
     }
 
-    #filter-access {visibility: visible;}
+    #filter-access {
+        visibility: visible;
+        display: block;
+    }
 
     #close-info {
         position: fixed;
@@ -454,6 +513,25 @@ footer {
         min-width: 60px;
         visibility: visible;
     }
+
+    #input-bar {
+        width: 100vw;
+    }
+    
+    #input-bar img {padding: 3px 0;}
+    
+    #current-dir-box {
+        height: calc(22vh - 30px);
+        width: 100vw;
+    }
+    
+    #current-dir-check {
+        width: calc(100vw - 20px);
+    }
+    
+    .dir-step-p {
+        width: calc(100vw - 140px);
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -473,6 +551,8 @@ footer {
         float: inline-end;
     }
 
+    #banner h1 {height: 7vh;}
+
     #banner h2 {
         height: 10vh;
         position: fixed;
@@ -488,7 +568,7 @@ footer {
         display: flex;
         flex-direction: column;
         position: fixed;
-        bottom: 5vh;
+        bottom: 2vh;
         left: 0;
         justify-content: space-around;
         align-items: center;
@@ -508,8 +588,6 @@ footer {
     #finish-route, #find-route {
         bottom: 10vh;
     }
-
-    #access-summary, #directions {width: 60vw;}
 
     #resources-cards {
         width: 90%;

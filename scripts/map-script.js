@@ -804,35 +804,6 @@ function display() {
     document.getElementById('finish-route').hidden = false;
 }
 
-var expanded = false;
-
-function expandInfo() {
-    var info = document.getElementById('route-info');
-    var mapBox = document.getElementById('map');
-    var mapBoxControls = document.getElementsByClassName('leaflet-control-zoom')[0];
-    var findRouteButton = document.getElementById('find-route');
-    var finishRouteButton = document.getElementById('finish-route');
-    if (!expanded) {
-        console.log('expand')
-        info.style.top = "15vh";
-        mapBox.style.height = "0";
-        mapBoxControls.style.hidden = true;
-        findRouteButton.style.top = "15vh";
-        finishRouteButton.style.top = "15vh";
-        document.getElementById('expand-icon').src = "assets/collapse-vertical-regular-24.png";
-    }
-    else {
-        console.log('collapse');
-        info.style.top = "70vh";
-        mapBox.style.height = "55vh";
-        mapBoxControls.style.hidden = false;
-        findRouteButton.style.top = "70vh";
-        finishRouteButton.style.top = "70vh";
-        document.getElementById('expand-icon').src = "assets/expand-vertical-regular-24.png";
-    }
-    expanded = !expanded;
-}
-
 function reportFromDir(reportElement) {
     console.log('report from dir')
     var reportOptions = reportElement.report;

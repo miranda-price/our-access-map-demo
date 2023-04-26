@@ -44,7 +44,7 @@
     <div id="routing">
         <aside id="sidebar-container">
             <div id="sidebar">
-                <div id="route-input">
+                <div id="route-input" hidden>
                   <img src="assets/funnel-fill.svg" id="filter-access" alt="icon to bring up access features checkboxes" role="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;">
                     <div id="input-fields">
                         <div class="input-group mb-3">
@@ -74,7 +74,7 @@
                     </div>
                     <img src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
                 </div>
-                <div id="route-info">
+                <div id="route-info" hidden>
                     <button type="button" class="btn-close" id="close-info" aria-label="Close" onclick="document.getElementById('map').hidden = false"></button>
                     <div id="info-header"><h2>Destination</h2></div>
                     <div id="access-features">
@@ -106,12 +106,35 @@
                             </div>
                         </form>
                     </div>
-                    <div id="directions-container" hidden>
-                        <p id="route-length"></p>
-                        <p id="access-summary">Allow: </p>
-                        <div id="display-directions">
-                            <ul id="directions"></ul>
-                        </div>
+                </div>
+                <div id="route-directions">
+                  <div id="input-bar">
+                    <img src="assets/arrow-return-left.svg" id="toggle-dir" alt="icon to go back to adjust route requirements" role="button" onclick="console.log('go back')">
+                    <div id="display-input">
+                      <p id="display-start">Burton 1</p>
+                      <p>&#10141</p>
+                      <p id="display-end">Rettner 2</p>
+                    </div>
+                    <p id="total-distance">678 feet</p>
+                  </div>
+                  <div id="current-dir-box" class="current-dir">
+                    <div class="dir-step-overview">
+                      <img src="assets/list-task.svg" id="toggle-dir" alt="icon to bring up list of all steps for route" role="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;">
+                      <p id="current-dir-building">Rettner</p>
+                      <p id="current-dir-type">Change floors</p>
+                      <img src="assets/exclamation-octagon-fill.svg" class="dir-step-report" alt="icon to report broken access feature for this step in the route" role="button" onclick="console.log('report function')">
+                    </div>
+                    <div class="form-check dir-step" id="current-dir-check">
+                      <input class="form-check-input" type="checkbox" value="edge-or-node" id="edge-or-node">
+                      <label class="form-check-label" for="edge-or-node">
+                        <p id="current-dir-step">Move from 1st floor to 2nd floor Move from 1st floor to 2nd floor Move from 1st floor to 2nd floor</p>
+                      </label>
+                  </div>
+                  </div>
+                  </div>
+                <div id="directions-container" hidden>
+                    <div id="display-directions">
+                        <ul id="directions"></ul>
                     </div>
                 </div>
                 <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
