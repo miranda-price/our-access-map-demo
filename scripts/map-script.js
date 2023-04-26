@@ -6,7 +6,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-document.getElementById('access-features').hidden = false;
+document.getElementById('route-input').hidden = false;
+document.getElementById('route-info').hidden = false;
+document.getElementById('route-directions').hidden = true;
 document.getElementById('directions-container').hidden = true;
 document.getElementById('find-route').hidden = false;
 document.getElementById('finish-route').hidden = true;
@@ -721,27 +723,27 @@ function display() {
     var allow_stairs = document.getElementById("allowStairs").checked;
     var allow_manual_doors = document.getElementById("allowDoors").checked;
     var allow_non_wc_elevators = document.getElementById("allowElevators").checked;
-    accessSummary = document.getElementById('access-summary');
-    accessSummary.hidden = false;
+    //accessSummary = document.getElementById('access-summary');
+    //accessSummary.hidden = false;
     var allowed = [];
     var avoid = [];
     allow_steps ? allowed.push("steps") : avoid.push("steps");
     allow_stairs ? allowed.push("stairs") : avoid.push("stairs");
     allow_manual_doors ? allowed.push("manual doors") : avoid.push("manual doors");
     allow_non_wc_elevators ? allowed.push("non-wheelchair elevators") : avoid.push("non-wheelchair elevators");
-    if (allowed.length == 0) {accessSummary.hidden = true;}
+    /*if (allowed.length == 0) {accessSummary.hidden = true;}
     else {
         allowed.forEach(allowance => {
             if (allowance == allowed[0]) {accessSummary.innerHTML =  accessSummary.innerHTML + allowance}
             else {accessSummary.innerHTML =  accessSummary.innerHTML + ", " + allowance}
         })
-    }
-    console.log(accessSummary.innerHTML)
+    }*/
+    //console.log(accessSummary.innerHTML)
     // display route length
     document.getElementById('route-length').innerHTML = Math.round(3.28084*end.length) + " feet";
     // display route directions
     directions = document.getElementById("directions");
-    directions.innerHTML = "";
+    //directions.innerHTML = "";
     var mapPoints = [];
     var mapLines = [];
     var allCoords = [];
@@ -798,7 +800,9 @@ function display() {
     routeMarkers.addLayer(endMarker);}
     routeMarkers.addLayer(L.polyline(allCoords));
     routeMarkers.addTo(map);
-    document.getElementById('access-features').hidden = true;
+    document.getElementById('route-input').hidden = true;
+    document.getElementById('route-info').hidden = true;
+    document.getElementById('route-directions').hidden = false;
     document.getElementById('directions-container').hidden = false;
     document.getElementById('find-route').hidden = true;
     document.getElementById('finish-route').hidden = false;
@@ -869,7 +873,9 @@ function endRoute() {
     getLocation();
 
     // reset sidebar
-    document.getElementById('access-features').hidden = false;
+    document.getElementById('route-input').hidden = false;
+    document.getElementById('route-info').hidden = false;
+    document.getElementById('route-directions').hidden = true;
     document.getElementById('directions-container').hidden = true;
     document.getElementById('find-route').hidden = false;
     document.getElementById('finish-route').hidden = true;

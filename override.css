@@ -215,6 +215,11 @@ h3 {
     align-items: center;
 }
 
+#toggle-dir {
+    visibility: hidden;
+    display: none;
+}
+
 .dir-step-overview > p {margin-bottom: 0;}
 
 .dir-step-report {
@@ -521,6 +526,11 @@ footer {
         visibility: visible;
     }
 
+    #toggle-dir {
+        visibility: visible;
+        display: block;
+    }
+
     #input-bar {
         width: 100vw;
     }
@@ -538,6 +548,19 @@ footer {
     
     .dir-step-p {
         width: calc(100vw - 140px);
+    }
+    
+    #directions-container {
+        top: 34vh;
+        width: 100vw;
+        padding: 5px 20px;
+        height: 55vh;
+        overflow-y: scroll;
+    }
+    
+    #finish-route {
+        height: 30px;
+        top: 26vh;
     }
 }
 
