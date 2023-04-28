@@ -125,8 +125,8 @@ function propogateFloors(selectBuilding, selectFloor) {
     floorOptions(selectFloor, floors, main);
 }
 // propogate floors again on refresh
-if (document.getElementById('start-building').value != "") {propogateFloors('start-building', 'start-floor');}
-if (document.getElementById('end-building').value != "") {propogateFloors('end-building', 'end-floor');}
+if (document.getElementById('start-building').value != "Starting") {propogateFloors('start-building', 'start-floor');}
+if (document.getElementById('end-building').value != "Destination") {propogateFloors('end-building', 'end-floor');}
 
 var userLat = 43.1279308;
 var userLng = -77.6299522;
@@ -143,7 +143,7 @@ function showPosition(position) {
     userLoc.setLatLng([userLat, userLng]);
     //find building
     var startBuilding = document.getElementById('start-building');
-    if(startBuilding.value == "") {
+    if(startBuilding.value == "Starting") {
         if (userLat >= 43.1291045 && userLng >= -77.6315905 && userLat <= 43.1294653 && userLng <= -77.6310999) {
             startBuilding.value = "Burton";
         } else if (userLat >= 43.1283453 && userLng >= -77.6301887 && userLat <= 43.1287222 && userLng <= -77.6299084) {
@@ -250,9 +250,9 @@ function showPosition(position) {
             //startBuilding.value = "Kendrick";
         }
         else {
-            startBuilding.value = "";
+            startBuilding.value = "Starting";
         }
-        if (startBuilding.value != "") {
+        if (startBuilding.value != "Starting") {
             propogateFloors('start-building', 'start-floor')
         }
     }
@@ -747,7 +747,9 @@ function checkFromCurrent(event) {
 var routeMarkers = L.layerGroup();
 
 function display() {
-    // display route length
+    // display route summary
+    document.getElementById('display-start').innerHTML = document.getElementById('start-building').value + " " + document.getElementById('start-floor').value
+    document.getElementById('display-end').innerHTML = document.getElementById('end-building').value + " " + document.getElementById('end-floor').value
     document.getElementById('route-length').innerHTML = Math.round(3.28084*end.length) + " feet";
     // display route directions
     directions = document.getElementById("directions");
@@ -898,12 +900,7 @@ function confirmMapReport() {
     document.getElementById('confirm-report-date').innerHTML = "Date: " + format(today);
 }
 
-function endRoute() {
-    //reset inputs
-    document.getElementById('start-building').value = "";
-    document.getElementById('start-floor').value = "";
-    document.getElementById('end-building').value = "";
-    document.getElementById('end-floor').value = "";
+function adjustRoute() {
     getLocation();
 
     // reset sidebar
@@ -920,4 +917,15 @@ function endRoute() {
     // reset find route inputs
     start = null;
     end = null;
+}
+
+function endRoute() {
+    //reset inputs
+    document.getElementById('start-building').value = "";
+    document.getElementById('start-floor').value = "";
+    document.getElementById('end-building').value = "";
+    document.getElementById('end-floor').value = "";
+    located = false;
+    
+    adjustRoute();
 }

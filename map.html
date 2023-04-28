@@ -46,7 +46,7 @@
                     <div id="input-fields">
                         <div class="input-group mb-3">
                           <select class="form-select" aria-label="Select starting building" id="start-building" name="start-building" onchange="propogateFloors('start-building', 'start-floor')">
-                            <option selected></option>
+                            <option selected>Starting</option>
                             <option>Burton</option>
                             <option>Morey</option>
                             <option>Rettner</option>
@@ -58,7 +58,7 @@
                         </div>
                         <div class="input-group mb-3">
                           <select class="form-select" aria-label="Select destination building" id="end-building" name="end-building" onchange="propogateFloors('end-building', 'end-floor')">
-                            <option selected></option>
+                            <option selected>Destination</option>
                             <option>Burton</option>
                             <option>Morey</option>
                             <option>Rettner</option>
@@ -106,7 +106,7 @@
                 </div>
                 <div id="route-directions" hidden>
                   <div id="input-bar">
-                    <img src="assets/arrow-return-left.svg" id="redo-input" alt="icon to go back to adjust route requirements" role="button" onclick="endRoute()">
+                    <img src="assets/arrow-return-left.svg" id="redo-input" alt="icon to go back to adjust route requirements" role="button" onclick="adjustRoute()">
                     <div id="display-input">
                       <p id="display-start">Burton 1</p>
                       <p>&#10141</p>
