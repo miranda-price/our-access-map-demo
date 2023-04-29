@@ -203,11 +203,16 @@ h3 {
 }
 
 .dir-step input {
-    width: 35px;
+    width: 15px;
+    height: 15px;
     margin-top: 10px;
 }
 
-.dir-step label {margin-left: 10px;}
+.dir-step label {
+    margin-left: 12px;
+    max-height: 12vh;
+    overflow-y: scroll;
+}
 
 .dir-step-overview {
     display: flex;
@@ -530,6 +535,8 @@ footer {
         visibility: visible;
         display: block;
     }
+
+    .dir-step label {max-height: 7vh;}
 
     #input-bar {
         width: 100vw;
