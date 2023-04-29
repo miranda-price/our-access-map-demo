@@ -344,31 +344,25 @@ function reportIcon(description) {
 var elevatorsWC = L.layerGroup([
     L.marker([43.1276125, -77.6291051], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Bausch and Lomb elevator')}),
     L.marker([43.1274355, -77.6299342], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('main elevator on north side of Dewey')}),
-    L.marker([43.1283968, -77.629964], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Morey elevator')}),
+    L.marker([43.1283968, -77.629964], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Morey elevator')}),     
     L.marker([43.1287886, -77.6283118], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees green elevators')}),
     L.marker([43.1285332, -77.6287911], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees silver elevators')}),
+    L.marker([43.1285692, -77.6280382], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('iZone elevator')}),    
+    L.marker([43.1285175, -77.6293638], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Morey elevator')}),    
+    L.marker([43.1282199, -77.6315052], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Todd elevator')}),     
+    L.marker([43.1291732, -77.6269654], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('UHS elevator')}),      
+    L.marker([43.1270961, -77.6324882], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Chapel elevator')}),   
+    L.marker([43.1277821, -77.628313], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Meliora elevator')}),   
     ])
     
-var elevatorsNotWC = L.layerGroup([
-    L.marker([43.1280796, -77.6307938], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Lattimore elevator')}),    
+    var elevatorsNotWC = L.layerGroup([
     L.marker([43.1268674, -77.6298621], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('lower level elevator on south side of Dewey')}),
-    L.marker([43.1285562, -77.6284588], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees blue elevators')}),
+    L.marker([43.1280796, -77.6307938], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Lattimore elevator')}),
     L.marker([43.128426, -77.6282768], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees yellow elevators')}),
+    L.marker([43.1285562, -77.6284588], {icon:ElevatorNotWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees blue elevators')}),
     ])
     
-var stairs = L.layerGroup([
-    L.marker([43.1275485, -77.6297659], {icon:stairsIcon}),
-    L.marker([43.1275985, -77.629621], {icon:stairsIcon}),
-    L.marker([43.1282961, -77.6298432], {icon:stairsIcon}),
-    L.marker([43.1283492, -77.6296488], {icon:stairsIcon}),
-    L.marker([43.1282856, -77.629008], {icon:stairsIcon}),
-    L.marker([43.1275883, -77.6311369], {icon:stairsIcon}),
-    L.marker([43.1275439, -77.6310123], {icon:stairsIcon}),
-    L.marker([43.1274337, -77.6310388], {icon:stairsIcon}),
-    L.marker([43.1279407, -77.6312298], {icon:stairsIcon}),
-    L.marker([43.1287609, -77.6289171], {icon:stairsIcon}),
-    L.marker([43.1285883, -77.6291013], {icon:stairsIcon}),
-    L.marker([43.128738, -77.6290179], {icon:stairsIcon}),
+    var stairs = L.layerGroup([
     L.marker([43.1276688, -77.6294263], {icon:stairsIcon}),
     L.marker([43.1278215, -77.629013], {icon:stairsIcon}),
     L.marker([43.1273017, -77.6290454], {icon:stairsIcon}),
@@ -381,10 +375,14 @@ var stairs = L.layerGroup([
     L.marker([43.1273277, -77.6302874], {icon:stairsIcon}),
     L.marker([43.1274329, -77.6295342], {icon:stairsIcon}),
     L.marker([43.1274118, -77.6296135], {icon:stairsIcon}),
+    L.marker([43.1275485, -77.6297659], {icon:stairsIcon}),
+    L.marker([43.1275985, -77.629621], {icon:stairsIcon}),
     L.marker([43.1283633, -77.6308529], {icon:stairsIcon}),
     L.marker([43.1281519, -77.630689], {icon:stairsIcon}),
     L.marker([43.1284164, -77.6298514], {icon:stairsIcon}),
     L.marker([43.1285104, -77.6296046], {icon:stairsIcon}),
+    L.marker([43.1282961, -77.6298432], {icon:stairsIcon}),
+    L.marker([43.1283492, -77.6296488], {icon:stairsIcon}),
     L.marker([43.1286647, -77.6300753], {icon:stairsIcon}),
     L.marker([43.1285523, -77.6301978], {icon:stairsIcon}),
     L.marker([43.1284771, -77.6284728], {icon:stairsIcon}),
@@ -394,44 +392,55 @@ var stairs = L.layerGroup([
     L.marker([43.1283698, -77.6289871], {icon:stairsIcon}),
     L.marker([43.1283162, -77.6286512], {icon:stairsIcon}),
     L.marker([43.1284745, -77.6287526], {icon:stairsIcon}),
-])
+    L.marker([43.1282856, -77.629008], {icon:stairsIcon}),
+    L.marker([43.1275883, -77.6311369], {icon:stairsIcon}),
+    L.marker([43.1275439, -77.6310123], {icon:stairsIcon}),
+    L.marker([43.1274337, -77.6310388], {icon:stairsIcon}),
+    L.marker([43.1279407, -77.6312298], {icon:stairsIcon}),
+    L.marker([43.1285883, -77.6291013], {icon:stairsIcon}),
+    L.marker([43.128738, -77.6290179], {icon:stairsIcon}),
+    L.marker([43.1287609, -77.6289171], {icon:stairsIcon}),
+    L.marker([43.1278049, -77.628136], {icon:stairsIcon}),
+    L.marker([43.1277523, -77.6280932], {icon:stairsIcon}),
+    L.marker([43.127457, -77.6282547], {icon:stairsIcon}),
+    L.marker([43.1271664, -77.632281], {icon:stairsIcon}),
+    ])
     
-var steps = L.layerGroup([
-    L.marker([43.1278898, -77.629309], {icon:stepsIcon}),
+    var steps = L.layerGroup([
     L.marker([43.1292073, -77.6314372], {icon:stepsIcon}),
     L.marker([43.1292527, -77.6313251], {icon:stepsIcon}),
     L.marker([43.1292927, -77.6312056], {icon:stepsIcon}),
+    L.marker([43.1278898, -77.629309], {icon:stepsIcon}),
     L.marker([43.1275354, -77.6302513], {icon:stepsIcon}),
     L.marker([43.127437, -77.6297163], {icon:stepsIcon}),
     L.marker([43.1275113, -77.6295178], {icon:stepsIcon}),
     L.marker([43.1280086, -77.6305709], {icon:stepsIcon}),
     L.marker([43.1284373, -77.6294587], {icon:stepsIcon}),
-])
+    ])
     
-var ramps = L.layerGroup([
+    var ramps = L.layerGroup([
     L.marker([43.1278946, -77.6292573], {icon:rampIcon}),
     L.marker([43.1275275, -77.6302802], {icon:rampIcon}),
     L.marker([43.1280017, -77.6305957], {icon:rampIcon}),
     L.marker([43.1284461, -77.6294503], {icon:rampIcon}),
     L.marker([43.1285883, -77.6290144], {icon:rampIcon}),
-])
+    ])
     
-var benches = L.layerGroup([
-    L.marker([43.1282528, -77.6300452], {icon:benchIcon}),
-    L.marker([43.1281894, -77.6302399], {icon:benchIcon}),
-    L.marker([43.1286943, -77.6287485], {icon:benchIcon}),
-    L.marker([43.1279306, -77.6299444], {icon:benchIcon}),
-    L.marker([43.1288705, -77.6290047], {icon:benchIcon}),
-    L.marker([43.1276439, -77.6298366], {icon:benchIcon}),
-    L.marker([43.1276896, -77.6296767], {icon:benchIcon}),
-    L.marker([43.1283067, -77.6297827], {icon:benchIcon}),
+    var benches = L.layerGroup([
     L.marker([43.1284767, -77.6291222], {icon:benchIcon}),
     L.marker([43.128124, -77.6288823], {icon:benchIcon}),
-    L.marker([43.1274054, -77.6307613], {icon:benchIcon}),
-    L.marker([43.1277758, -77.6310082], {icon:benchIcon}),
+    L.marker([43.1288705, -77.6290047], {icon:benchIcon}),
     L.marker([43.1289136, -77.6291993], {icon:benchIcon}),
     L.marker([43.129076, -77.6293036], {icon:benchIcon}),
-])
+    L.marker([43.1283067, -77.6297827], {icon:benchIcon}),
+    L.marker([43.1282528, -77.6300452], {icon:benchIcon}),
+    L.marker([43.1281894, -77.6302399], {icon:benchIcon}),
+    L.marker([43.1277758, -77.6310082], {icon:benchIcon}),
+    L.marker([43.1274054, -77.6307613], {icon:benchIcon}),
+    L.marker([43.1276439, -77.6298366], {icon:benchIcon}),
+    L.marker([43.1276896, -77.6296767], {icon:benchIcon}),
+    L.marker([43.1286943, -77.6287485], {icon:benchIcon}),
+    ])
 
 // layer controls
 var overlayMaps = {
