@@ -13,6 +13,7 @@
     </head>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a href="#accessibility-map" class="skip">Skip to main content</a>
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
             <img src="assets/our_access_logo.png" alt="" height="32" class="d-inline-block align-text-top">
@@ -23,6 +24,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
           <li class="nav-item">
           <a class="nav-link active" href="#">Accessibility Map</a>
         </li>
@@ -141,12 +145,12 @@
                     </div>
                   </div>
                 </div>
+                <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
                 <div id="directions-container" hidden>
                     <div id="display-directions">
                         <ul id="directions"></ul>
                     </div>
                 </div>
-                <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
                 <button class="btn btn-secondary" id="finish-route"  data-bs-toggle="modal" data-bs-target="#end-route-confirmation" hidden>Finish</button>
             </div>
         </aside>
