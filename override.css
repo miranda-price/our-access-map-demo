@@ -26,7 +26,7 @@ html,body{
 }
 
 .navbar {
-    height: 10vh;
+    height: 55px;
     position: fixed;
     top: 0;
     left: 0;
@@ -54,27 +54,27 @@ html,body{
 }
 
 #banner img {
-    min-height: 63vh;
-    max-height: 63vh;
+    min-height: calc(100vh - 150px);
+    max-height: calc(100vh - 150px);
     overflow-y: hidden;
     min-width: 100vw;
     width: auto;
-    margin-top: 22vh;
+    margin-top: 125px;
     float: inline-end;
 }
 
-#banner h1 {height: 12vh;}
+#banner h1 {height: 70px;}
 
 #banner h2 {
     width: 100vw;
-    height: 15vh;
+    height: 80px;
     position: fixed;
     bottom: 0;
     left: 0;
     margin-bottom: 0;
     background-color: #00205B;
     text-align: center;
-    padding-top: 4vh;
+    padding-top: 15px;
     color: #f8f9fa;
 }
 
@@ -82,24 +82,24 @@ html,body{
     width: 80vw;
     display: flex;
     position: fixed;
-    bottom: 20vh;
+    bottom: 100px;
     left: 10vw;
     justify-content: space-around;
     align-items: center;
 }
 
-#link-buttons a {padding: 18px 50px;}
+#link-buttons a {padding: 15px 50px;}
 
 aside {
-    height: 90vh;
+    height: calc(100vh - 55px);
 }
 
 #sidebar {
-    height: 90vh;
+    height: calc(100vh - 55px);
     width: 33vw;
     background-color: #f8f9fa;
     position: fixed;
-    top: 10vh;
+    top: 55px;
     left: 0;
 }
 
@@ -107,7 +107,7 @@ aside {
     background-color: #00205B;
     width: calc(33vw + 10px);
     position: fixed;
-    top: 10vh;
+    top: 55px;
     left: 0;
     height: 150px;
     z-index: 990;
@@ -129,8 +129,8 @@ aside {
 
 #route-info {
     position: absolute;
-    top: calc(110px + 10vh);
-    height: calc(90vh - 100px);
+    top: 165px;
+    height: calc(100vh - 165px);
 }
 
 #close-info {
@@ -163,7 +163,7 @@ h2.box {
     padding: 10px 0;
     z-index: 990;
     position: fixed;
-    top: calc(130px + 10vh);
+    top: 185px;
 }
 
 h3 {
@@ -179,7 +179,7 @@ h3 {
     background-color: #FFC70A;
     height: 30px;
     position: fixed;
-    top: 10vh;
+    top: 55px;
     left: 0;
     width: 33vw;
     padding: 1px 20px;
@@ -200,7 +200,7 @@ h3 {
     color: #f8f9fa;
     height: 120px;
     position: fixed;
-    top: calc(10vh + 30px);
+    top: 85px;
     left: 0;
     width: 33vw;
     padding: 5px 10px;
@@ -252,7 +252,7 @@ h3 {
 
 #directions-container {
     position: fixed;
-    top: calc(10vh + 160px);
+    top: 215px;
     left: 0;
     width: 33vw;
     padding: 5px 20px;
@@ -303,9 +303,9 @@ h3 {
 main {
     position: fixed;
     left: 33vw;
-    top: 10vh;
+    top: 55px;
     width: 67vw;
-    height: 90vh;
+    height: calc(100vh - 55px);
     visibility: visible !important;
 }
 
@@ -331,7 +331,7 @@ footer {
 #service-form-container {
     width: 80vw;
     max-width: 1000px;
-    margin: 10vh 10vw 15vh;
+    margin: 150px 10vw 120px;
 }
 
 #service-form-container > * {
@@ -346,7 +346,7 @@ footer {
     padding: 15px 0;
     text-align: center;
     position: fixed;
-    top: 10vh;
+    top: 55px;
     left: 0;
     z-index: 990;
 }
@@ -413,7 +413,7 @@ footer {
 }
 
 #banner-slides {
-    margin-top: calc(10vh + 70px);
+    margin-top: 125px;
     width: 100vw;
 }
 
@@ -449,13 +449,13 @@ footer {
         width: 100vw;
         display: flex;
         position: fixed;
-        bottom: 20vh;
+        bottom: 110px;
         left: 0;
         justify-content: space-around;
         align-items: center;
     }
 
-    #link-buttons a {padding: 18px;}
+    #link-buttons a {padding: 15px;}
 
     /*service request form page*/
     #request-instructions {margin-top: 23vh;}
@@ -485,14 +485,13 @@ footer {
 
    #sidebar-container {
         position: absolute;
-        top: 10vh;
+        top: 55px;
         left: 0;
-        top: 10vh;
     }
 
     #route-input {
         position: fixed;
-        top: 10vh;
+        top: 55px;
         left: 0;
         width: calc(100vw + 12px);
         height: 22vh;
@@ -518,7 +517,7 @@ footer {
     }
 
     #route-info {
-        top: 20vh;
+        top: 110px;
         width: 100vw;
         margin: 0;
         padding-bottom: 20vh;
@@ -535,7 +534,7 @@ footer {
         width: 33%;
         position: fixed;
         left: 33%;
-        top: 25vh;
+        top: 135px;
         min-width: 60px;
         visibility: visible;
     }
@@ -576,53 +575,55 @@ footer {
     
     #finish-route {
         height: 30px;
-        top: 26vh;
+        top: 135px;
     }
 }
 
 @media screen and (max-width: 650px) {
     /*navbar links*/
-    .nav-item {padding-bottom: 20px;}
+    .nav-item {padding-bottom: 10px;}
 
-    .nav-link {padding-top: 20px;}
+    .nav-link {padding-top: 10px;}
 
     /*homepage*/
+    #index-html {background-color: #00205B;}
+    
     #banner img {
-        min-height: 35vh;
-        max-height: 35vh;
+        min-height: 150px;
+        max-height: 150px;
         overflow-y: hidden;
         min-width: 100vw;
         width: auto;
-        margin-top: 17vh;
+        margin-top: 115px;
         float: inline-end;
     }
 
-    #banner h1 {height: 7vh;}
+    #banner h1 {height: 60px;}
 
     #banner h2 {
-        height: 10vh;
+        height: 40px;
         position: fixed;
-        top: 52vh;
+        top: 240px;
         text-align: left;
-        padding-top: 3vh;
+        padding-top: 10px;
         padding-left: 5vw;
     }
 
     #link-buttons {
         width: 100vw;
-        height: 25vh;
+        height: calc(100vh - 500px);
         display: flex;
         flex-direction: column;
         position: fixed;
-        bottom: 2vh;
         left: 0;
         justify-content: space-around;
         align-items: center;
     }
 
     #link-buttons a {
-        width: 80vw;
-        padding: 10px;
+        width: 70vw;
+        padding: 4%;
+        margin: 1px 0;
     }
 
     #info-header, #access-features {
@@ -632,7 +633,7 @@ footer {
     }
 
     #finish-route, #find-route {
-        bottom: 10vh;
+        bottom: 55px;
     }
 
     #resources-cards {
