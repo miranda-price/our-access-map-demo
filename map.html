@@ -46,7 +46,7 @@
         <aside id="sidebar-container">
             <div id="sidebar">
                 <div id="route-input">
-                  <button type="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;"><img src="assets/funnel-fill.svg" id="filter-access" alt="icon to bring up access features checkboxes"></button>
+                  <button type="button"  class="img-btn" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;"><img src="assets/funnel-fill.svg" id="filter-access" alt="icon to bring up access features checkboxes"></button>
                     <div id="input-fields">
                         <div class="input-group mb-3">
                           <select class="form-select" aria-label="Select starting building" id="start-building" name="start-building" onchange="propogateFloors('start-building', 'start-floor')">
@@ -132,15 +132,15 @@
                   </div>
                   <div id="current-dir-box" class="current-dir">
                     <div class="dir-step-overview">
-                      <button type="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;"><img src="assets/list-task.svg" id="toggle-dir" alt="icon to bring up list of all steps for route"></button>
-                      <p id="current-dir-building">Rettner</p>
-                      <p id="current-dir-type">Change floors</p>
-                      <button type="button" onclick="console.log('report function')"><img src="assets/exclamation-octagon-fill.svg" class="dir-step-report" alt="icon to report broken access feature for this step in the route"></button>
+                      <button type="button"  class="img-btn" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;"><img src="assets/list-task.svg" id="toggle-dir" alt="icon to bring up list of all steps for route"></button>
+                      <p id="current-dir-building"></p>
+                      <p id="current-dir-type"></p>
+                      <button type="button" class="img-btn" onclick="console.log('report function')"><img src="assets/exclamation-octagon-fill.svg" class="dir-step-report" alt="icon to report broken access feature for this step in the route"></button>
                     </div>
                     <div class="form-check dir-step" id="current-dir-check">
                       <input class="form-check-input" type="checkbox" value="" id="" onchange="checkFromCurrent(event)">
                       <label class="form-check-label" for="">
-                        <p id="current-dir-step">Move from 1st floor to 2nd floor Move from 1st floor to 2nd floor Move from 1st floor to 2nd floor</p>
+                        <p id="current-dir-step"></p>
                       </label>
                     </div>
                   </div>

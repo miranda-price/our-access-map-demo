@@ -5,6 +5,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+map.setMaxBounds([
+    [43.1245598, -77.6332544],
+    [43.1331607, -77.6184025]
+])
+
 
 document.getElementById('route-input').hidden = false;
 document.getElementById('route-info').hidden = false;
@@ -144,7 +149,12 @@ var located = false;
 function showPosition(position) {
     userLat = position.coords.latitude;
     userLng = position.coords.longitude;
-    if (!located) {
+    //[43.1245598, -77.6332544],
+    //[43.1331607, -77.6184025]
+    var inBounds = true;
+    if (userLat < 43.1245598 || userLat > 43.1331607) {inBounds = false;}
+    if (userLng < -77.6332544 || userLng > -77.6184025) {inBounds = false;}
+    if (!located && inBounds) {
         located = true;
         map.flyTo([userLat, userLng], 18);
     }
@@ -1006,14 +1016,17 @@ function display() {
             else {dirType.innerHTML = part.type;}
             var dirReportIcon = document.createElement('img');
             // add report icon
+            var dirReportButton = document.createElement('button');
+            dirReportButton.classList.add('img-btn');
+            dirReportButton.type = "button";
             dirReportIcon.src = "assets/exclamation-octagon-fill-dark.svg";
             dirReportIcon.classList.add('dir-step-report');
             dirReportIcon.alt = "icon to report broken access feature for this step in the route";
-            dirReportIcon.role = 'button';
-            dirReportIcon.addEventListener('click', console.log('report function'))
+            dirReportButton.addEventListener('click', console.log('report function'))
             overview.appendChild(dirLocation);
             overview.appendChild(dirType);
-            overview.appendChild(dirReportIcon)
+            dirReportButton.appendChild(dirReportIcon);
+            overview.appendChild(dirReportButton)
 
             // step checkbox/description
             var formCheck = document.createElement('div');
@@ -1046,7 +1059,9 @@ function display() {
     if (allCoords.length > 1){
     startCoords = allCoords[0];
     console.log(startCoords)
-    map.flyTo(startCoords, 18);
+    var newBounds = [allCoords[0], allCoords[allCoords.length - 1]];
+    var newBounds = map.getBounds().pad(0.003)
+    map.fitBounds(newBounds)
     located = true; // prevents auto center to userloc if userloc found second
     // add markers and route lines
     var startMarker = L.marker(startCoords);
