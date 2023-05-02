@@ -46,7 +46,7 @@
         <aside id="sidebar-container">
             <div id="sidebar">
                 <div id="route-input">
-                  <img src="assets/funnel-fill.svg" id="filter-access" alt="icon to bring up access features checkboxes" role="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;">
+                  <button type="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;"><img src="assets/funnel-fill.svg" id="filter-access" alt="icon to bring up access features checkboxes"></button>
                     <div id="input-fields">
                         <div class="input-group mb-3">
                           <select class="form-select" aria-label="Select starting building" id="start-building" name="start-building" onchange="propogateFloors('start-building', 'start-floor')">
@@ -85,7 +85,7 @@
                             </select>
                         </div>
                     </div>
-                    <img src="assets/bx-transfer.svg" alt="icon to switch starting location with destination" role="button" onclick="switchInput()">
+                    <button type="button" class="img-btn"  onclick="switchInput()"><img src="assets/bx-transfer.svg" alt="icon to switch starting location with destination"></button>
                 </div>
                 <div id="route-info">
                     <button type="button" class="btn-close" id="close-info" aria-label="Close" onclick="document.getElementById('map').hidden = false"></button>
@@ -132,10 +132,10 @@
                   </div>
                   <div id="current-dir-box" class="current-dir">
                     <div class="dir-step-overview">
-                      <img src="assets/list-task.svg" id="toggle-dir" alt="icon to bring up list of all steps for route" role="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;">
+                      <button type="button" onclick="document.getElementById('map').hidden = !document.getElementById('map').hidden;"><img src="assets/list-task.svg" id="toggle-dir" alt="icon to bring up list of all steps for route"></button>
                       <p id="current-dir-building">Rettner</p>
                       <p id="current-dir-type">Change floors</p>
-                      <img src="assets/exclamation-octagon-fill.svg" class="dir-step-report" alt="icon to report broken access feature for this step in the route" role="button" onclick="console.log('report function')">
+                      <button type="button" onclick="console.log('report function')"><img src="assets/exclamation-octagon-fill.svg" class="dir-step-report" alt="icon to report broken access feature for this step in the route"></button>
                     </div>
                     <div class="form-check dir-step" id="current-dir-check">
                       <input class="form-check-input" type="checkbox" value="" id="" onchange="checkFromCurrent(event)">
@@ -145,7 +145,7 @@
                     </div>
                   </div>
                 </div>
-                <button class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
+                <button type="submit" class="btn btn-primary" id="find-route" onclick="find_route(event)">Go</button> 
                 <div id="directions-container" hidden>
                     <div id="display-directions">
                         <ul id="directions"></ul>
@@ -189,11 +189,11 @@
                 <div id="report-multiple" hidden></div>
 
                 <div class="form-floating">
-                    <input type="email" class="form-control required" id="map-reporter-email" placeholder="University Email" required = "true">
+                    <input type="email" autocomplete="email" class="form-control required" id="map-reporter-email" placeholder="University Email" required = "true">
                     <label for="map-reporter-email"><span style="color: red;">*</span> University Email</label>
                 </div>
                 <div class="form-floating">
-                    <input type="tel" class="form-control required" id="map-reporter-phone" placeholder="Phone Number" required = "true">
+                    <input type="tel" autocomplete="tel" class="form-control required" id="map-reporter-phone" placeholder="Phone Number" required = "true">
                     <label for="map-reporter-phone"><span style="color: red;">*</span> Phone Number</label>
                 </div>
             </div>

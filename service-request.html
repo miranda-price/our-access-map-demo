@@ -54,18 +54,18 @@
             <h2>Reporter Information</h2>
             <div class="row g-3" id="reporter-info">
                 <div class="form-floating col-md-4">
-                    <input type="text" class="form-control required" id="reporter-name" placeholder="Full Name" required = "true">
+                    <input type="text" autocomplete="name" class="form-control required" id="reporter-name" placeholder="Full Name" required = "true">
                     <label for="reporter-name"><span style="color: red;">*</span> Full Name</label>
                 </div>
                 <div class="form-floating col-md-4">
-                    <input type="email" class="form-control required" id="reporter-email" placeholder="University Email" required = "true" onchange ="validEmail()">
+                    <input type="email" autocomplete="email" class="form-control required" id="reporter-email" placeholder="University Email" required = "true" onchange ="validEmail()">
                     <label for="reporter-email"><span style="color: red;">*</span> University Email</label>
                     <div id="email-invalid-feedback" class="invalid-feedback" hidden>
                       Please enter a university email.
                     </div>
                 </div>
                 <div class="form-floating col-md-4">
-                    <input type="tel" class="form-control required" id="reporter-phone" placeholder="Phone Number" required = "true" onchange="validPhone()">
+                    <input type="tel" autocomplete="tel" class="form-control required" id="reporter-phone" placeholder="Phone Number" required = "true" onchange="validPhone()">
                     <label for="reporter-phone"><span style="color: red;">*</span> Phone Number</label>
                     <div id="phone-invalid-feedback" class="invalid-feedback" hidden>
                       Please enter a valid phone number.
