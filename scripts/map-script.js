@@ -346,7 +346,7 @@ function reportIcon(description) {
 
 // accessibility feature/obstacle icon layers
 var elevatorsWC = L.layerGroup([
-    L.marker([43.1276125, -77.6291051], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Bausch and Lomb elevator')}),
+    L.marker([43.1276125, -77.6291051], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Bausch & Lomb elevator')}),
     L.marker([43.1274355, -77.6299342], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('main elevator on north side of Dewey')}),
     L.marker([43.1283968, -77.629964], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Morey elevator')}),     
     L.marker([43.1287886, -77.6283118], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Rush Rhees green elevators')}),
@@ -357,6 +357,12 @@ var elevatorsWC = L.layerGroup([
     L.marker([43.1291732, -77.6269654], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('UHS elevator')}),      
     L.marker([43.1270961, -77.6324882], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Chapel elevator')}),   
     L.marker([43.1277821, -77.628313], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Meliora elevator')}),   
+    L.marker([43.1289073, -77.629718], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Wilson commons elevator')}),
+    L.marker([43.1289347, -77.6285968], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('elevator on south side of Douglass')}),
+    L.marker([43.1291539, -77.6287416], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('elevator on north side of Douglass')}),
+    L.marker([43.1249443, -77.6308959], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Hutchinson elevator')}),
+    L.marker([43.124915, -77.6306354], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Hutchinson elevator')}),
+    L.marker([43.1256463, -77.630248], {icon:ElevatorWCIcon}).addEventListener('click', function() {reportIcon('Hylan elevator')}),     
     ])
     
     var elevatorsNotWC = L.layerGroup([
@@ -408,6 +414,18 @@ var elevatorsWC = L.layerGroup([
     L.marker([43.1277523, -77.6280932], {icon:stairsIcon}),
     L.marker([43.127457, -77.6282547], {icon:stairsIcon}),
     L.marker([43.1271664, -77.632281], {icon:stairsIcon}),
+    L.marker([43.1289425, -77.6297609], {icon:stairsIcon}),
+    L.marker([43.1288016, -77.6297126], {icon:stairsIcon}),
+    L.marker([43.1289425, -77.6301096], {icon:stairsIcon}),
+    L.marker([43.1292518, -77.6290259], {icon:stairsIcon}),
+    L.marker([43.1290717, -77.6287524], {icon:stairsIcon}),
+    L.marker([43.1289817, -77.6286934], {icon:stairsIcon}),
+    L.marker([43.1288955, -77.6286773], {icon:stairsIcon}),
+    L.marker([43.1289778, -77.6290689], {icon:stairsIcon}),
+    L.marker([43.1292714, -77.6287148], {icon:stairsIcon}),
+    L.marker([43.1255926, -77.630228], {icon:stairsIcon}),
+    L.marker([43.1249004, -77.6305753], {icon:stairsIcon}),
+    L.marker([43.1250174, -77.6307356], {icon:stairsIcon}),
     ])
     
     var steps = L.layerGroup([
@@ -428,6 +446,13 @@ var elevatorsWC = L.layerGroup([
     L.marker([43.1280017, -77.6305957], {icon:rampIcon}),
     L.marker([43.1284461, -77.6294503], {icon:rampIcon}),
     L.marker([43.1285883, -77.6290144], {icon:rampIcon}),
+    L.marker([43.1304014, -77.6288796], {icon:rampIcon}),
+    L.marker([43.1279529, -77.6313895], {icon:rampIcon}),
+    L.marker([43.1277508, -77.6312232], {icon:rampIcon}),
+    L.marker([43.1285032, -77.6313804], {icon:rampIcon}),
+    L.marker([43.1287667, -77.6306938], {icon:rampIcon}),
+    L.marker([43.1280532, -77.6288312], {icon:rampIcon}),
+    L.marker([43.1278104, -77.6293376], {icon:rampIcon}),
     ])
     
     var benches = L.layerGroup([
@@ -444,6 +469,12 @@ var elevatorsWC = L.layerGroup([
     L.marker([43.1276439, -77.6298366], {icon:benchIcon}),
     L.marker([43.1276896, -77.6296767], {icon:benchIcon}),
     L.marker([43.1286943, -77.6287485], {icon:benchIcon}),
+    L.marker([43.1279176, -77.6299363], {icon:benchIcon}),
+    L.marker([43.1269973, -77.6321136], {icon:benchIcon}),
+    L.marker([43.1271941, -77.6322544], {icon:benchIcon}),
+    L.marker([43.1265114, -77.631798], {icon:benchIcon}),
+    L.marker([43.1276986, -77.6275968], {icon:benchIcon}),
+    L.marker([43.1274324, -77.6281386], {icon:benchIcon}),
     ])
 
 // layer controls
