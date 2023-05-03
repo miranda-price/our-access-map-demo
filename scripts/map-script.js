@@ -1268,6 +1268,7 @@ function currentStep() {
         document.getElementById('current-dir-step').innerHTML = current.children[1].children[1].children[0].innerHTML;
         document.getElementById('current-dir-check').children[0].value = current.children[1].children[0].value;
         document.getElementById('current-dir-check').children[1].htmlFor = current.children[1].children[0].id;
+        document.getElementById('current-report').hidden = current.children[0].children[2].hidden;
     }
     else {document.getElementById('current-dir-check').children[0].checked = true;}
 }
@@ -1334,8 +1335,8 @@ function display() {
             else if (part.type == "level") {dirType.innerHTML = "Cross building level";}
             else if (part.type == "tunnel") {dirType.innerHTML = "Tunnel";}
             else {dirType.innerHTML = part.type;}
-            var dirReportIcon = document.createElement('img');
             // add report icon
+            var dirReportIcon = document.createElement('img');
             var dirReportButton = document.createElement('button');
             dirReportButton.classList.add('img-btn');
             dirReportButton.type = "button";
@@ -1347,6 +1348,7 @@ function display() {
             overview.appendChild(dirType);
             dirReportButton.appendChild(dirReportIcon);
             overview.appendChild(dirReportButton)
+            if (part.report == null) {dirReportButton.hidden = true;}
 
             // step checkbox/description
             var formCheck = document.createElement('div');
