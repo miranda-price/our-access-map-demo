@@ -1268,7 +1268,6 @@ function currentStep() {
         document.getElementById('current-dir-step').innerHTML = current.children[1].children[1].children[0].innerHTML;
         document.getElementById('current-dir-check').children[0].value = current.children[1].children[0].value;
         document.getElementById('current-dir-check').children[1].htmlFor = current.children[1].children[0].id;
-        document.getElementById('current-report').hidden = current.children[0].children[2].hidden;
     }
     else {document.getElementById('current-dir-check').children[0].checked = true;}
 }
@@ -1310,7 +1309,6 @@ function display() {
                 else {
                     // reverse coords to correct route lines
                     if (ifReverse(part.id, end.route[end.route.indexOf(part) + 1].id)){
-                        console.log(revCoords)
                         var revCoords = [];
                         for (let c = 1; c <= part.coords.length; c++) {revCoords.push(part.coords[part.coords.length - c])}
                         part.coords = revCoords;
@@ -1335,20 +1333,8 @@ function display() {
             else if (part.type == "level") {dirType.innerHTML = "Cross building level";}
             else if (part.type == "tunnel") {dirType.innerHTML = "Tunnel";}
             else {dirType.innerHTML = part.type;}
-            // add report icon
-            var dirReportIcon = document.createElement('img');
-            var dirReportButton = document.createElement('button');
-            dirReportButton.classList.add('img-btn');
-            dirReportButton.type = "button";
-            dirReportIcon.src = "assets/exclamation-octagon-fill-dark.svg";
-            dirReportIcon.classList.add('dir-step-report');
-            dirReportIcon.alt = "icon to report broken access feature for this step in the route";
-            dirReportButton.addEventListener('click', console.log('report function'))
             overview.appendChild(dirLocation);
             overview.appendChild(dirType);
-            dirReportButton.appendChild(dirReportIcon);
-            overview.appendChild(dirReportButton)
-            if (part.report == null) {dirReportButton.hidden = true;}
 
             // step checkbox/description
             var formCheck = document.createElement('div');
@@ -1398,62 +1384,6 @@ function display() {
     document.getElementById('directions-container').hidden = false;
     document.getElementById('find-route').hidden = true;
     document.getElementById('finish-route').hidden = false;
-}
-
-function reportFromDir(reportElement) {
-    console.log('report from dir')
-    var reportOptions = reportElement.report;
-    console.log(reportOptions)
-    if (reportOptions.length == 1) {
-        document.getElementById('report-single').innerHTML = reportOptions[0];
-        document.getElementById('report-single').hidden = false;
-    } else {
-        reportOptions.forEach(part => {
-            var reportRadio = document.createElement('div');
-            reportRadio.classList.add('form-check');
-            var radioInput = document.createElement('input');
-            radioInput.classList.add('form-check-input');
-            radioInput.type = "radio";
-            radioInput.value = part;
-            radioInput.id = part;
-            radioInput.required = "true";
-            radioInput.name = "report-multiple-radio"
-            var radioLabel = document.createElement('label');
-            radioLabel.classList.add('form-check-label');
-            radioLabel.for = part;
-            radioLabel.appendChild(document.createTextNode(part));
-            reportRadio.appendChild(radioInput);
-            reportRadio.appendChild(radioLabel);
-            document.getElementById('report-multiple').appendChild(reportRadio);
-        })
-        document.getElementById('report-multiple').hidden = false;
-    }
-}
-
-var selectedReport = "";
-
-function mapReportDetails() {
-    if (document.getElementById('report-single').innerHTML != "") {selectedReport = document.getElementById('report-single').innerHTML}
-    else {
-        options = document.getElementById('report-multiple').children;
-        for (let i = 0; i<options.length; i++) {if (options[i].children[0].checked) {selectedReport = options[i].children[0].value}}
-    }
-    document.getElementById('report-selected').innerHTML = "Report " + selectedReport;
-}
-
-function format(date) {
-    var d = date.getDate();
-    var m = date.getMonth() + 1;
-    var y = date.getFullYear();
-    return '' + (m<=9 ? '0' + m : m) + '/' + (d <= 9 ? '0' + d : d) + '/' + y;
-}
-
-function confirmMapReport() {
-    var today = new Date();
-    document.getElementById('you-reported').innerHTML = "Your reported " + selectedReport;
-    document.getElementById('confirm-reporter-email').innerHTML = "Email: " + document.getElementById('map-reporter-email').value
-    document.getElementById('confirm-reporter-phone').innerHTML = "Phone: " + document.getElementById('map-reporter-phone').value
-    document.getElementById('confirm-report-date').innerHTML = "Date: " + format(today);
 }
 
 function adjustRoute() {
