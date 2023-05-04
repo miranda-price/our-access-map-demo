@@ -154,6 +154,15 @@ function propogateFloors(selectBuilding, selectFloor) {
         floors = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
         main = '1';
         break;
+        break;
+    case 'Douglass':
+        floors = ['1', '2', '3', '4'];
+        main = '2';
+        break;
+    case 'Wilson Commons':
+        floors = ['1', '2', '3', '4', '5'];
+        main = '2';
+        break;
     default:
         floors = ['B', 'G', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
         main = '1';
@@ -245,9 +254,9 @@ function showPosition(position) {
         } else if (userLat >= 43.1283182 && userLng >= -77.6313465 && userLat <= 43.1288145 && userLng <= -77.6306127) {
             //startBuilding.value = "LeChase";
         } else if (userLat >= 43.1286404 && userLng >= -77.63004 && userLat <= 43.1292064 && userLng <= -77.6294613) {
-            //startBuilding.value = "Wilson Commons";
+            startBuilding.value = "Wilson Commons";
         } else if (userLat >= 43.1287144 && userLng >= -77.6291332 && userLat <= 43.1293806 && userLng <= -77.6285783) {
-            //startBuilding.value = "Douglass";
+            startBuilding.value = "Douglass";
         } else if (userLat >= 43.13028 && userLng >= -77.629055 && userLat <= 43.131488 && userLng <= -77.6282274) {
             //startBuilding.value = "Fauver Stadium";
         } else if (userLat >= 43.1294357 && userLng >= -77.6300989 && userLat <= 43.1311791 && userLng <= -77.6295346) {
@@ -413,9 +422,6 @@ var elevatorsWC = L.layerGroup([
     L.marker([43.1276688, -77.6294263], {icon:stairsIcon}),
     L.marker([43.1278215, -77.629013], {icon:stairsIcon}),
     L.marker([43.1273017, -77.6290454], {icon:stairsIcon}),
-    L.marker([43.1293054, -77.631355], {icon:stairsIcon}),
-    L.marker([43.1292582, -77.6314721], {icon:stairsIcon}),
-    L.marker([43.12934, -77.631243], {icon:stairsIcon}),
     L.marker([43.1269542, -77.6298441], {icon:stairsIcon}),
     L.marker([43.1271962, -77.6299666], {icon:stairsIcon}),
     L.marker([43.1274355, -77.6300423], {icon:stairsIcon}),
@@ -483,15 +489,18 @@ var elevatorsWC = L.layerGroup([
     ])
     
     var steps = L.layerGroup([
-    L.marker([43.1292073, -77.6314372], {icon:stepsIcon}),
-    L.marker([43.1292527, -77.6313251], {icon:stepsIcon}),
-    L.marker([43.1292927, -77.6312056], {icon:stepsIcon}),
     L.marker([43.1278898, -77.629309], {icon:stepsIcon}),
     L.marker([43.1275354, -77.6302513], {icon:stepsIcon}),
     L.marker([43.127437, -77.6297163], {icon:stepsIcon}),
     L.marker([43.1275113, -77.6295178], {icon:stepsIcon}),
     L.marker([43.1280086, -77.6305709], {icon:stepsIcon}),
     L.marker([43.1284373, -77.6294587], {icon:stepsIcon}),
+    L.marker([43.1256315, -77.6292359], {icon:stepsIcon}),
+    L.marker([43.1260207, -77.6298532], {icon:stepsIcon}),
+    L.marker([43.1259398, -77.6289807], {icon:stepsIcon}),
+    L.marker([43.127879, -77.6292976], {icon:stepsIcon}),
+    L.marker([43.1282431, -77.629994], {icon:stepsIcon}),
+    L.marker([43.1280033, -77.6305666], {icon:stepsIcon}),
     ])
     
     var ramps = L.layerGroup([
@@ -507,6 +516,7 @@ var elevatorsWC = L.layerGroup([
     L.marker([43.1287667, -77.6306938], {icon:rampIcon}),
     L.marker([43.1280532, -77.6288312], {icon:rampIcon}),
     L.marker([43.1278104, -77.6293376], {icon:rampIcon}),
+    L.marker([43.1279291, -77.6288564], {icon:rampIcon}),
     ])
     
     var benches = L.layerGroup([
